@@ -1,0 +1,334 @@
+{
+  "id": "angular-signals-zoneless",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "soft-light",
+  "grain": false,
+  "title": {
+    "text": "Signals update. push() does not.",
+    "lines": [
+      "Signals update.",
+      "push() does not."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 57,
+    "accentWords": [
+      {
+        "word": "push()",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 2,
+      "dy": 2
+    },
+    "subtitle": {
+      "text": "ANGULAR SIGNALS: MUTATION IS NOT A NOTIFICATION",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "upper-section",
+        "header": "1. Write the state",
+        "headerStyle": "chip",
+        "y": 155,
+        "h": 335,
+        "colorRole": "cyan"
+      },
+      {
+        "id": "lower-section",
+        "header": "2. Consumers",
+        "headerStyle": "chip",
+        "y": 490,
+        "h": 440,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "push",
+      "label": "items().push(x)",
+      "x": 70,
+      "y": 245,
+      "w": 250,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Same array reference",
+      "icon": {
+        "name": "list",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "update",
+      "label": "items.update(...)",
+      "x": 480,
+      "y": 245,
+      "w": 250,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "success",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Return a new array",
+      "icon": {
+        "name": "refresh-cw",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "old-view",
+      "label": "View can stay stale",
+      "x": 60,
+      "y": 635,
+      "w": 235,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "No signal notification",
+      "icon": {
+        "name": "monitor",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "signal-list",
+      "label": "Signal list",
+      "x": 440,
+      "y": 590,
+      "w": 270,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Changed value notifies",
+      "icon": {
+        "name": "list",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "view",
+      "label": "View updates",
+      "x": 440,
+      "y": 790,
+      "w": 270,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Template reads items()",
+      "icon": {
+        "name": "monitor",
+        "source": "line",
+        "size": 26
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "silent",
+      "from": "push",
+      "to": "old-view",
+      "pathType": "orthogonal",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "colorRole": "danger",
+      "label": {
+        "text": "no notification",
+        "pill": true,
+        "t": 0.6
+      },
+      "dashed": true,
+      "arrow": false,
+      "waypoints": [
+        {
+          "x": 375,
+          "y": 293
+        },
+        {
+          "x": 375,
+          "y": 560
+        },
+        {
+          "x": 177,
+          "y": 560
+        }
+      ]
+    },
+    {
+      "id": "write",
+      "from": "update",
+      "to": "signal-list",
+      "pathType": "orthogonal",
+      "fromAnchor": "left",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "new reference",
+        "pill": true,
+        "t": 0.8
+      },
+      "waypoints": [
+        {
+          "x": 405,
+          "y": 293
+        },
+        {
+          "x": 405,
+          "y": 550
+        },
+        {
+          "x": 575,
+          "y": 550
+        }
+      ]
+    },
+    {
+      "id": "notify",
+      "from": "signal-list",
+      "to": "view",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "mark consumer",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "bad",
+      "kind": "cross",
+      "attachTo": "push"
+    },
+    {
+      "id": "good",
+      "kind": "check",
+      "attachTo": "update"
+    },
+    {
+      "id": "push-code",
+      "kind": "code",
+      "x": 65,
+      "y": 370,
+      "w": 300,
+      "h": 48,
+      "language": "ts",
+      "font": "code",
+      "fontSize": 16,
+      "lines": [
+        {
+          "text": "items().push(x);",
+          "band": "danger"
+        }
+      ]
+    },
+    {
+      "id": "update-code",
+      "kind": "code",
+      "x": 425,
+      "y": 370,
+      "w": 320,
+      "h": 72,
+      "language": "ts",
+      "font": "code",
+      "fontSize": 16,
+      "lines": [
+        {
+          "text": "items.update(xs =>"
+        },
+        {
+          "text": "  [...xs, x]);",
+          "band": "success"
+        }
+      ]
+    },
+    {
+      "id": "stale-note",
+      "kind": "callout",
+      "text": "Other events may refresh the view and hide this bug.",
+      "x": 65,
+      "y": 785,
+      "maxWidth": 270,
+      "fontSize": 21,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "ref-note",
+      "kind": "callout",
+      "text": "With default equality, a new reference is the signal.",
+      "x": 70,
+      "y": 865,
+      "maxWidth": 320,
+      "fontSize": 19,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 4000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "push",
+          "old-view",
+          "update",
+          "signal-list",
+          "view"
+        ],
+        "dwellMs": 800,
+        "transitionMs": 120,
+        "scale": 1.035
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "write",
+          "notify"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 32,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

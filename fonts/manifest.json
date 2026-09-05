@@ -1,0 +1,122 @@
+{
+  "repo": "google/fonts",
+  "pinnedCommit": "5e35378e6bda803962ee6fd257e444a7d459660d",
+  "files": [
+    {
+      "family": "Lilita One",
+      "weightRole": "display",
+      "weight": "400",
+      "file": "lilitaone/LilitaOne-Regular.ttf",
+      "path": "ofl/lilitaone/LilitaOne-Regular.ttf",
+      "license": "lilitaone/OFL.txt",
+      "sha256": "f5b641c45c69d772ee4eda687bc9fda411d5cad6b0b45371491da4580cbc8d59"
+    },
+    {
+      "family": "Bebas Neue",
+      "weightRole": "condensed",
+      "weight": "400",
+      "file": "bebasneue/BebasNeue-Regular.ttf",
+      "path": "ofl/bebasneue/BebasNeue-Regular.ttf",
+      "license": "bebasneue/OFL.txt",
+      "sha256": "08e4623805102d819f58601e46e345648846075e363b2ceb23313c2d1c83ec73"
+    },
+    {
+      "family": "Inter",
+      "weightRole": "body",
+      "weight": "100 900",
+      "file": "inter/Inter[opsz,wght].ttf",
+      "path": "ofl/inter/Inter[opsz,wght].ttf",
+      "license": "inter/OFL.txt",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "family": "Patrick Hand",
+      "weightRole": "annotation",
+      "weight": "400",
+      "file": "patrickhand/PatrickHand-Regular.ttf",
+      "path": "ofl/patrickhand/PatrickHand-Regular.ttf",
+      "license": "patrickhand/OFL.txt",
+      "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc"
+    },
+    {
+      "family": "JetBrains Mono",
+      "weightRole": "code",
+      "weight": "100 800",
+      "file": "jetbrainsmono/JetBrainsMono[wght].ttf",
+      "path": "ofl/jetbrainsmono/JetBrainsMono[wght].ttf",
+      "license": "jetbrainsmono/OFL.txt",
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "family": "Space Mono",
+      "weightRole": "labelMono",
+      "weight": "400",
+      "file": "spacemono/SpaceMono-Regular.ttf",
+      "path": "ofl/spacemono/SpaceMono-Regular.ttf",
+      "license": "spacemono/OFL.txt",
+      "sha256": "95837e182baeeada83368f7748db28357f0a1b75c6b84ff7065b5edf933c8e18"
+    },
+    {
+      "family": "Space Mono",
+      "weightRole": "labelMono",
+      "weight": "700",
+      "file": "spacemono/SpaceMono-Bold.ttf",
+      "path": "ofl/spacemono/SpaceMono-Bold.ttf",
+      "license": "spacemono/OFL.txt",
+      "sha256": "405e73d41afb7e5906efce206a326af5c956f38e255f35421c260e861e599c59"
+    },
+    {
+      "family": "Permanent Marker",
+      "weightRole": "marker",
+      "weight": "400",
+      "file": "permanentmarker/PermanentMarker-Regular.ttf",
+      "path": "apache/permanentmarker/PermanentMarker-Regular.ttf",
+      "license": "permanentmarker/LICENSE.txt",
+      "sha256": "28f82c8a7943cb8e9d599f8554da1d4fc75dbcf69b9885ad6c0611d20c6946c5"
+    }
+  ],
+  "licenses": [
+    {
+      "family": "Lilita One",
+      "file": "lilitaone/OFL.txt",
+      "path": "ofl/lilitaone/OFL.txt",
+      "sha256": "255d5debbb80eb2ea762644311f266a279e8778f00156655a516e2b7781a63e1"
+    },
+    {
+      "family": "Bebas Neue",
+      "file": "bebasneue/OFL.txt",
+      "path": "ofl/bebasneue/OFL.txt",
+      "sha256": "72082f6cb4d04be2ecf7cc7d9e1e7d73787f0af8a5a278a47cade70c16b78341"
+    },
+    {
+      "family": "Inter",
+      "file": "inter/OFL.txt",
+      "path": "ofl/inter/OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "family": "Patrick Hand",
+      "file": "patrickhand/OFL.txt",
+      "path": "ofl/patrickhand/OFL.txt",
+      "sha256": "377f4f9c19e935228552478eb68cc2ed82910988a60ba60e2ac73b09f32d02d1"
+    },
+    {
+      "family": "JetBrains Mono",
+      "file": "jetbrainsmono/OFL.txt",
+      "path": "ofl/jetbrainsmono/OFL.txt",
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "family": "Space Mono",
+      "file": "spacemono/OFL.txt",
+      "path": "ofl/spacemono/OFL.txt",
+      "sha256": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f"
+    },
+    {
+      "family": "Permanent Marker",
+      "file": "permanentmarker/LICENSE.txt",
+      "path": "apache/permanentmarker/LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  ]
+}

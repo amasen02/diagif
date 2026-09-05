@@ -1,0 +1,133 @@
+{
+  "id": "agent-mock-scene",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "RAG retrieves before it answers",
+    "size": 36,
+    "align": "center",
+    "x": 400,
+    "y": 60
+  },
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "request",
+      "label": "Ask a question",
+      "x": 240,
+      "y": 170,
+      "w": 320,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "cyan"
+    },
+    {
+      "id": "search",
+      "label": "Retrieve documents",
+      "x": 240,
+      "y": 320,
+      "w": 320,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "mint"
+    },
+    {
+      "id": "context",
+      "label": "Add useful context",
+      "x": 240,
+      "y": 470,
+      "w": 320,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "cyan"
+    },
+    {
+      "id": "model",
+      "label": "Generate an answer",
+      "x": 240,
+      "y": 620,
+      "w": 320,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "mint"
+    },
+    {
+      "id": "answer",
+      "label": "Check the sources",
+      "x": 240,
+      "y": 770,
+      "w": 320,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "cyan"
+    }
+  ],
+  "edges": [
+    {
+      "id": "flow-0",
+      "from": "request",
+      "to": "search",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "dashed": true,
+      "colorRole": "cyan"
+    },
+    {
+      "id": "flow-1",
+      "from": "search",
+      "to": "context",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "dashed": true,
+      "colorRole": "cyan"
+    },
+    {
+      "id": "flow-2",
+      "from": "context",
+      "to": "model",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "dashed": true,
+      "colorRole": "cyan"
+    },
+    {
+      "id": "flow-3",
+      "from": "model",
+      "to": "answer",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "dashed": true,
+      "colorRole": "cyan"
+    }
+  ],
+  "timeline": {
+    "durationMs": 4000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "flow-0",
+          "flow-1",
+          "flow-2",
+          "flow-3"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 32,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

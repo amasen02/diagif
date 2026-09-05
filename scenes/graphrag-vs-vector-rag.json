@@ -1,0 +1,295 @@
+{
+  "id": "graphrag-vs-vector-rag",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "Vector RAG finds chunks. GraphRAG finds patterns.",
+    "lines": [
+      "Vector RAG finds chunks.",
+      "GraphRAG finds patterns."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 60,
+    "accentWords": [
+      {
+        "word": "chunks",
+        "colorRole": "cyan"
+      },
+      {
+        "word": "patterns",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "MATCH A PASSAGE OR CONNECT KNOWLEDGE ACROSS THE CORPUS",
+      "font": "condensed",
+      "size": 19
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "vector-section",
+        "header": "Vector RAG",
+        "headerStyle": "chip",
+        "y": 155,
+        "h": 365,
+        "colorRole": "cyan"
+      },
+      {
+        "id": "graph-section",
+        "header": "GraphRAG",
+        "headerStyle": "chip",
+        "y": 535,
+        "h": 380,
+        "colorRole": "orange"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "query",
+      "label": "Query",
+      "x": 320,
+      "y": 180,
+      "w": 200,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "neutral",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Same information need"
+    },
+    {
+      "id": "chunks",
+      "label": "Chunks",
+      "x": 130,
+      "y": 340,
+      "w": 200,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Embedded passages"
+    },
+    {
+      "id": "nearest",
+      "label": "Nearest neighbours",
+      "x": 460,
+      "y": 340,
+      "w": 235,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Rank by similarity"
+    },
+    {
+      "id": "entities",
+      "label": "Entities",
+      "x": 80,
+      "y": 640,
+      "w": 190,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Extract links + facts"
+    },
+    {
+      "id": "communities",
+      "label": "Communities",
+      "x": 330,
+      "y": 640,
+      "w": 200,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Cluster + summarise"
+    },
+    {
+      "id": "answer",
+      "label": "Answer",
+      "x": 590,
+      "y": 640,
+      "w": 150,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Synthesis"
+    }
+  ],
+  "edges": [
+    {
+      "id": "vector-query",
+      "from": "query",
+      "to": "chunks",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "embed query",
+        "pill": true
+      }
+    },
+    {
+      "id": "similarity",
+      "from": "chunks",
+      "to": "nearest",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "rank",
+        "pill": true
+      }
+    },
+    {
+      "id": "graph-query",
+      "from": "query",
+      "to": "entities",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "waypoints": [
+        {
+          "x": 24,
+          "y": 225
+        },
+        {
+          "x": 24,
+          "y": 690
+        }
+      ]
+    },
+    {
+      "id": "cluster",
+      "from": "entities",
+      "to": "communities",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "group",
+        "pill": true
+      }
+    },
+    {
+      "id": "synthesise",
+      "from": "communities",
+      "to": "answer",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "merge",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "local-note",
+      "kind": "callout",
+      "text": "Best fit: specific facts in a few relevant passages.",
+      "x": 330,
+      "y": 463,
+      "maxWidth": 390,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "global-note",
+      "kind": "callout",
+      "text": "Best fit: themes spanning many connected facts.",
+      "x": 70,
+      "y": 800,
+      "maxWidth": 310,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    },
+    {
+      "id": "cost-note",
+      "kind": "callout",
+      "text": "Extraction + summaries add indexing work. Keep source links.",
+      "x": 430,
+      "y": 800,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 8000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "vector-query",
+          "similarity"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 4,
+        "colorRole": "cyan",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "graph-query",
+          "cluster",
+          "synthesise"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

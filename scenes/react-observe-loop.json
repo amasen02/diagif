@@ -1,0 +1,327 @@
+{
+  "id": "react-observe-loop",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "black-card",
+  "grain": false,
+  "title": {
+    "text": "ReAct: the loop behind every useful agent",
+    "lines": [
+      "ReAct: the loop behind",
+      "every useful agent"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 60,
+    "accentWords": [
+      {
+        "word": "ReAct",
+        "colorRole": "orange"
+      },
+      {
+        "word": "loop",
+        "colorRole": "cyan"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "REASONING BECOMES USEFUL WHEN IT MEETS FEEDBACK",
+      "font": "condensed",
+      "size": 19
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-columns",
+    "columns": [
+      {
+        "id": "left-frame",
+        "header": "AGENT CONTROL LOOP",
+        "x": 40,
+        "y": 215,
+        "w": 460,
+        "h": 605,
+        "accentFrom": "#42CBEA",
+        "accentTo": "#75D6B4"
+      },
+      {
+        "id": "right-frame",
+        "header": "WORLD + CHECKS",
+        "x": 540,
+        "y": 215,
+        "w": 220,
+        "h": 605,
+        "accentFrom": "#F6AC65",
+        "accentTo": "#DC80B1"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "perceive",
+      "label": "Perceive",
+      "x": 80,
+      "y": 280,
+      "w": 160,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Read current state",
+      "badge": 1
+    },
+    {
+      "id": "reason",
+      "label": "Reason",
+      "x": 300,
+      "y": 280,
+      "w": 160,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Choose next action",
+      "badge": 2
+    },
+    {
+      "id": "act",
+      "label": "Act",
+      "x": 300,
+      "y": 550,
+      "w": 160,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Dispatch tool call",
+      "badge": 3
+    },
+    {
+      "id": "observe",
+      "label": "Observe",
+      "x": 80,
+      "y": 550,
+      "w": 160,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Record tool result",
+      "badge": 4
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "x": 565,
+      "y": 430,
+      "w": 170,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Run the operation",
+      "icon": {
+        "name": "settings",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "verifier",
+      "label": "Verifier",
+      "x": 565,
+      "y": 720,
+      "w": 170,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Check goal + budget",
+      "icon": {
+        "name": "check",
+        "source": "line",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "read",
+      "from": "perceive",
+      "to": "reason",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "state",
+        "pill": true
+      }
+    },
+    {
+      "id": "choose",
+      "from": "reason",
+      "to": "act",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "decision",
+        "pill": true
+      }
+    },
+    {
+      "id": "call",
+      "from": "act",
+      "to": "tool",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "invoke",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 600
+        },
+        {
+          "x": 520,
+          "y": 485
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "from": "tool",
+      "to": "observe",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "bottom",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "result",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 650,
+          "y": 685
+        },
+        {
+          "x": 160,
+          "y": 685
+        }
+      ]
+    },
+    {
+      "id": "repeat",
+      "from": "observe",
+      "to": "perceive",
+      "pathType": "straight",
+      "fromAnchor": "top",
+      "toAnchor": "bottom",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "next turn",
+        "pill": true
+      }
+    },
+    {
+      "id": "test",
+      "from": "observe",
+      "to": "verifier",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "evidence",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 160,
+          "y": 765
+        },
+        {
+          "x": 530,
+          "y": 765
+        }
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "id": "feedback-note",
+      "kind": "callout",
+      "text": "A tool result becomes the next decision's context.",
+      "x": 60,
+      "y": 850,
+      "maxWidth": 330,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "stop-note",
+      "kind": "callout",
+      "text": "Stop on verified success, or when the budget runs out.",
+      "x": 440,
+      "y": 850,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "read",
+          "choose",
+          "call",
+          "result",
+          "repeat"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 1,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

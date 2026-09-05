@@ -1,0 +1,269 @@
+{
+  "id": "agent-prompt-injection-rule-two",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "black-card",
+  "grain": false,
+  "title": {
+    "text": "The Rule of Two: remove one leg of the attack",
+    "lines": [
+      "The Rule of Two:",
+      "remove one leg of the attack"
+    ],
+    "font": "display",
+    "size": 42,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "Two",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "UNTRUSTED INPUT + PRIVATE DATA + AUTONOMOUS EGRESS = RISK",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "untrusted",
+      "label": "Untrusted content",
+      "x": 60,
+      "y": 245,
+      "w": 230,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Web pages / tool results",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "private",
+      "label": "Private data",
+      "x": 510,
+      "y": 245,
+      "w": 230,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "magenta",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Secrets / internal records",
+      "icon": {
+        "name": "database",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "x": 290,
+      "y": 460,
+      "w": 220,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Treat retrieved text as data",
+      "icon": {
+        "name": "openai",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "approval",
+      "label": "Approval gate",
+      "x": 60,
+      "y": 700,
+      "w": 230,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Human checks exact payload",
+      "icon": {
+        "name": "shield",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "external",
+      "label": "External action",
+      "x": 510,
+      "y": 700,
+      "w": 230,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Send / upload / publish",
+      "icon": {
+        "name": "mail",
+        "source": "line",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-agent",
+      "from": "untrusted",
+      "to": "agent",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2,
+      "label": {
+        "text": "read",
+        "pill": true
+      }
+    },
+    {
+      "id": "private-agent",
+      "from": "private",
+      "to": "agent",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "right",
+      "colorRole": "magenta",
+      "strokeWidth": 2,
+      "label": {
+        "text": "access",
+        "pill": true
+      }
+    },
+    {
+      "id": "agent-external",
+      "from": "agent",
+      "to": "external",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "top",
+      "colorRole": "danger",
+      "strokeWidth": 2,
+      "label": {
+        "text": "autonomous: blocked",
+        "pill": true,
+        "t": 0.5
+      },
+      "dashed": true
+    },
+    {
+      "id": "agent-approval",
+      "from": "agent",
+      "to": "approval",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "propose",
+        "pill": true
+      }
+    },
+    {
+      "id": "approved-action",
+      "from": "approval",
+      "to": "external",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "only after review",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "two-note",
+      "kind": "callout",
+      "text": "Keep at most two capabilities in one autonomous agent.",
+      "x": 60,
+      "y": 150,
+      "maxWidth": 400,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "gate-note",
+      "kind": "callout",
+      "text": "Remove unsupervised egress. A prompt alone is not a boundary.",
+      "x": 320,
+      "y": 850,
+      "maxWidth": 400,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "blocked",
+      "kind": "cross",
+      "attachTo": "agent-external",
+      "x": 596.25,
+      "y": 653.75
+    }
+  ],
+  "timeline": {
+    "durationMs": 7000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "input-agent",
+          "agent-approval",
+          "approved-action"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "approval"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.04
+      }
+    ]
+  }
+}

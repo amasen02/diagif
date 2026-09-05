@@ -1,0 +1,315 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:diagif:schema:config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "brain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "pattern": "^(openai|anthropic|codex-cli|claude-cli|mock(?::(happy|schema-retry|critic-repair|scene-exhaust|budget))?)$"
+        },
+        "openai": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "model": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "baseUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pricePer1MTokens": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": false,
+              "required": [
+                "input",
+                "output"
+              ],
+              "properties": {
+                "input": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "output": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            },
+            "reasoningEffort": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "anthropic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "model": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "baseUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "legacyToolMode": {
+              "type": "boolean"
+            },
+            "pricePer1MTokens": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": false,
+              "required": [
+                "input",
+                "output"
+              ],
+              "properties": {
+                "input": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "output": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "codex": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "model": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reasoningEffort": {
+              "enum": [
+                "none",
+                "minimal",
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            "extraArgs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "claudeCli": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "model": {
+              "type": "string",
+              "minLength": 1
+            },
+            "apiKeyMode": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "research": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "hn",
+              "github",
+              "reddit",
+              "duckduckgo",
+              "exa",
+              "tavily",
+              "brave",
+              "page"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "allowHtmlSearch": {
+          "type": "boolean"
+        },
+        "cacheTtlDays": {
+          "type": "number",
+          "minimum": 0
+        },
+        "scoutCacheTtlHours": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "brand": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "style"
+          ],
+          "properties": {
+            "style": {
+              "const": "none"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "style",
+            "url"
+          ],
+          "properties": {
+            "style": {
+              "const": "url-footer"
+            },
+            "url": {
+              "type": "string",
+              "maxLength": 72,
+              "format": "uri"
+            }
+          }
+        }
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "maxModelCalls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        },
+        "modelTimeoutMs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "scout": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "research": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "brief": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "scene": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "critic": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "cliStartupGraceMs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxOutputTokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "scout": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "research": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "brief": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "scene": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "critic": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "fetchTimeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "researchDeadlineMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "inspectTimeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "renderTimeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "runTimeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

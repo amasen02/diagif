@@ -1,0 +1,296 @@
+{
+  "id": "rest-cursor-pagination",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "paper",
+  "grain": true,
+  "title": {
+    "text": "Offset duplicates. Cursors keep their place.",
+    "lines": [
+      "Offset duplicates.",
+      "Cursors keep their place."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "Cursors",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "A NEW ROW SHOULD NOT REPLAY AN OLD ONE",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "section-a",
+        "header": "OFFSET / ROW POSITIONS",
+        "headerStyle": "chip",
+        "y": 156,
+        "h": 344,
+        "colorRole": "orange"
+      },
+      {
+        "id": "section-b",
+        "header": "CURSOR / STABLE KEYS",
+        "headerStyle": "chip",
+        "y": 500,
+        "h": 440,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "insert",
+      "label": "Insert ID 106",
+      "x": 60,
+      "y": 260,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Newest first: 106, 105, 104"
+    },
+    {
+      "id": "offset",
+      "label": "OFFSET 2",
+      "x": 310,
+      "y": 260,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Page 1 was 105, 104"
+    },
+    {
+      "id": "duplicate",
+      "label": "104 repeats",
+      "x": 560,
+      "y": 260,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Page 2 is now 104, 103"
+    },
+    {
+      "id": "cursor",
+      "label": "Cursor: 104",
+      "x": 60,
+      "y": 615,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Last key on page 1"
+    },
+    {
+      "id": "next_page",
+      "label": "Next page",
+      "x": 310,
+      "y": 615,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Seek IDs below 104"
+    },
+    {
+      "id": "rows",
+      "label": "103, 102",
+      "x": 560,
+      "y": 615,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "success",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Stable descending IDs"
+    }
+  ],
+  "edges": [
+    {
+      "id": "insert-offset",
+      "from": "insert",
+      "to": "offset",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "danger",
+      "label": {
+        "text": "shift",
+        "pill": true
+      }
+    },
+    {
+      "id": "offset-duplicate",
+      "from": "offset",
+      "to": "duplicate",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "danger",
+      "label": {
+        "text": "skip 2",
+        "pill": true
+      }
+    },
+    {
+      "id": "cursor-next",
+      "from": "cursor",
+      "to": "next_page",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "seek",
+        "pill": true
+      }
+    },
+    {
+      "id": "next-rows",
+      "from": "next_page",
+      "to": "rows",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "take 2",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "bad",
+      "kind": "cross",
+      "attachTo": "offset"
+    },
+    {
+      "id": "good",
+      "kind": "check",
+      "attachTo": "rows"
+    },
+    {
+      "id": "rank-note",
+      "kind": "callout",
+      "text": "Inserts move positions. The offset stays fixed.",
+      "x": 64,
+      "y": 402,
+      "maxWidth": 320,
+      "fontSize": 22,
+      "colorRole": "danger",
+      "arrow": false,
+      "target": "offset",
+      "targetAnchor": "bottom"
+    },
+    {
+      "id": "offset-code",
+      "kind": "code",
+      "x": 440,
+      "y": 401,
+      "w": 290,
+      "fontSize": 16,
+      "language": "sql",
+      "lines": [
+        {
+          "text": "ORDER BY id DESC"
+        },
+        {
+          "text": "LIMIT 2 OFFSET 2;"
+        }
+      ]
+    },
+    {
+      "id": "cursor-code",
+      "kind": "code",
+      "x": 64,
+      "y": 764,
+      "w": 385,
+      "fontSize": 17,
+      "language": "sql",
+      "lines": [
+        {
+          "text": "SELECT * FROM items"
+        },
+        {
+          "text": "WHERE id < :cursor",
+          "band": "mint"
+        },
+        {
+          "text": "ORDER BY id DESC"
+        },
+        {
+          "text": "LIMIT 2;"
+        }
+      ]
+    },
+    {
+      "id": "key-note",
+      "kind": "callout",
+      "text": "Use an immutable, unique sort key. A cursor is not a snapshot.",
+      "x": 500,
+      "y": 782,
+      "maxWidth": 234,
+      "fontSize": 21,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 7000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "cursor-next",
+          "next-rows"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 6,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

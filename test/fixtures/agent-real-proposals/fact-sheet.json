@@ -1,0 +1,143 @@
+{
+  "topic": "explain RAG: how retrieval-augmented generation works",
+  "retrievedAt": "2026-09-05T00:00:00.000Z",
+  "sources": [
+    {
+      "id": "src-66e42e52ebcc4a30cd46",
+      "url": "https://app.treyspace.app/",
+      "title": "Show HN: Treyspace – A canvas that gives your LLM spatial awareness",
+      "provider": "hn",
+      "publishedAt": "2025-10-02T12:12:05.000Z",
+      "engagement": {
+        "score": 1,
+        "comments": 1
+      }
+    },
+    {
+      "id": "src-fd10fbd391049b88a7b0",
+      "url": "https://github.com/ronitrajdev12/Retrieval-Augmented-Generation-RAG-",
+      "title": "ronitrajdev12/Retrieval-Augmented-Generation-RAG-",
+      "provider": "github",
+      "publishedAt": "2025-08-21T13:25:44.000Z",
+      "engagement": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "src-14faa10a9c7830a9d87c",
+      "url": "https://github.com/RoyKoushik-crowned/RAGQuest",
+      "title": "RoyKoushik-crowned/RAGQuest",
+      "provider": "github",
+      "publishedAt": "2026-07-17T18:33:15.000Z",
+      "engagement": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "src-c3bead0b4e4c1baaf037",
+      "url": "https://github.com/erenyeager101/Langchain-RAG-chatbot",
+      "title": "erenyeager101/Langchain-RAG-chatbot",
+      "provider": "github",
+      "publishedAt": "2025-04-17T21:14:46.000Z",
+      "engagement": {
+        "score": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "src-3f6ab07c61176e4c5dc4",
+      "url": "https://github.com/AryaveerAgrawal/AI-Chatbot-Assistant-with-Gemma-2b-it",
+      "title": "AryaveerAgrawal/AI-Chatbot-Assistant-with-Gemma-2b-it",
+      "provider": "github",
+      "publishedAt": "2026-03-21T14:47:30.000Z",
+      "engagement": {
+        "score": 0,
+        "comments": 0
+      }
+    }
+  ],
+  "facts": [
+    {
+      "id": "fact-rag-combines-search-generation",
+      "statement": "RAG combines search with generation instead of relying only on an LLM's memory.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "It’s a technique that combines search + generation.",
+      "quoteOffset": 296,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-retrieves-external-data",
+      "statement": "A RAG system retrieves relevant data from external sources such as PDFs or Markdown files.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Retrieves relevant data from external sources (e.g., your PDFs or like in this project i used md(markdown files)",
+      "quoteOffset": 397,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-augments-prompt",
+      "statement": "Retrieved information is added to the prompt before the language model generates an answer.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Augments the prompt with this info -- > then Generates a relevant answer using the LLM!",
+      "quoteOffset": 514,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-loader-ingests-data",
+      "statement": "A document loader loads source data including PDFs, text files, and Notion content.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Loads your data (PDFs, text files, Notion, etc.)",
+      "quoteOffset": 666,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-splitter-creates-chunks",
+      "statement": "A text splitter breaks documents into chunks that fit the model's context size.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Breaks the documents into chunks (to fit context size)",
+      "quoteOffset": 729,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-embeddings-create-vectors",
+      "statement": "An embedding model converts text chunks into vectors using embedding providers such as OpenAI or Hugging Face.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Converts text chunks into vectors using OpenAI or Hugging Face embeddings",
+      "quoteOffset": 800,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-vector-store-enables-search",
+      "statement": "A vector store stores vectorized text and allows it to be searched.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Stores and lets you search vectorized text",
+      "quoteOffset": 910,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-retriever-uses-query",
+      "statement": "The retriever searches for relevant chunks based on the user's query.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Searches for relevant chunks based on the user query",
+      "quoteOffset": 963,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    },
+    {
+      "id": "fact-rag-architecture-flow",
+      "statement": "One illustrated RAG architecture flows from a browser through React, FastAPI, an embedding engine, a retriever, a vector database, and an LLM.",
+      "sourceId": "src-14faa10a9c7830a9d87c",
+      "quote": "Browser ↓\nReact\n↓\nFastAPI\n↓\nEmbedding Engine\n↓\nRetriever\n↓\nVector DB\n↓\nLLM",
+      "quoteOffset": 135,
+      "extractHash": "60315872f103331b6fbc4fd09d79bcd919fdcdf12ffffea43b982eb6dd1424aa"
+    },
+    {
+      "id": "fact-rag-claimed-benefits",
+      "statement": "The source describes RAG as helping avoid hallucinations, eliminating the need for fine-tuning, and supporting real-time data.",
+      "sourceId": "src-c3bead0b4e4c1baaf037",
+      "quote": "Avoids hallucination (answers based on your docs, not guesses)\nYou don’t need to fine-tune a model\nWorks with real-time data",
+      "quoteOffset": 1125,
+      "extractHash": "96329049b2ab32070fb6c427def1295298272413b27f9689490cb0e5275d43d4"
+    }
+  ]
+}

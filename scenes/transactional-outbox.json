@@ -1,0 +1,294 @@
+{
+  "id": "transactional-outbox",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "The dual-write problem: commit once, publish later",
+    "lines": [
+      "The dual-write problem:",
+      "commit once, publish later"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "commit once",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "STORE THE EVENT WITH THE ORDER. DELIVER IT ASYNCHRONOUSLY.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "order-service",
+      "label": "Order service",
+      "x": 60,
+      "y": 275,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Create order",
+      "badge": 1
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "x": 310,
+      "y": 275,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "PostgreSQL / orders",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 28
+      },
+      "badge": 2
+    },
+    {
+      "id": "outbox",
+      "label": "Outbox",
+      "x": 560,
+      "y": 275,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Same DB / event rows",
+      "badge": 3
+    },
+    {
+      "id": "relay",
+      "label": "Relay",
+      "x": 560,
+      "y": 545,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Read committed events",
+      "badge": 4
+    },
+    {
+      "id": "broker",
+      "label": "Broker",
+      "x": 310,
+      "y": 545,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Kafka / durable log",
+      "icon": {
+        "name": "apachekafka",
+        "source": "brand",
+        "size": 28
+      },
+      "badge": 5
+    },
+    {
+      "id": "consumer",
+      "label": "Consumer",
+      "x": 60,
+      "y": 545,
+      "w": 180,
+      "h": 112,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Idempotent handler",
+      "badge": 6
+    }
+  ],
+  "edges": [
+    {
+      "id": "service-db",
+      "from": "order-service",
+      "to": "database",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "write",
+        "pill": true
+      }
+    },
+    {
+      "id": "db-outbox",
+      "from": "database",
+      "to": "outbox",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "+ event",
+        "pill": true
+      }
+    },
+    {
+      "id": "outbox-relay",
+      "from": "outbox",
+      "to": "relay",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "after commit",
+        "pill": true
+      }
+    },
+    {
+      "id": "relay-broker",
+      "from": "relay",
+      "to": "broker",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "label": {
+        "text": "publish",
+        "pill": true
+      },
+      "dashed": true
+    },
+    {
+      "id": "broker-consumer",
+      "from": "broker",
+      "to": "consumer",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "label": {
+        "text": "deliver",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "transaction-header",
+      "kind": "header",
+      "text": "ONE DATABASE TRANSACTION",
+      "x": 60,
+      "y": 170,
+      "colorRole": "mint"
+    },
+    {
+      "id": "atomic-note",
+      "kind": "callout",
+      "text": "Order + event commit together, or neither survives.",
+      "x": 60,
+      "y": 436,
+      "maxWidth": 390,
+      "fontSize": 23,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "transaction-code",
+      "kind": "code",
+      "x": 60,
+      "y": 716,
+      "w": 420,
+      "fontSize": 16,
+      "language": "sql",
+      "lines": [
+        {
+          "text": "BEGIN;"
+        },
+        {
+          "text": "INSERT INTO orders (id, status)"
+        },
+        {
+          "text": "VALUES (:id, 'created');"
+        },
+        {
+          "text": "INSERT INTO outbox (event_id, order_id)",
+          "band": "mint"
+        },
+        {
+          "text": "VALUES (:event, :id);",
+          "band": "mint"
+        },
+        {
+          "text": "COMMIT;"
+        }
+      ]
+    },
+    {
+      "id": "delivery-note",
+      "kind": "callout",
+      "text": "Publish, then mark sent. Retries can duplicate: dedupe by event ID.",
+      "x": 530,
+      "y": 746,
+      "maxWidth": 210,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 7000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "service-db",
+          "db-outbox",
+          "outbox-relay",
+          "relay-broker",
+          "broker-consumer"
+        ],
+        "count": 3,
+        "cyclesPerLoop": 3,
+        "colorRole": "orange",
+        "size": 10,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

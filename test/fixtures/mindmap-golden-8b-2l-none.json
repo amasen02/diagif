@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "path": "/layout/mindmap",
+      "message": "Mind map cluster cannot fit without overlapping row bands",
+      "code": "MINDMAP_LAYOUT"
+    }
+  ]
+}

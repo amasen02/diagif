@@ -1,0 +1,329 @@
+{
+  "scene": {
+    "id": "rag-pipeline",
+    "canvas": {
+      "width": 800,
+      "height": 1000
+    },
+    "theme": "dark-teal",
+    "grain": false,
+    "title": {
+      "text": "RAG: Search, Then Generate",
+      "font": "display",
+      "size": 44,
+      "align": "center",
+      "x": 400,
+      "y": 62,
+      "accentWords": [
+        {
+          "word": "Search",
+          "colorRole": "cyan"
+        },
+        {
+          "word": "Generate",
+          "colorRole": "orange"
+        }
+      ],
+      "shadow": {
+        "kind": "none"
+      },
+      "subtitle": {
+        "text": "Prepare external documents, retrieve relevant chunks, then augment the prompt",
+        "font": "condensed",
+        "size": 16
+      }
+    },
+    "layout": {
+      "kind": "freeform"
+    },
+    "nodes": [
+      {
+        "id": "documents",
+        "label": "External\nDocuments",
+        "x": 40,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "document",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "loader",
+        "label": "Document\nLoader",
+        "x": 220,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "step",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "splitter",
+        "label": "Text\nSplitter",
+        "x": 400,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "step",
+        "colorRole": "mint"
+      },
+      {
+        "id": "embeddings",
+        "label": "Embedding\nModel",
+        "x": 580,
+        "y": 180,
+        "w": 170,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "query",
+        "label": "User\nQuery",
+        "x": 40,
+        "y": 480,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "retriever",
+        "label": "Retriever\nSearch",
+        "x": 220,
+        "y": 480,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "vector-store",
+        "label": "Vector\nStore",
+        "x": 400,
+        "y": 480,
+        "w": 150,
+        "h": 86,
+        "shape": "database",
+        "colorRole": "mint"
+      },
+      {
+        "id": "generation",
+        "label": "Augment Prompt\n+ LLM Answer",
+        "x": 580,
+        "y": 480,
+        "w": 170,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      }
+    ],
+    "edges": [
+      {
+        "id": "documents-loader",
+        "from": "documents",
+        "to": "loader",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "loader-splitter",
+        "from": "loader",
+        "to": "splitter",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "splitter-embeddings",
+        "from": "splitter",
+        "to": "embeddings",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "embeddings-store",
+        "from": "embeddings",
+        "to": "vector-store",
+        "pathType": "orthogonal",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "waypoints": [
+          {
+            "x": 665,
+            "y": 350
+          },
+          {
+            "x": 475,
+            "y": 350
+          }
+        ],
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "query-retriever",
+        "from": "query",
+        "to": "retriever",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "retriever-store",
+        "from": "retriever",
+        "to": "vector-store",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "mint",
+        "strokeWidth": 2.5,
+        "arrow": true
+      },
+      {
+        "id": "store-generation",
+        "from": "vector-store",
+        "to": "generation",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true
+      }
+    ],
+    "timeline": {
+      "durationMs": 6000,
+      "fps": 25,
+      "loop": true,
+      "animations": [
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "documents-loader",
+            "loader-splitter",
+            "splitter-embeddings",
+            "embeddings-store"
+          ],
+          "count": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "orange",
+          "size": 9,
+          "glow": true,
+          "trail": 1,
+          "fadeMs": 160
+        },
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "query-retriever",
+            "retriever-store",
+            "store-generation"
+          ],
+          "count": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "cyan",
+          "size": 9,
+          "glow": true,
+          "trail": 1,
+          "fadeMs": 160
+        }
+      ]
+    }
+  },
+  "claims": [
+    {
+      "path": "/scene/title/text",
+      "text": "RAG: Search, Then Generate",
+      "supports": [
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/scene/title/subtitle/text",
+      "text": "Prepare external documents, retrieve relevant chunks, then augment the prompt",
+      "supports": [
+        "fact-retrieves-external-data",
+        "fact-retriever-uses-query",
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/scene/nodes/0/label",
+      "text": "External\nDocuments",
+      "supports": [
+        "fact-retrieves-external-data"
+      ]
+    },
+    {
+      "path": "/scene/nodes/1/label",
+      "text": "Document\nLoader",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/scene/nodes/2/label",
+      "text": "Text\nSplitter",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/scene/nodes/3/label",
+      "text": "Embedding\nModel",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/scene/nodes/4/label",
+      "text": "User\nQuery",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/scene/nodes/5/label",
+      "text": "Retriever\nSearch",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/scene/nodes/6/label",
+      "text": "Vector\nStore",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/scene/nodes/7/label",
+      "text": "Augment Prompt\n+ LLM Answer",
+      "supports": [
+        "fact-augments-prompt",
+        "fact-rag-combines-search-generation"
+      ]
+    }
+  ],
+  "authoringNotes": [
+    "The pipeline separates document preparation from query-time retrieval and generation.",
+    "Labels are concise visual wording grounded in the supplied fact IDs.",
+    "The scene omits brand metadata for harness-applied branding."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "diagif",
+  "version": "0.1.0",
+  "description": "Grounded, self-verifying technical GIF agent for LinkedIn posts",
+  "license": "MIT",
+  "bin": {
+    "diagif": "bin/diagif.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amasen02/diagif"
+  },
+  "bugs": {
+    "url": "https://github.com/amasen02/diagif/issues"
+  },
+  "homepage": "https://github.com/amasen02/diagif",
+  "files": [
+    "bin",
+    "src",
+    "scripts",
+    "assets",
+    "fonts",
+    "config",
+    "scenes",
+    "requirements.txt",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test",
+    "render": "node src/cli.js render",
+    "doctor": "node src/cli.js doctor",
+    "setup": "playwright install chromium",
+    "fonts": "node scripts/fetch-fonts.js",
+    "icons": "node scripts/fetch-icons.js",
+    "gallery": "node scripts/build-gallery.js",
+    "sanitize": "node scripts/sanitize-public-docs.js --check"
+  },
+  "dependencies": {
+    "linkedom": "0.18.13",
+    "playwright": "1.62.0",
+    "ajv": "8.20.0",
+    "fast-glob": "3.3.3"
+  }
+}

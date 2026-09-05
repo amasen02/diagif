@@ -1,0 +1,28 @@
+{
+  "failures": [],
+  "warnings": [],
+  "expectedFrames": 100,
+  "seamPath": "work/agent-mock-scene/frames-40/seam.png",
+  "loopSeamOk": true,
+  "maskPixels": 798536,
+  "width": 800,
+  "height": 1000,
+  "loop": 0,
+  "bytes": 138648,
+  "frames": 100,
+  "mergedFrames": 0,
+  "delays": {
+    "40": 100
+  },
+  "totalMs": 4000,
+  "staticRegionMaxDiff": 0,
+  "flickerPixelCount": 0,
+  "reservedColorHits": {
+    "#02252E": 10108,
+    "#FFFFFF": 304200,
+    "#62D2E8": 6689740,
+    "#152F37": 31900,
+    "#8CD9BF": 4414400
+  },
+  "contactSheet": "output/agent-mock-scene.gif.contact.png"
+}

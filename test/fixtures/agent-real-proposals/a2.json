@@ -1,0 +1,501 @@
+{
+  "scene": {
+    "id": "rag-pipeline",
+    "canvas": {
+      "width": 800,
+      "height": 1000
+    },
+    "theme": "dark-teal",
+    "grain": false,
+    "title": {
+      "text": "RAG: search + generation",
+      "font": "display",
+      "size": 44,
+      "align": "center",
+      "x": 400,
+      "y": 58,
+      "accentWords": [
+        {
+          "word": "search",
+          "colorRole": "cyan"
+        },
+        {
+          "word": "generation",
+          "colorRole": "orange"
+        }
+      ],
+      "shadow": {
+        "kind": "none"
+      },
+      "subtitle": {
+        "text": "A searchable reference shelf for an LLM",
+        "font": "condensed",
+        "size": 17
+      }
+    },
+    "layout": {
+      "kind": "freeform"
+    },
+    "nodes": [
+      {
+        "id": "source-docs",
+        "label": "Source docs",
+        "secondaryLabel": "PDF · text · Notion",
+        "x": 35,
+        "y": 190,
+        "w": 150,
+        "h": 100,
+        "shape": "document",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "loader",
+        "label": "Load data",
+        "secondaryLabel": "Document loader",
+        "x": 225,
+        "y": 190,
+        "w": 150,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "chunks",
+        "label": "Split chunks",
+        "secondaryLabel": "Context-sized pieces",
+        "x": 415,
+        "y": 190,
+        "w": 150,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "embeddings",
+        "label": "Create vectors",
+        "secondaryLabel": "Embedding model",
+        "x": 605,
+        "y": 190,
+        "w": 160,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "query",
+        "label": "User query",
+        "secondaryLabel": "Information need",
+        "x": 35,
+        "y": 430,
+        "w": 150,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "vector-store",
+        "label": "Vector store",
+        "secondaryLabel": "Searchable vectors",
+        "x": 225,
+        "y": 650,
+        "w": 150,
+        "h": 100,
+        "shape": "database",
+        "colorRole": "mint"
+      },
+      {
+        "id": "retriever",
+        "label": "Retrieve chunks",
+        "secondaryLabel": "Relevant matches",
+        "x": 415,
+        "y": 430,
+        "w": 150,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "augmented-prompt",
+        "label": "Augment prompt",
+        "secondaryLabel": "Retrieved context",
+        "x": 605,
+        "y": 430,
+        "w": 160,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "mint"
+      },
+      {
+        "id": "llm",
+        "label": "Generate answer",
+        "secondaryLabel": "Language model",
+        "x": 300,
+        "y": 820,
+        "w": 200,
+        "h": 100,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      }
+    ],
+    "edges": [
+      {
+        "id": "load-source",
+        "from": "source-docs",
+        "to": "loader",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "arrow": true
+      },
+      {
+        "id": "make-chunks",
+        "from": "loader",
+        "to": "chunks",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "arrow": true
+      },
+      {
+        "id": "embed-chunks",
+        "from": "chunks",
+        "to": "embeddings",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "arrow": true,
+        "label": {
+          "text": "embed",
+          "pill": true
+        }
+      },
+      {
+        "id": "store-vectors",
+        "from": "embeddings",
+        "to": "vector-store",
+        "pathType": "orthogonal",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "waypoints": [
+          {
+            "x": 685,
+            "y": 370
+          },
+          {
+            "x": 300,
+            "y": 370
+          }
+        ],
+        "colorRole": "mint",
+        "arrow": true
+      },
+      {
+        "id": "query-retrieval",
+        "from": "query",
+        "to": "retriever",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "arrow": true,
+        "label": {
+          "text": "search",
+          "pill": true
+        }
+      },
+      {
+        "id": "retrieve-store",
+        "from": "vector-store",
+        "to": "retriever",
+        "pathType": "orthogonal",
+        "fromAnchor": "top",
+        "toAnchor": "bottom",
+        "waypoints": [
+          {
+            "x": 300,
+            "y": 600
+          },
+          {
+            "x": 490,
+            "y": 600
+          }
+        ],
+        "colorRole": "mint",
+        "arrow": true
+      },
+      {
+        "id": "add-context",
+        "from": "retriever",
+        "to": "augmented-prompt",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "mint",
+        "arrow": true,
+        "label": {
+          "text": "relevant chunks",
+          "pill": true
+        }
+      },
+      {
+        "id": "generate",
+        "from": "augmented-prompt",
+        "to": "llm",
+        "pathType": "orthogonal",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "waypoints": [
+          {
+            "x": 685,
+            "y": 710
+          },
+          {
+            "x": 400,
+            "y": 710
+          }
+        ],
+        "colorRole": "orange",
+        "arrow": true,
+        "label": {
+          "text": "generate",
+          "pill": true
+        }
+      }
+    ],
+    "timeline": {
+      "durationMs": 6000,
+      "fps": 25,
+      "loop": true,
+      "animations": [
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "load-source",
+            "make-chunks",
+            "embed-chunks",
+            "store-vectors"
+          ],
+          "count": 3,
+          "speedPxPerSec": 180,
+          "staggerMs": 220,
+          "colorRole": "cyan",
+          "size": 9,
+          "glow": true,
+          "fadeMs": 160
+        },
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "query-retrieval",
+            "retrieve-store",
+            "add-context",
+            "generate"
+          ],
+          "count": 3,
+          "speedPxPerSec": 220,
+          "staggerMs": 260,
+          "colorRole": "orange",
+          "size": 9,
+          "glow": true,
+          "fadeMs": 160
+        },
+        {
+          "kind": "pulse",
+          "nodeIds": [
+            "retriever",
+            "augmented-prompt",
+            "llm"
+          ],
+          "periodMs": 2000,
+          "scale": 1.06
+        }
+      ]
+    },
+    "annotations": []
+  },
+  "claims": [
+    {
+      "path": "/title/text",
+      "text": "RAG combines search with generation.",
+      "supports": [
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/title/subtitle/text",
+      "text": "The searchable reference shelf is an authoring metaphor for retrieved external data.",
+      "supports": [
+        "fact-retrieves-external-data",
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/source-docs/label",
+      "text": "Source documents enter the RAG pipeline.",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/source-docs/secondaryLabel",
+      "text": "PDFs, text files, and Notion content are examples of source data.",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/loader/label",
+      "text": "A document loader loads source data.",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/loader/secondaryLabel",
+      "text": "Document loader is a concise visual label.",
+      "supports": [
+        "fact-loader-ingests-data",
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/chunks/label",
+      "text": "A text splitter breaks documents into chunks.",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/chunks/secondaryLabel",
+      "text": "Chunks are made to fit the model context size.",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/embeddings/label",
+      "text": "An embedding model converts chunks into vectors.",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/nodes/embeddings/secondaryLabel",
+      "text": "Embedding model identifies the vectorization step.",
+      "supports": [
+        "fact-embeddings-create-vectors",
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/vector-store/label",
+      "text": "A vector store stores vectorized text.",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/vector-store/secondaryLabel",
+      "text": "Stored vectors can be searched.",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/query/label",
+      "text": "Retrieval starts from the user's query.",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/query/secondaryLabel",
+      "text": "The query expresses the information need.",
+      "supports": [
+        "fact-retriever-uses-query",
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/retriever/label",
+      "text": "The retriever searches for relevant chunks.",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/retriever/secondaryLabel",
+      "text": "Relevant matches are selected from the vector store.",
+      "supports": [
+        "fact-retriever-uses-query",
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/augmented-prompt/label",
+      "text": "Retrieved information is added to the prompt.",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/augmented-prompt/secondaryLabel",
+      "text": "Retrieved context is passed into generation.",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/llm/label",
+      "text": "The language model generates the answer.",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/llm/secondaryLabel",
+      "text": "Generation follows prompt augmentation.",
+      "supports": [
+        "fact-augments-prompt",
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/edges/embed-chunks/label/text",
+      "text": "Embedding converts text chunks into vectors.",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/edges/query-retrieval/label/text",
+      "text": "The retriever searches using the query.",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/edges/add-context/label/text",
+      "text": "Relevant chunks are added to the prompt.",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/edges/generate/label/text",
+      "text": "The augmented prompt is sent for generation.",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    }
+  ],
+  "authoringNotes": [
+    "Labels are intentionally concise and use secondaryLabel for the second line.",
+    "The scene separates preparation from query-time retrieval and generation.",
+    "Icons were omitted to avoid unsupported icon names while preserving the pipeline structure.",
+    "Animation uses particle speeds within the requested 120–320 px/s range."
+  ]
+}

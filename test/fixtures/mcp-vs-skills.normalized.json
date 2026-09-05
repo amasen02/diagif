@@ -1,0 +1,420 @@
+{
+  "annotations": [
+    {
+      "align": "left",
+      "arrow": true,
+      "curve": "auto",
+      "font": "annotation",
+      "id": "a-client",
+      "kind": "callout",
+      "language": "text",
+      "maxWidth": 200,
+      "target": "mcp-client",
+      "targetAnchor": "bottom",
+      "text": "Translates host requests into MCP protocol messages",
+      "x": 250,
+      "y": 300
+    },
+    {
+      "align": "left",
+      "arrow": true,
+      "curve": "auto",
+      "font": "annotation",
+      "id": "a-skill",
+      "kind": "callout",
+      "language": "text",
+      "maxWidth": 210,
+      "target": "skill-md",
+      "targetAnchor": "left",
+      "text": "Describes the workflow, rules, output format and constraints",
+      "x": 300,
+      "y": 695
+    }
+  ],
+  "assets": {},
+  "brand": {
+    "showSaveIcon": false,
+    "style": "none"
+  },
+  "canvas": {
+    "height": 1000,
+    "width": 800
+  },
+  "edges": [
+    {
+      "arrow": true,
+      "colorRole": "cyan",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "mcp-host",
+      "fromAnchor": "right",
+      "id": "e-host-client",
+      "pathType": "straight",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "mcp-client",
+      "toAnchor": "left"
+    },
+    {
+      "arrow": true,
+      "colorRole": "cyan",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "mcp-client",
+      "fromAnchor": "right",
+      "id": "e-client-server",
+      "pathType": "straight",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "mcp-server",
+      "toAnchor": "left"
+    },
+    {
+      "arrow": true,
+      "colorRole": "mint",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "mcp-server",
+      "fromAnchor": "bottom",
+      "id": "e-server-tools",
+      "pathType": "orthogonal",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "external-tools",
+      "toAnchor": "top"
+    },
+    {
+      "arrow": true,
+      "colorRole": "orange",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "skill-agent",
+      "fromAnchor": "right",
+      "id": "e-agent-registry",
+      "pathType": "straight",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "registry",
+      "toAnchor": "left"
+    },
+    {
+      "arrow": true,
+      "colorRole": "orange",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "registry",
+      "fromAnchor": "right",
+      "id": "e-registry-skill",
+      "pathType": "straight",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "skill-md",
+      "toAnchor": "left"
+    },
+    {
+      "arrow": true,
+      "colorRole": "mint",
+      "curveOffset": 0,
+      "dashed": true,
+      "from": "skill-md",
+      "fromAnchor": "bottom",
+      "id": "e-skill-tools",
+      "pathType": "straight",
+      "strokeWidth": 2,
+      "style": "line",
+      "to": "skill-tools",
+      "toAnchor": "top"
+    }
+  ],
+  "grain": false,
+  "id": "mcp-vs-skills",
+  "layout": {
+    "divider": {
+      "style": "dotted"
+    },
+    "dividerY": 500,
+    "kind": "split-comparison",
+    "labels": [
+      "MCP",
+      "Skills"
+    ],
+    "sections": [
+      {
+        "h": 390,
+        "header": "MCP",
+        "headerStyle": "chip",
+        "id": "section-1",
+        "labelAlign": "left",
+        "y": 110
+      },
+      {
+        "h": 500,
+        "header": "Skills",
+        "headerStyle": "chip",
+        "id": "section-2",
+        "labelAlign": "left",
+        "y": 500
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "colorRole": "cyan",
+      "h": 76,
+      "icon": {
+        "name": "laptop",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "mcp-host",
+      "label": "MCP Host",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "rounded-rect",
+      "w": 130,
+      "x": 55,
+      "y": 180
+    },
+    {
+      "colorRole": "mint",
+      "h": 76,
+      "icon": {
+        "name": "settings",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "mcp-client",
+      "label": "MCP Client",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "rounded-rect",
+      "w": 140,
+      "x": 300,
+      "y": 180
+    },
+    {
+      "colorRole": "orange",
+      "h": 76,
+      "icon": {
+        "name": "server",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "mcp-server",
+      "label": "MCP Server",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "rounded-rect",
+      "w": 150,
+      "x": 555,
+      "y": 180
+    },
+    {
+      "colorRole": "mint",
+      "h": 116,
+      "icon": {
+        "name": "slack",
+        "size": 28,
+        "source": "brand"
+      },
+      "id": "external-tools",
+      "label": "Slack · Gmail · Jira",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "secondaryLabel": "External systems",
+      "shape": "panel",
+      "w": 190,
+      "x": 535,
+      "y": 335
+    },
+    {
+      "colorRole": "cyan",
+      "h": 76,
+      "icon": {
+        "name": "bot",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "skill-agent",
+      "label": "AI Agent",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "rounded-rect",
+      "w": 130,
+      "x": 55,
+      "y": 580
+    },
+    {
+      "colorRole": "orange",
+      "h": 76,
+      "icon": {
+        "name": "folder",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "registry",
+      "label": "Skill Registry",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "rounded-rect",
+      "w": 145,
+      "x": 305,
+      "y": 580
+    },
+    {
+      "colorRole": "mint",
+      "h": 88,
+      "icon": {
+        "name": "file-text",
+        "size": 28,
+        "source": "line"
+      },
+      "id": "skill-md",
+      "label": "SKILL.md",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "secondaryLabel": "instructions + tools",
+      "shape": "document",
+      "w": 150,
+      "x": 555,
+      "y": 545
+    },
+    {
+      "colorRole": "cyan",
+      "h": 116,
+      "icon": {
+        "name": "googlecalendar",
+        "size": 28,
+        "source": "brand"
+      },
+      "id": "skill-tools",
+      "label": "Docs · Calendar · Jira",
+      "labelAlign": "center",
+      "labelRotate": 0,
+      "shape": "panel",
+      "w": 190,
+      "x": 555,
+      "y": 705
+    }
+  ],
+  "theme": "dark-teal",
+  "timeline": {
+    "animations": [
+      {
+        "cycles": 12,
+        "dash": 8,
+        "edgeIds": [
+          "e-host-client",
+          "e-client-server",
+          "e-server-tools",
+          "e-agent-registry",
+          "e-registry-skill",
+          "e-skill-tools"
+        ],
+        "effectiveSpeedPxPerSec": 48,
+        "gap": 8,
+        "kind": "marching-dash",
+        "speedPxPerSec": 48
+      },
+      {
+        "colorRole": "orange",
+        "count": 2,
+        "cycles": 2,
+        "cyclesPerLoop": 2,
+        "edgeIds": [
+          "e-host-client",
+          "e-client-server",
+          "e-server-tools"
+        ],
+        "effectiveSpeedPxPerSec": 154.5,
+        "fadeMs": 160,
+        "kind": "particle-flow",
+        "offsetsMs": [
+          0,
+          1000
+        ],
+        "segDurMs": [
+          744.336569579288,
+          744.336569579288,
+          511.326860841424
+        ],
+        "segStartMs": [
+          0,
+          744.336569579288,
+          1488.673139158576
+        ],
+        "size": 10,
+        "trail": 0,
+        "travelMs": 2000
+      },
+      {
+        "colorRole": "orange",
+        "count": 2,
+        "cycles": 2,
+        "cyclesPerLoop": 2,
+        "edgeIds": [
+          "e-agent-registry",
+          "e-registry-skill",
+          "e-skill-tools"
+        ],
+        "effectiveSpeedPxPerSec": 151.8286688491237,
+        "fadeMs": 160,
+        "kind": "particle-flow",
+        "offsetsMs": [
+          0,
+          1000
+        ],
+        "segDurMs": [
+          790.3645662549231,
+          717.4611471922846,
+          492.1742865527924
+        ],
+        "segStartMs": [
+          0,
+          790.3645662549231,
+          1507.8257134472078
+        ],
+        "size": 10,
+        "trail": 0,
+        "travelMs": 2000
+      }
+    ],
+    "durationMs": 4000,
+    "fps": 25,
+    "grids": {
+      "40": 100,
+      "50": 80
+    },
+    "loop": true,
+    "strictFrameCount": false
+  },
+  "title": {
+    "accentWords": [
+      {
+        "colorRole": "cyan",
+        "word": "MCP"
+      },
+      {
+        "colorRole": "orange",
+        "word": "Skills"
+      }
+    ],
+    "align": "center",
+    "font": "display",
+    "shadow": {
+      "dx": 3,
+      "dy": 3,
+      "kind": "offset"
+    },
+    "size": 44,
+    "subtitle": {
+      "font": "condensed",
+      "size": 13,
+      "text": "Two ways an AI agent reaches useful capabilities"
+    },
+    "text": "MCP vs Skills",
+    "x": 400,
+    "y": 58
+  },
+  "warnings": []
+}

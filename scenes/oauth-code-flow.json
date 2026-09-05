@@ -1,0 +1,26 @@
+{
+  "id": "oauth-code-flow",
+  "canvas": { "width": 800, "height": 1000 },
+  "theme": "soft-light",
+  "title": { "text": "OAuth Code Flow", "subtitle": { "text": "A code travels through the browser; tokens stay with the client" } },
+  "brand": {"style":"none"},
+  "nodes": [
+    { "id": "browser", "label": "Browser", "icon": { "name": "globe" }, "x": 55, "y": 210, "w": 160, "h": 90, "shape": "window" },
+    { "id": "client", "label": "Web Client", "icon": { "name": "server" }, "x": 320, "y": 210, "w": 160, "h": 90, "shape": "rounded-rect" },
+    { "id": "auth", "label": "Auth Server", "icon": { "name": "lock" }, "x": 580, "y": 210, "w": 160, "h": 90, "shape": "rounded-rect" }
+  ],
+  "edges": [
+    { "id": "authorize", "from": "browser", "to": "client", "pathType": "curved", "curveOffset": 50, "label": { "text": "Authorize", "t": 0.5 } },
+    { "id": "redirect", "from": "client", "to": "browser", "fromAnchor": "left", "toAnchor": "right", "pathType": "curved", "curveOffset": 50, "label": { "text": "Code redirect" } },
+    { "id": "exchange", "from": "client", "to": "auth", "pathType": "curved", "curveOffset": 50, "label": { "text": "Exchange code" } },
+    { "id": "token", "from": "auth", "to": "client", "fromAnchor": "left", "toAnchor": "right", "pathType": "curved", "curveOffset": 50, "label": { "text": "Access token" } }
+  ],
+  "annotations": [
+    { "id": "step-auth", "kind": "badge", "number": 1, "attachTo": "authorize" },
+    { "id": "step-token", "kind": "badge", "number": 2, "attachTo": "exchange" },
+    { "id": "security-note", "kind": "callout", "text": "Use state and PKCE to bind the browser flow to the client session.", "x": 200, "y": 460, "maxWidth": 400 }
+  ],
+  "timeline": { "durationMs": 4000, "fps": 25, "loop": true, "animations": [
+    { "kind": "particle-flow", "edgeIds": ["authorize", "exchange", "token", "redirect"], "count": 2, "cyclesPerLoop": 1 }
+  ] }
+}

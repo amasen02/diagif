@@ -1,0 +1,7 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": true,
+  "num_turns": 1,
+  "result": "Rate limit exceeded"
+}

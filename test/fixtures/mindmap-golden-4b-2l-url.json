@@ -1,0 +1,123 @@
+{
+  "version": 2,
+  "zone": {
+    "x": 32,
+    "y": 110,
+    "w": 736,
+    "h": 930,
+    "bottom": 1040
+  },
+  "rows": {
+    "right": 4
+  },
+  "rowH": 140,
+  "pitch": 176,
+  "cluster": 668,
+  "top": 240,
+  "items": [
+    {
+      "id": "root",
+      "kind": "root",
+      "side": "left",
+      "row": 0,
+      "cx": 132,
+      "cy": 576
+    },
+    {
+      "id": "branch-0",
+      "kind": "branch",
+      "side": "right",
+      "row": 0,
+      "cx": 356,
+      "cy": 310
+    },
+    {
+      "id": "leaf-0-0",
+      "kind": "leaf",
+      "side": "right",
+      "row": 0,
+      "cx": 580,
+      "cy": 272
+    },
+    {
+      "id": "leaf-0-1",
+      "kind": "leaf",
+      "side": "right",
+      "row": 0,
+      "cx": 580,
+      "cy": 348
+    },
+    {
+      "id": "branch-1",
+      "kind": "branch",
+      "side": "right",
+      "row": 1,
+      "cx": 356,
+      "cy": 486
+    },
+    {
+      "id": "leaf-1-0",
+      "kind": "leaf",
+      "side": "right",
+      "row": 1,
+      "cx": 580,
+      "cy": 448
+    },
+    {
+      "id": "leaf-1-1",
+      "kind": "leaf",
+      "side": "right",
+      "row": 1,
+      "cx": 580,
+      "cy": 524
+    },
+    {
+      "id": "branch-2",
+      "kind": "branch",
+      "side": "right",
+      "row": 2,
+      "cx": 356,
+      "cy": 662
+    },
+    {
+      "id": "leaf-2-0",
+      "kind": "leaf",
+      "side": "right",
+      "row": 2,
+      "cx": 580,
+      "cy": 624
+    },
+    {
+      "id": "leaf-2-1",
+      "kind": "leaf",
+      "side": "right",
+      "row": 2,
+      "cx": 580,
+      "cy": 700
+    },
+    {
+      "id": "branch-3",
+      "kind": "branch",
+      "side": "right",
+      "row": 3,
+      "cx": 356,
+      "cy": 838
+    },
+    {
+      "id": "leaf-3-0",
+      "kind": "leaf",
+      "side": "right",
+      "row": 3,
+      "cx": 580,
+      "cy": 800
+    },
+    {
+      "id": "leaf-3-1",
+      "kind": "leaf",
+      "side": "right",
+      "row": 3,
+      "cx": 580,
+      "cy": 876
+    }
+  ]
+}

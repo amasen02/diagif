@@ -1,0 +1,309 @@
+{
+  "id": "solid-vertical-slices",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "paper",
+  "grain": true,
+  "title": {
+    "text": "Clean rings or vertical slices? Follow the feature.",
+    "lines": [
+      "Clean rings or vertical slices?",
+      "Follow the feature."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "feature",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "COMPLEMENTARY TOOLS: PROTECT POLICY, GROUP RELATED CHANGES.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "section-a",
+        "header": "RINGS / DEPENDENCY RULE",
+        "headerStyle": "chip",
+        "y": 156,
+        "h": 344,
+        "colorRole": "orange"
+      },
+      {
+        "id": "section-b",
+        "header": "SLICES / USE CASE",
+        "headerStyle": "chip",
+        "y": 500,
+        "h": 440,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "rings",
+      "label": "Clean rings",
+      "x": 65,
+      "y": 270,
+      "w": 170,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Source dependencies"
+    },
+    {
+      "id": "domain",
+      "label": "Domain",
+      "x": 315,
+      "y": 270,
+      "w": 170,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Policy behind ports",
+      "badge": 4
+    },
+    {
+      "id": "data",
+      "label": "Data",
+      "x": 565,
+      "y": 270,
+      "w": 170,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Adapter implements port",
+      "badge": 5
+    },
+    {
+      "id": "feature",
+      "label": "Feature",
+      "x": 65,
+      "y": 650,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Place an order",
+      "badge": 1
+    },
+    {
+      "id": "ui",
+      "label": "UI",
+      "x": 315,
+      "y": 650,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One request",
+      "badge": 2
+    },
+    {
+      "id": "handler",
+      "label": "Handler",
+      "x": 565,
+      "y": 650,
+      "w": 170,
+      "h": 96,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Use-case orchestration",
+      "badge": 3
+    }
+  ],
+  "edges": [
+    {
+      "id": "rings-domain",
+      "from": "rings",
+      "to": "domain",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "label": {
+        "text": "inward",
+        "pill": true
+      },
+      "dashed": true
+    },
+    {
+      "id": "domain-data",
+      "from": "domain",
+      "to": "data",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "via port",
+        "pill": true
+      }
+    },
+    {
+      "id": "feature-ui",
+      "from": "feature",
+      "to": "ui",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "label": {
+        "text": "starts",
+        "pill": true
+      }
+    },
+    {
+      "id": "ui-handler",
+      "from": "ui",
+      "to": "handler",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "request",
+        "pill": true
+      }
+    },
+    {
+      "id": "handler-domain",
+      "from": "handler",
+      "to": "domain",
+      "pathType": "orthogonal",
+      "fromAnchor": "top",
+      "toAnchor": "bottom",
+      "colorRole": "mint",
+      "label": {
+        "text": "calls policy",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 650,
+          "y": 570
+        },
+        {
+          "x": 400,
+          "y": 570
+        }
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "id": "dependency-note",
+      "kind": "callout",
+      "text": "The domain owns the port. Data implements it; policy stays independent.",
+      "x": 65,
+      "y": 414,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "slice-note",
+      "kind": "callout",
+      "text": "A slice groups one use case. It can still respect clean boundaries.",
+      "x": 170,
+      "y": 818,
+      "maxWidth": 390,
+      "fontSize": 23,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "arrow-note",
+      "kind": "callout",
+      "text": "Solid arrows: runtime calls. Dotted arrow: dependency rule.",
+      "x": 450,
+      "y": 425,
+      "maxWidth": 280,
+      "fontSize": 20,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "feature",
+          "ui",
+          "handler",
+          "domain",
+          "data"
+        ],
+        "dwellMs": 1200,
+        "transitionMs": 120,
+        "scale": 1.04
+      },
+      {
+        "kind": "reveal",
+        "targetIds": [
+          "slice-note"
+        ],
+        "startMs": 400,
+        "durationMs": 600,
+        "exitMs": 400,
+        "loopBehavior": "fade",
+        "mode": "fade"
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "rings-domain",
+          "domain-data",
+          "feature-ui",
+          "ui-handler",
+          "handler-domain"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 48,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

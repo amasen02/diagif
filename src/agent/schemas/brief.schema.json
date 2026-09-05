@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:diagif:schema:brief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "topic",
+    "angle",
+    "hook",
+    "format",
+    "factIds",
+    "post"
+  ],
+  "properties": {
+    "topic": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 180
+    },
+    "angle": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 200
+    },
+    "hook": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 90
+    },
+    "format": {
+      "enum": [
+        "comparison",
+        "how-it-works",
+        "steps",
+        "mistake-fix",
+        "mindmap"
+      ]
+    },
+    "factIds": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^fact-[a-z0-9-]{1,80}$"
+      }
+    },
+    "post": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hook",
+        "lines",
+        "cta",
+        "hashtags"
+      ],
+      "properties": {
+        "hook": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 180
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 280
+          }
+        },
+        "cta": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 140
+        },
+        "hashtags": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "pattern": "^#[A-Za-z0-9_]{2,50}$"
+          }
+        }
+      }
+    }
+  }
+}

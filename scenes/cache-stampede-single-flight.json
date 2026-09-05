@@ -1,0 +1,317 @@
+{
+  "id": "cache-stampede-single-flight",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "One expired key should cause one refresh",
+    "lines": [
+      "One expired key should cause",
+      "one refresh"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "one refresh",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "COALESCE CONCURRENT MISSES FOR THE SAME CACHE KEY.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "section-a",
+        "header": "WITHOUT / EVERY MISS LOADS",
+        "headerStyle": "chip",
+        "y": 156,
+        "h": 344,
+        "colorRole": "orange"
+      },
+      {
+        "id": "section-b",
+        "header": "WITH / SINGLE-FLIGHT",
+        "headerStyle": "chip",
+        "y": 500,
+        "h": 440,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "requests",
+      "label": "10k requests",
+      "x": 60,
+      "y": 260,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One hot key expires"
+    },
+    {
+      "id": "cache-miss",
+      "label": "Cache miss",
+      "x": 310,
+      "y": 260,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Redis / key absent",
+      "icon": {
+        "name": "redis",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "database-bad",
+      "label": "Database",
+      "x": 560,
+      "y": 260,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "10k competing reads",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "single-flight",
+      "label": "Single-flight",
+      "x": 60,
+      "y": 650,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One leader; others wait"
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "x": 310,
+      "y": 650,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One refresh query",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "fresh-value",
+      "label": "Fresh value",
+      "x": 560,
+      "y": 650,
+      "w": 170,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "success",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Fill cache; release waiters",
+      "icon": {
+        "name": "redis",
+        "source": "brand",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "request-miss",
+      "from": "requests",
+      "to": "cache-miss",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "label": {
+        "text": "miss",
+        "pill": true
+      }
+    },
+    {
+      "id": "miss-db",
+      "from": "cache-miss",
+      "to": "database-bad",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "danger",
+      "label": {
+        "text": "10k reads",
+        "pill": true
+      }
+    },
+    {
+      "id": "miss-flight",
+      "from": "cache-miss",
+      "to": "single-flight",
+      "pathType": "orthogonal",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "coalesce by key",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 395,
+          "y": 595
+        },
+        {
+          "x": 145,
+          "y": 595
+        }
+      ]
+    },
+    {
+      "id": "flight-db",
+      "from": "single-flight",
+      "to": "database",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "1 read",
+        "pill": true
+      }
+    },
+    {
+      "id": "db-fresh",
+      "from": "database",
+      "to": "fresh-value",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "fill",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "bad",
+      "kind": "cross",
+      "attachTo": "database-bad"
+    },
+    {
+      "id": "good",
+      "kind": "check",
+      "attachTo": "single-flight"
+    },
+    {
+      "id": "stampede-note",
+      "kind": "callout",
+      "text": "The cache is fast until every miss hits the database at once.",
+      "x": 60,
+      "y": 419,
+      "maxWidth": 285,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    },
+    {
+      "id": "shared-note",
+      "kind": "callout",
+      "text": "Share one promise per key. Clear it on success or failure.",
+      "x": 64,
+      "y": 811,
+      "maxWidth": 340,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "scope-note",
+      "kind": "callout",
+      "text": "Process-local by default. Coordinate across replicas.",
+      "x": 489,
+      "y": 811,
+      "maxWidth": 241,
+      "fontSize": 21,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "request-miss",
+          "miss-flight",
+          "flight-db",
+          "db-fresh"
+        ],
+        "count": 3,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 10,
+        "fadeMs": 160
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "single-flight"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.035
+      }
+    ]
+  }
+}

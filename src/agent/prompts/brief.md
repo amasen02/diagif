@@ -1,0 +1,1 @@
+Choose one specific teaching angle supported by 3–8 existing fact IDs. Create a short visible hook and a post with its hook, 3–5 substantive lines, a CTA, and 2–8 hashtags. Use comparison, how-it-works, steps or mistake-fix, unless forcedFormat is mindmap. Refer only to supplied facts. Do not promise virality or invent numerical claims.

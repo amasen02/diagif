@@ -1,0 +1,50 @@
+{
+  "id": "sql-execution-order",
+  "canvas": { "width": 800, "height": 1000 },
+  "theme": "paper", "grain": true,
+  "title": { "text": "SQL Execution Order", "font": "display", "size": 46,
+    "align": "center", "x": 400, "y": 58,
+    "accentWords": [{ "word": "SQL", "colorRole": "orange" }],
+    "shadow": { "kind": "offset", "dx": 3, "dy": 3, "color": "#62c7d9" },
+    "subtitle": { "text": "WRITE TOP TO BOTTOM. THINK IN LOGICAL STEPS.", "font": "condensed", "size": 17 } },
+  "brand": {"style":"none"},
+  "layout": { "kind": "freeform" },
+  "nodes": [
+    { "id": "from", "label": "FROM", "secondaryLabel": "Choose rows", "badge": 1, "x": 65, "y": 560, "w": 135, "h": 90, "shape": "step", "colorRole": "cyan", "style": { "elevation": "hard" } },
+    { "id": "join", "label": "JOIN", "secondaryLabel": "Match rows", "badge": 2, "x": 245, "y": 560, "w": 135, "h": 90, "shape": "step", "colorRole": "mint", "style": { "elevation": "hard" } },
+    { "id": "where", "label": "WHERE", "secondaryLabel": "Filter rows", "badge": 3, "x": 425, "y": 560, "w": 135, "h": 90, "shape": "step", "colorRole": "orange", "style": { "elevation": "hard" } },
+    { "id": "group", "label": "GROUP BY", "secondaryLabel": "Make groups", "badge": 4, "x": 605, "y": 560, "w": 135, "h": 90, "shape": "step", "colorRole": "magenta", "style": { "elevation": "hard" } },
+    { "id": "having", "label": "HAVING", "secondaryLabel": "Filter groups", "badge": 5, "x": 605, "y": 750, "w": 135, "h": 90, "shape": "step", "colorRole": "cyan", "style": { "elevation": "hard" } },
+    { "id": "select", "label": "SELECT", "secondaryLabel": "Pick columns", "badge": 6, "x": 425, "y": 750, "w": 135, "h": 90, "shape": "step", "colorRole": "mint", "style": { "elevation": "hard" } },
+    { "id": "order", "label": "ORDER BY", "secondaryLabel": "Sort results", "badge": 7, "x": 245, "y": 750, "w": 135, "h": 90, "shape": "step", "colorRole": "orange", "style": { "elevation": "hard" } },
+    { "id": "limit", "label": "LIMIT", "secondaryLabel": "Take a slice", "badge": 8, "x": 65, "y": 750, "w": 135, "h": 90, "shape": "step", "colorRole": "magenta", "style": { "elevation": "hard" } }
+  ],
+  "edges": [
+    { "id": "from-join", "from": "from", "to": "join", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "join-where", "from": "join", "to": "where", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "where-group", "from": "where", "to": "group", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "group-having", "from": "group", "to": "having", "fromAnchor": "bottom", "toAnchor": "top", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "having-select", "from": "having", "to": "select", "fromAnchor": "left", "toAnchor": "right", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "select-order", "from": "select", "to": "order", "fromAnchor": "left", "toAnchor": "right", "pathType": "straight", "colorRole": "neutral", "dashed": true },
+    { "id": "order-limit", "from": "order", "to": "limit", "fromAnchor": "left", "toAnchor": "right", "pathType": "straight", "colorRole": "neutral", "dashed": true }
+  ],
+  "annotations": [
+    { "id": "written-title", "kind": "header", "text": "THE QUERY YOU WRITE", "x": 64, "y": 128, "w": 400, "fontSize": 18, "font": "condensed", "colorRole": "neutral" },
+    { "id": "query", "kind": "code", "x": 64, "y": 178, "w": 610, "h": 270, "language": "sql", "font": "code", "fontSize": 18, "lines": [
+      { "text": "SELECT region, SUM(total) AS sales", "band": "mint", "badge": { "n": 6, "side": "right" } },
+      { "text": "FROM orders", "band": "cyan", "badge": { "n": 1, "side": "right" } },
+      { "text": "JOIN customers USING (customer_id)", "band": "mint", "badge": { "n": 2, "side": "right" } },
+      { "text": "WHERE status = 'paid'", "band": "orange", "badge": { "n": 3, "side": "right" } },
+      { "text": "GROUP BY region", "band": "magenta", "badge": { "n": 4, "side": "right" } },
+      { "text": "HAVING SUM(total) > 1000", "band": "cyan", "badge": { "n": 5, "side": "right" } },
+      { "text": "ORDER BY sales DESC", "band": "orange", "badge": { "n": 7, "side": "right" } },
+      { "text": "LIMIT 10;", "band": "magenta", "badge": { "n": 8, "side": "right" } }
+    ] },
+    { "id": "logical-title", "kind": "header", "text": "THE LOGICAL ORDER", "x": 64, "y": 480, "w": 400, "fontSize": 20, "font": "condensed", "colorRole": "neutral" },
+    { "id": "optimizer-note", "kind": "callout", "text": "Logical order explains the result. The optimizer chooses the physical plan.", "x": 180, "y": 879, "maxWidth": 400, "fontSize": 16, "align": "center", "arrow": false, "colorRole": "neutral" }
+  ],
+  "timeline": { "durationMs": 6400, "fps": 25, "loop": true, "animations": [
+    { "kind": "sequential-highlight", "order": ["from", "join", "where", "group", "having", "select", "order", "limit"], "dwellMs": 800, "transitionMs": 120, "scale": 1.06 },
+    { "kind": "marching-dash", "edgeIds": ["from-join", "join-where", "where-group", "group-having", "having-select", "select-order", "order-limit"], "dash": 6, "gap": 6, "cyclesPerLoop": 16, "speedPxPerSec": 30 }
+  ] }
+}

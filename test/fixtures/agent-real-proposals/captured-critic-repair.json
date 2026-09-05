@@ -1,0 +1,1198 @@
+{
+  "proposal": {
+    "scene": {
+      "id": "explain-rag-how-retrieval-augmented-generation-works",
+      "canvas": {
+        "width": 800,
+        "height": 1000
+      },
+      "theme": "dark-teal",
+      "grain": false,
+      "title": {
+        "text": "RAG gives an LLM a searchable context layer",
+        "lines": [
+          "RAG gives an LLM",
+          "a searchable context layer"
+        ],
+        "font": "display",
+        "size": 40,
+        "align": "center",
+        "x": 400,
+        "y": 58,
+        "accentWords": [
+          {
+            "word": "RAG",
+            "colorRole": "cyan"
+          },
+          {
+            "word": "searchable context layer",
+            "colorRole": "orange"
+          }
+        ],
+        "shadow": {
+          "kind": "none"
+        },
+        "subtitle": {
+          "text": "DOCUMENTS → RETRIEVAL → CONTEXT → ANSWER",
+          "font": "condensed",
+          "size": 18
+        }
+      },
+      "layout": {
+        "kind": "freeform"
+      },
+      "nodes": [
+        {
+          "id": "source-documents",
+          "label": "Source documents",
+          "icon": {
+            "name": "file-text",
+            "source": "line",
+            "size": 28
+          },
+          "x": 50,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "document",
+          "colorRole": "neutral",
+          "labelAlign": "center"
+        },
+        {
+          "id": "document-chunks",
+          "label": "Document chunks",
+          "icon": {
+            "name": "layers",
+            "source": "line",
+            "size": 28
+          },
+          "x": 240,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "cyan",
+          "labelAlign": "center"
+        },
+        {
+          "id": "embedding-model",
+          "label": "Embedding model",
+          "icon": {
+            "name": "cpu",
+            "source": "line",
+            "size": 28
+          },
+          "x": 430,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "mint",
+          "labelAlign": "center"
+        },
+        {
+          "id": "vector-store",
+          "label": "Vector store",
+          "icon": {
+            "name": "database",
+            "source": "line",
+            "size": 28
+          },
+          "x": 620,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "database",
+          "colorRole": "cyan",
+          "labelAlign": "center"
+        },
+        {
+          "id": "user-query",
+          "label": "User query",
+          "icon": {
+            "name": "search",
+            "source": "line",
+            "size": 28
+          },
+          "x": 50,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center"
+        },
+        {
+          "id": "retriever",
+          "label": "Retriever",
+          "icon": {
+            "name": "route",
+            "source": "line",
+            "size": 28
+          },
+          "x": 240,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center"
+        },
+        {
+          "id": "retrieved-context",
+          "label": "Retrieved context",
+          "icon": {
+            "name": "file-code",
+            "source": "line",
+            "size": 28
+          },
+          "x": 430,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "panel",
+          "colorRole": "mint",
+          "labelAlign": "center"
+        },
+        {
+          "id": "llm-answer",
+          "label": "LLM answer",
+          "icon": {
+            "name": "bot",
+            "source": "line",
+            "size": 28
+          },
+          "x": 620,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center"
+        }
+      ],
+      "edges": [
+        {
+          "id": "documents-to-chunks",
+          "from": "source-documents",
+          "to": "document-chunks",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "chunks-to-embeddings",
+          "from": "document-chunks",
+          "to": "embedding-model",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "embeddings-to-store",
+          "from": "embedding-model",
+          "to": "vector-store",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "mint",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "query-to-retriever",
+          "from": "user-query",
+          "to": "retriever",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "retriever-to-context",
+          "from": "retriever",
+          "to": "retrieved-context",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "context-to-answer",
+          "from": "retrieved-context",
+          "to": "llm-answer",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        },
+        {
+          "id": "store-to-context",
+          "from": "vector-store",
+          "to": "retrieved-context",
+          "pathType": "orthogonal",
+          "fromAnchor": "bottom",
+          "toAnchor": "top",
+          "waypoints": [
+            {
+              "x": 695,
+              "y": 680
+            },
+            {
+              "x": 505,
+              "y": 680
+            }
+          ],
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false
+        }
+      ],
+      "timeline": {
+        "durationMs": 6000,
+        "fps": 25,
+        "loop": true,
+        "animations": [
+          {
+            "kind": "particle-flow",
+            "edgeIds": [
+              "documents-to-chunks",
+              "chunks-to-embeddings",
+              "embeddings-to-store",
+              "query-to-retriever",
+              "retriever-to-context",
+              "store-to-context",
+              "context-to-answer"
+            ],
+            "count": 3,
+            "speedPxPerSec": 180,
+            "colorRole": "cyan",
+            "size": 9,
+            "glow": true,
+            "fadeMs": 160,
+            "trail": 0
+          },
+          {
+            "kind": "pulse",
+            "nodeIds": [
+              "retriever",
+              "vector-store",
+              "llm-answer"
+            ],
+            "cyclesPerLoop": 2,
+            "scale": 1.04
+          }
+        ]
+      }
+    },
+    "claims": [
+      {
+        "text": "RAG gives an LLM a searchable context layer",
+        "supports": [
+          "fact-rag-combines-search-generation",
+          "fact-vector-store-searches-text"
+        ]
+      },
+      {
+        "text": "DOCUMENTS → RETRIEVAL → CONTEXT → ANSWER",
+        "supports": [
+          "authoring"
+        ]
+      },
+      {
+        "text": "Source documents",
+        "supports": [
+          "fact-retrieves-external-data"
+        ]
+      },
+      {
+        "text": "Document chunks",
+        "supports": [
+          "fact-documents-split-into-chunks"
+        ]
+      },
+      {
+        "text": "Embedding model",
+        "supports": [
+          "fact-embeddings-create-vectors"
+        ]
+      },
+      {
+        "text": "Vector store",
+        "supports": [
+          "fact-vector-store-searches-text"
+        ]
+      },
+      {
+        "text": "User query",
+        "supports": [
+          "fact-retriever-finds-relevant-chunks"
+        ]
+      },
+      {
+        "text": "Retriever",
+        "supports": [
+          "fact-retriever-finds-relevant-chunks"
+        ]
+      },
+      {
+        "text": "Retrieved context",
+        "supports": [
+          "fact-augments-prompt"
+        ]
+      },
+      {
+        "text": "LLM answer",
+        "supports": [
+          "fact-augments-prompt"
+        ]
+      }
+    ],
+    "authoringNotes": [
+      "Single 800×1000 scene with exactly 8 nodes and 7 edges.",
+      "The indexing path runs across the top; query retrieval and answer flow run across the bottom.",
+      "The vector-store connection routes below the bottom row to avoid unrelated node crossings.",
+      "Brand is omitted for harness application."
+    ]
+  },
+  "authored": {
+    "id": "explain-rag-how-retrieval-augmented-generation-works",
+    "canvas": {
+      "width": 800,
+      "height": 1000
+    },
+    "theme": "dark-teal",
+    "grain": false,
+    "title": {
+      "text": "RAG gives an LLM a searchable context layer",
+      "lines": [
+        "RAG gives an LLM",
+        "a searchable context layer"
+      ],
+      "font": "display",
+      "size": 40,
+      "align": "center",
+      "x": 400,
+      "y": 58,
+      "accentWords": [
+        {
+          "word": "RAG",
+          "colorRole": "cyan"
+        },
+        {
+          "word": "searchable context layer",
+          "colorRole": "orange"
+        }
+      ],
+      "shadow": {
+        "kind": "none",
+        "dx": 3,
+        "dy": 3
+      },
+      "subtitle": {
+        "text": "DOCUMENTS → RETRIEVAL → CONTEXT → ANSWER",
+        "font": "condensed",
+        "size": 18
+      }
+    },
+    "layout": {
+      "kind": "freeform"
+    },
+    "nodes": [
+      {
+        "id": "source-documents",
+        "label": "Source documents",
+        "icon": {
+          "name": "file-text",
+          "source": "line",
+          "size": 28
+        },
+        "x": 50,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "document",
+        "colorRole": "neutral",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "document-chunks",
+        "label": "Document chunks",
+        "icon": {
+          "name": "layers",
+          "source": "line",
+          "size": 28
+        },
+        "x": 240,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "cyan",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "embedding-model",
+        "label": "Embedding model",
+        "icon": {
+          "name": "cpu",
+          "source": "line",
+          "size": 28
+        },
+        "x": 430,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "mint",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "vector-store",
+        "label": "Vector store",
+        "icon": {
+          "name": "database",
+          "source": "line",
+          "size": 28
+        },
+        "x": 608,
+        "y": 180,
+        "w": 150,
+        "h": 86,
+        "shape": "database",
+        "colorRole": "cyan",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "user-query",
+        "label": "User query",
+        "icon": {
+          "name": "search",
+          "source": "line",
+          "size": 28
+        },
+        "x": 50,
+        "y": 470,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "orange",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "retriever",
+        "label": "Retriever",
+        "icon": {
+          "name": "route",
+          "source": "line",
+          "size": 28
+        },
+        "x": 240,
+        "y": 470,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "orange",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "retrieved-context",
+        "label": "Retrieved context",
+        "icon": {
+          "name": "file-code",
+          "source": "line",
+          "size": 28
+        },
+        "x": 430,
+        "y": 470,
+        "w": 150,
+        "h": 86,
+        "shape": "panel",
+        "colorRole": "mint",
+        "labelAlign": "center",
+        "labelRotate": 0
+      },
+      {
+        "id": "llm-answer",
+        "label": "LLM answer",
+        "icon": {
+          "name": "bot",
+          "source": "line",
+          "size": 28
+        },
+        "x": 608,
+        "y": 470,
+        "w": 150,
+        "h": 86,
+        "shape": "rounded-rect",
+        "colorRole": "orange",
+        "labelAlign": "center",
+        "labelRotate": 0
+      }
+    ],
+    "edges": [
+      {
+        "id": "documents-to-chunks",
+        "from": "source-documents",
+        "to": "document-chunks",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "chunks-to-embeddings",
+        "from": "document-chunks",
+        "to": "embedding-model",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "embeddings-to-store",
+        "from": "embedding-model",
+        "to": "vector-store",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "mint",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "query-to-retriever",
+        "from": "user-query",
+        "to": "retriever",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "retriever-to-context",
+        "from": "retriever",
+        "to": "retrieved-context",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "context-to-answer",
+        "from": "retrieved-context",
+        "to": "llm-answer",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      },
+      {
+        "id": "store-to-context",
+        "from": "vector-store",
+        "to": "retrieved-context",
+        "pathType": "orthogonal",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "waypoints": [
+          {
+            "x": 695,
+            "y": 680
+          },
+          {
+            "x": 505,
+            "y": 680
+          }
+        ],
+        "colorRole": "cyan",
+        "strokeWidth": 2.5,
+        "arrow": true,
+        "style": "line",
+        "dashed": false,
+        "curveOffset": 0
+      }
+    ],
+    "timeline": {
+      "durationMs": 6000,
+      "fps": 25,
+      "loop": true,
+      "animations": [
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "documents-to-chunks",
+            "chunks-to-embeddings",
+            "embeddings-to-store",
+            "query-to-retriever",
+            "retriever-to-context",
+            "store-to-context",
+            "context-to-answer"
+          ],
+          "count": 3,
+          "speedPxPerSec": 180,
+          "colorRole": "cyan",
+          "size": 9,
+          "glow": true,
+          "fadeMs": 160,
+          "trail": 0
+        },
+        {
+          "kind": "pulse",
+          "nodeIds": [
+            "retriever",
+            "vector-store",
+            "llm-answer"
+          ],
+          "cyclesPerLoop": 2,
+          "scale": 1.04
+        }
+      ],
+      "strictFrameCount": false
+    },
+    "brand": {
+      "style": "none",
+      "showSaveIcon": false
+    },
+    "annotations": []
+  },
+  "claims": [
+    {
+      "text": "RAG gives an LLM a searchable context layer",
+      "supports": [
+        "fact-rag-combines-search-generation",
+        "fact-vector-store-searches-text"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/title/text"
+      ]
+    },
+    {
+      "text": "DOCUMENTS → RETRIEVAL → CONTEXT → ANSWER",
+      "supports": [
+        "authoring"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/title/subtitle/text"
+      ]
+    },
+    {
+      "text": "Source documents",
+      "supports": [
+        "fact-retrieves-external-data"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/0/label"
+      ]
+    },
+    {
+      "text": "Document chunks",
+      "supports": [
+        "fact-documents-split-into-chunks"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/1/label"
+      ]
+    },
+    {
+      "text": "Embedding model",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/2/label"
+      ]
+    },
+    {
+      "text": "Vector store",
+      "supports": [
+        "fact-vector-store-searches-text"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/3/label"
+      ]
+    },
+    {
+      "text": "User query",
+      "supports": [
+        "fact-retriever-finds-relevant-chunks"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/4/label"
+      ]
+    },
+    {
+      "text": "Retriever",
+      "supports": [
+        "fact-retriever-finds-relevant-chunks"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/5/label"
+      ]
+    },
+    {
+      "text": "Retrieved context",
+      "supports": [
+        "fact-augments-prompt"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/6/label"
+      ]
+    },
+    {
+      "text": "LLM answer",
+      "supports": [
+        "fact-augments-prompt"
+      ],
+      "resolvedBy": "text",
+      "resolvedPaths": [
+        "/nodes/7/label"
+      ]
+    }
+  ],
+  "repairTrace": [
+    {
+      "path": "/nodes/7/x",
+      "old": 620,
+      "new": 608,
+      "rule": "out-of-zone"
+    },
+    {
+      "path": "/nodes/3/x",
+      "old": 620,
+      "new": 608,
+      "rule": "out-of-zone"
+    }
+  ],
+  "repairPenalties": [
+    {
+      "before": 344,
+      "after": 0,
+      "loop": 0
+    },
+    {
+      "before": 0,
+      "after": 0,
+      "loop": 1
+    }
+  ],
+  "warnings": [],
+  "autoAuthoringSlots": [],
+  "escalatedSlots": [],
+  "uncoveredSubstantiveTexts": [],
+  "validation": {
+    "ok": false,
+    "errors": [
+      {
+        "path": "/",
+        "message": "page.evaluate: Error: Text overflow: retrieved-context: {\"x\":442,\"y\":521,\"w\":73.77392578125,\"h\":40}\n    at mountSvg (<anonymous>:54:33)\n    at Object.mount (<anonymous>:67:12)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:73)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      }
+    ],
+    "scene": {
+      "id": "explain-rag-how-retrieval-augmented-generation-works",
+      "canvas": {
+        "width": 800,
+        "height": 1000
+      },
+      "theme": "dark-teal",
+      "grain": false,
+      "title": {
+        "text": "RAG gives an LLM a searchable context layer",
+        "lines": [
+          "RAG gives an LLM",
+          "a searchable context layer"
+        ],
+        "font": "display",
+        "size": 40,
+        "align": "center",
+        "x": 400,
+        "y": 58,
+        "accentWords": [
+          {
+            "word": "RAG",
+            "colorRole": "cyan"
+          },
+          {
+            "word": "searchable context layer",
+            "colorRole": "orange"
+          }
+        ],
+        "shadow": {
+          "kind": "none",
+          "dx": 3,
+          "dy": 3
+        },
+        "subtitle": {
+          "text": "DOCUMENTS → RETRIEVAL → CONTEXT → ANSWER",
+          "font": "condensed",
+          "size": 18
+        }
+      },
+      "layout": {
+        "kind": "freeform"
+      },
+      "nodes": [
+        {
+          "id": "source-documents",
+          "label": "Source documents",
+          "icon": {
+            "name": "file-text",
+            "source": "line",
+            "size": 28
+          },
+          "x": 50,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "document",
+          "colorRole": "neutral",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "document-chunks",
+          "label": "Document chunks",
+          "icon": {
+            "name": "layers",
+            "source": "line",
+            "size": 28
+          },
+          "x": 240,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "cyan",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "embedding-model",
+          "label": "Embedding model",
+          "icon": {
+            "name": "cpu",
+            "source": "line",
+            "size": 28
+          },
+          "x": 430,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "mint",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "vector-store",
+          "label": "Vector store",
+          "icon": {
+            "name": "database",
+            "source": "line",
+            "size": 28
+          },
+          "x": 608,
+          "y": 180,
+          "w": 150,
+          "h": 86,
+          "shape": "database",
+          "colorRole": "cyan",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "user-query",
+          "label": "User query",
+          "icon": {
+            "name": "search",
+            "source": "line",
+            "size": 28
+          },
+          "x": 50,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "retriever",
+          "label": "Retriever",
+          "icon": {
+            "name": "route",
+            "source": "line",
+            "size": 28
+          },
+          "x": 240,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "retrieved-context",
+          "label": "Retrieved context",
+          "icon": {
+            "name": "file-code",
+            "source": "line",
+            "size": 28
+          },
+          "x": 430,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "panel",
+          "colorRole": "mint",
+          "labelAlign": "center",
+          "labelRotate": 0
+        },
+        {
+          "id": "llm-answer",
+          "label": "LLM answer",
+          "icon": {
+            "name": "bot",
+            "source": "line",
+            "size": 28
+          },
+          "x": 608,
+          "y": 470,
+          "w": 150,
+          "h": 86,
+          "shape": "rounded-rect",
+          "colorRole": "orange",
+          "labelAlign": "center",
+          "labelRotate": 0
+        }
+      ],
+      "edges": [
+        {
+          "id": "documents-to-chunks",
+          "from": "source-documents",
+          "to": "document-chunks",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "chunks-to-embeddings",
+          "from": "document-chunks",
+          "to": "embedding-model",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "embeddings-to-store",
+          "from": "embedding-model",
+          "to": "vector-store",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "mint",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "query-to-retriever",
+          "from": "user-query",
+          "to": "retriever",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "retriever-to-context",
+          "from": "retriever",
+          "to": "retrieved-context",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "context-to-answer",
+          "from": "retrieved-context",
+          "to": "llm-answer",
+          "pathType": "straight",
+          "fromAnchor": "right",
+          "toAnchor": "left",
+          "colorRole": "orange",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        },
+        {
+          "id": "store-to-context",
+          "from": "vector-store",
+          "to": "retrieved-context",
+          "pathType": "orthogonal",
+          "fromAnchor": "bottom",
+          "toAnchor": "top",
+          "waypoints": [
+            {
+              "x": 695,
+              "y": 680
+            },
+            {
+              "x": 505,
+              "y": 680
+            }
+          ],
+          "colorRole": "cyan",
+          "strokeWidth": 2.5,
+          "arrow": true,
+          "style": "line",
+          "dashed": false,
+          "curveOffset": 0
+        }
+      ],
+      "timeline": {
+        "durationMs": 6000,
+        "fps": 25,
+        "loop": true,
+        "animations": [
+          {
+            "kind": "particle-flow",
+            "edgeIds": [
+              "documents-to-chunks",
+              "chunks-to-embeddings",
+              "embeddings-to-store",
+              "query-to-retriever",
+              "retriever-to-context",
+              "store-to-context",
+              "context-to-answer"
+            ],
+            "count": 3,
+            "speedPxPerSec": 180,
+            "colorRole": "cyan",
+            "size": 9,
+            "glow": true,
+            "fadeMs": 160,
+            "trail": 0
+          },
+          {
+            "kind": "pulse",
+            "nodeIds": [
+              "retriever",
+              "vector-store",
+              "llm-answer"
+            ],
+            "cyclesPerLoop": 2,
+            "scale": 1.04
+          }
+        ],
+        "strictFrameCount": false
+      },
+      "brand": {
+        "style": "none",
+        "showSaveIcon": false
+      },
+      "annotations": []
+    },
+    "brand": {
+      "ok": false
+    }
+  },
+  "accepted": false
+}

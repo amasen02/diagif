@@ -1,0 +1,6 @@
+{
+  "stdout": "{\"type\": \"turn.completed\", \"usage\": {\"input_tokens\": 95, \"output_tokens\": 60}}\n",
+  "stderr": "",
+  "code": 0,
+  "result": "{\"topic\": \"explain RAG\", \"angle\": \"Show how retrieved context supports answer generation.\", \"hook\": \"RAG retrieves before it answers\", \"format\": \"how-it-works\", \"factIds\": [\"fact-1\", \"fact-2\", \"fact-3\"], \"post\": {\"hook\": \"RAG retrieves before it answers\", \"lines\": [\"Retrieve passages relevant to the question.\", \"Provide those passages as context for the model.\", \"Inspect the sources supporting the answer.\"], \"cta\": \"Which retrieval step would you improve?\", \"hashtags\": [\"#RAG\", \"#AIEngineering\"]}}"
+}

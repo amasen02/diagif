@@ -1,0 +1,280 @@
+{
+  "id": "mcp-vs-skills",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "title": {
+    "text": "MCP vs Skills",
+    "font": "display",
+    "size": 44,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "MCP",
+        "colorRole": "cyan"
+      },
+      {
+        "word": "Skills",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 3,
+      "dy": 3
+    },
+    "subtitle": {
+      "text": "Two ways an AI agent reaches useful capabilities",
+      "font": "condensed",
+      "size": 13
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "dividerY": 500,
+    "labels": [
+      "MCP",
+      "Skills"
+    ],
+    "divider": {
+      "style": "dotted"
+    }
+  },
+  "nodes": [
+    {
+      "id": "mcp-host",
+      "label": "MCP Host",
+      "icon": {
+        "name": "laptop"
+      },
+      "x": 55,
+      "y": 180,
+      "w": 130,
+      "h": 76,
+      "shape": "rounded-rect",
+      "colorRole": "cyan"
+    },
+    {
+      "id": "mcp-client",
+      "label": "MCP Client",
+      "icon": {
+        "name": "settings"
+      },
+      "x": 300,
+      "y": 180,
+      "w": 140,
+      "h": 76,
+      "shape": "rounded-rect",
+      "colorRole": "mint"
+    },
+    {
+      "id": "mcp-server",
+      "label": "MCP Server",
+      "icon": {
+        "name": "server"
+      },
+      "x": 555,
+      "y": 180,
+      "w": 150,
+      "h": 76,
+      "shape": "rounded-rect",
+      "colorRole": "orange"
+    },
+    {
+      "id": "external-tools",
+      "label": "Slack · Gmail · Jira",
+      "secondaryLabel": "External systems",
+      "icon": {
+        "name": "slack",
+        "source": "brand"
+      },
+      "x": 535,
+      "y": 335,
+      "w": 190,
+      "h": 116,
+      "shape": "panel",
+      "colorRole": "mint"
+    },
+    {
+      "id": "skill-agent",
+      "label": "AI Agent",
+      "icon": {
+        "name": "bot"
+      },
+      "x": 55,
+      "y": 580,
+      "w": 130,
+      "h": 76,
+      "shape": "rounded-rect",
+      "colorRole": "cyan"
+    },
+    {
+      "id": "registry",
+      "label": "Skill Registry",
+      "icon": {
+        "name": "folder"
+      },
+      "x": 305,
+      "y": 580,
+      "w": 145,
+      "h": 76,
+      "shape": "rounded-rect",
+      "colorRole": "orange"
+    },
+    {
+      "id": "skill-md",
+      "label": "SKILL.md",
+      "secondaryLabel": "instructions + tools",
+      "icon": {
+        "name": "file-text"
+      },
+      "x": 555,
+      "y": 545,
+      "w": 150,
+      "h": 88,
+      "shape": "document",
+      "colorRole": "mint"
+    },
+    {
+      "id": "skill-tools",
+      "label": "Docs · Calendar · Jira",
+      "icon": {
+        "name": "googlecalendar",
+        "source": "brand"
+      },
+      "x": 555,
+      "y": 705,
+      "w": 190,
+      "h": 116,
+      "shape": "panel",
+      "colorRole": "cyan"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-host-client",
+      "from": "mcp-host",
+      "to": "mcp-client",
+      "pathType": "straight",
+      "dashed": true,
+      "colorRole": "cyan"
+    },
+    {
+      "id": "e-client-server",
+      "from": "mcp-client",
+      "to": "mcp-server",
+      "pathType": "straight",
+      "dashed": true,
+      "colorRole": "cyan"
+    },
+    {
+      "id": "e-server-tools",
+      "from": "mcp-server",
+      "to": "external-tools",
+      "pathType": "orthogonal",
+      "dashed": true,
+      "colorRole": "mint",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    },
+    {
+      "id": "e-agent-registry",
+      "from": "skill-agent",
+      "to": "registry",
+      "pathType": "straight",
+      "dashed": true,
+      "colorRole": "orange"
+    },
+    {
+      "id": "e-registry-skill",
+      "from": "registry",
+      "to": "skill-md",
+      "pathType": "straight",
+      "dashed": true,
+      "colorRole": "orange"
+    },
+    {
+      "id": "e-skill-tools",
+      "from": "skill-md",
+      "to": "skill-tools",
+      "pathType": "straight",
+      "dashed": true,
+      "colorRole": "mint",
+      "fromAnchor": "bottom",
+      "toAnchor": "top"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-client",
+      "kind": "callout",
+      "text": "Translates host requests into MCP protocol messages",
+      "x": 250,
+      "y": 300,
+      "maxWidth": 200,
+      "target": "mcp-client",
+      "targetAnchor": "bottom"
+    },
+    {
+      "id": "a-skill",
+      "kind": "callout",
+      "text": "Describes the workflow, rules, output format and constraints",
+      "x": 300,
+      "y": 695,
+      "maxWidth": 210,
+      "target": "skill-md",
+      "targetAnchor": "left"
+    }
+  ],
+  "timeline": {
+    "durationMs": 4000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "e-host-client",
+          "e-client-server",
+          "e-server-tools",
+          "e-agent-registry",
+          "e-registry-skill",
+          "e-skill-tools"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "speedPxPerSec": 48
+      },
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "e-host-client",
+          "e-client-server",
+          "e-server-tools"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 10
+      },
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "e-agent-registry",
+          "e-registry-skill",
+          "e-skill-tools"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 10
+      }
+    ]
+  },
+  "grain": false
+}

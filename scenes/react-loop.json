@@ -1,0 +1,241 @@
+{
+  "id": "react-loop",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "The ReAct Loop",
+    "font": "display",
+    "size": 48,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "ReAct",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 3,
+      "dy": 3
+    },
+    "subtitle": {
+      "text": "REASON. ACT. OBSERVE. REPEAT.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "agent",
+      "label": "Agent",
+      "secondaryLabel": "Owns the next step",
+      "icon": {
+        "name": "bot",
+        "size": 32
+      },
+      "x": 95,
+      "y": 300,
+      "w": 170,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      }
+    },
+    {
+      "id": "llm",
+      "label": "LLM",
+      "secondaryLabel": "Reasons about the task",
+      "icon": {
+        "name": "cpu",
+        "size": 32
+      },
+      "x": 515,
+      "y": 300,
+      "w": 190,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      }
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "secondaryLabel": "Acts on the world",
+      "icon": {
+        "name": "settings",
+        "size": 32
+      },
+      "x": 320,
+      "y": 620,
+      "w": 180,
+      "h": 110,
+      "shape": "panel",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "agent-llm",
+      "from": "agent",
+      "to": "llm",
+      "pathType": "curved",
+      "curveOffset": -60,
+      "colorRole": "cyan",
+      "label": {
+        "text": "context + goal",
+        "pill": true,
+        "side": "left"
+      }
+    },
+    {
+      "id": "llm-tool",
+      "from": "llm",
+      "to": "tool",
+      "fromAnchor": "bottom",
+      "toAnchor": "right",
+      "pathType": "curved",
+      "curveOffset": -45,
+      "colorRole": "orange",
+      "label": {
+        "text": "action",
+        "pill": true
+      }
+    },
+    {
+      "id": "tool-agent",
+      "from": "tool",
+      "to": "agent",
+      "fromAnchor": "left",
+      "toAnchor": "bottom",
+      "pathType": "curved",
+      "curveOffset": -45,
+      "colorRole": "mint",
+      "label": {
+        "text": "observation",
+        "pill": true
+      }
+    },
+    {
+      "id": "llm-agent",
+      "from": "llm",
+      "to": "agent",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "pathType": "curved",
+      "curveOffset": -60,
+      "colorRole": "orange",
+      "dashed": true,
+      "label": {
+        "text": "decision",
+        "pill": true,
+        "side": "left"
+      }
+    },
+    {
+      "id": "retry",
+      "from": "llm",
+      "to": "llm",
+      "pathType": "curved",
+      "loop": {
+        "side": "top",
+        "size": 120
+      },
+      "colorRole": "orange",
+      "label": {
+        "text": "retry until pass",
+        "pill": true,
+        "side": "right"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "loop-note",
+      "kind": "callout",
+      "text": "A tool result becomes context for the next decision.",
+      "x": 80,
+      "y": 165,
+      "maxWidth": 340,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "stop-note",
+      "kind": "callout",
+      "text": "Stop when the goal is met or the step budget is exhausted.",
+      "x": 215,
+      "y": 815,
+      "maxWidth": 370,
+      "fontSize": 22,
+      "align": "center",
+      "colorRole": "mint",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 4000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "agent-llm",
+          "llm-tool",
+          "tool-agent"
+        ],
+        "count": 3,
+        "cyclesPerLoop": 1,
+        "colorRole": "orange",
+        "size": 10,
+        "fadeMs": 160
+      },
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "retry"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "mint",
+        "size": 8,
+        "fadeMs": 160
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "llm-agent"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 12
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "llm"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.06
+      }
+    ]
+  }
+}

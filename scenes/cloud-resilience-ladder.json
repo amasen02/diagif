@@ -1,0 +1,262 @@
+{
+  "id": "cloud-resilience-ladder",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "Multi-AZ is not multi-region",
+    "lines": [
+      "Multi-AZ is not",
+      "multi-region"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 57,
+    "accentWords": [
+      {
+        "word": "multi-region",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 2,
+      "dy": 2
+    },
+    "subtitle": {
+      "text": "CHOOSE RECOVERY OBJECTIVES BEFORE YOU CHOOSE A TOPOLOGY",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "objectives",
+      "label": "RPO / RTO",
+      "x": 65,
+      "y": 215,
+      "w": 235,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Data loss / recovery time",
+      "icon": {
+        "name": "gauge",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "backup",
+      "label": "Backup",
+      "x": 65,
+      "y": 685,
+      "w": 160,
+      "h": 120,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Restore data + infra",
+      "icon": {
+        "name": "hard-drive",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 1
+    },
+    {
+      "id": "pilot",
+      "label": "Pilot light",
+      "x": 235,
+      "y": 555,
+      "w": 160,
+      "h": 115,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Core data stays replicated",
+      "icon": {
+        "name": "database",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 2
+    },
+    {
+      "id": "warm",
+      "label": "Warm standby",
+      "x": 405,
+      "y": 425,
+      "w": 160,
+      "h": 115,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Small working environment",
+      "icon": {
+        "name": "server",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 3
+    },
+    {
+      "id": "active",
+      "label": "Active-active",
+      "x": 575,
+      "y": 295,
+      "w": 165,
+      "h": 115,
+      "shape": "rounded-rect",
+      "colorRole": "magenta",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Multiple regions serve traffic",
+      "icon": {
+        "name": "globe",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 4
+    }
+  ],
+  "edges": [
+    {
+      "id": "choose",
+      "from": "objectives",
+      "to": "backup",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "set targets",
+        "pill": true
+      }
+    },
+    {
+      "id": "tier-two",
+      "from": "backup",
+      "to": "pilot",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "bottom",
+      "colorRole": "cyan"
+    },
+    {
+      "id": "tier-three",
+      "from": "pilot",
+      "to": "warm",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "bottom",
+      "colorRole": "mint"
+    },
+    {
+      "id": "tier-four",
+      "from": "warm",
+      "to": "active",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "bottom",
+      "colorRole": "orange"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "az-note",
+      "kind": "callout",
+      "text": "Multi-AZ handles zone failures within one region.",
+      "x": 340,
+      "y": 185,
+      "maxWidth": 365,
+      "fontSize": 23,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "regional-note",
+      "kind": "callout",
+      "text": "Test recovery in another region. Keep backups: replication copies mistakes.",
+      "x": 450,
+      "y": 610,
+      "maxWidth": 285,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "tradeoff",
+      "kind": "callout",
+      "text": "Faster recovery usually costs more and adds operational work.",
+      "x": 65,
+      "y": 845,
+      "maxWidth": 355,
+      "fontSize": 23,
+      "colorRole": "orange",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 8000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "backup",
+          "pilot",
+          "warm",
+          "active"
+        ],
+        "dwellMs": 2000,
+        "transitionMs": 120,
+        "scale": 1.035
+      },
+      {
+        "kind": "reveal",
+        "targetIds": [
+          "tradeoff"
+        ],
+        "startMs": 500,
+        "durationMs": 500,
+        "exitMs": 400,
+        "loopBehavior": "fade",
+        "mode": "fade"
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "choose",
+          "tier-two",
+          "tier-three",
+          "tier-four"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 64,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

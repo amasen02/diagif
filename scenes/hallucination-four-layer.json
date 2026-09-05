@@ -1,0 +1,273 @@
+{
+  "id": "hallucination-four-layer",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "paper",
+  "grain": true,
+  "title": {
+    "text": "Why models guess—and the four-layer fix",
+    "lines": [
+      "Why models guess—",
+      "and the four-layer fix"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 60,
+    "accentWords": [
+      {
+        "word": "guess",
+        "color": "#AC6411"
+      },
+      {
+        "word": "fix",
+        "color": "#147D92"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "PLAUSIBLE TEXT NEEDS EVIDENCE BEFORE IT BECOMES AN ANSWER",
+      "font": "condensed",
+      "size": 19
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "question",
+      "label": "Question",
+      "x": 90,
+      "y": 230,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "neutral",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Ask for a grounded answer",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "retrieve",
+      "label": "Retrieve",
+      "x": 480,
+      "y": 230,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Find relevant evidence",
+      "badge": 1
+    },
+    {
+      "id": "cite",
+      "label": "Cite",
+      "x": 480,
+      "y": 430,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Link claims to sources",
+      "badge": 2
+    },
+    {
+      "id": "abstain",
+      "label": "Abstain",
+      "x": 90,
+      "y": 430,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "No support? Say so.",
+      "badge": 3
+    },
+    {
+      "id": "verify",
+      "label": "Verify",
+      "x": 90,
+      "y": 630,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Check sources + claims",
+      "badge": 4
+    },
+    {
+      "id": "answer",
+      "label": "Answer",
+      "x": 480,
+      "y": 630,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Supported claims only",
+      "icon": {
+        "name": "check",
+        "source": "line",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "search",
+      "from": "question",
+      "to": "retrieve",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "search",
+        "pill": true
+      }
+    },
+    {
+      "id": "sources",
+      "from": "retrieve",
+      "to": "cite",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "evidence",
+        "pill": true
+      }
+    },
+    {
+      "id": "support",
+      "from": "cite",
+      "to": "abstain",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "support gate",
+        "pill": true
+      }
+    },
+    {
+      "id": "eligible",
+      "from": "abstain",
+      "to": "verify",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "supported only",
+        "pill": true
+      }
+    },
+    {
+      "id": "checked",
+      "from": "verify",
+      "to": "answer",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "checks pass",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "abstain-note",
+      "kind": "callout",
+      "text": "Missing evidence is a valid reason to stop.",
+      "x": 65,
+      "y": 810,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    },
+    {
+      "id": "verify-note",
+      "kind": "callout",
+      "text": "A citation is a pointer. Verify that it supports the claim.",
+      "x": 430,
+      "y": 810,
+      "maxWidth": 320,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 8000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "question",
+          "retrieve",
+          "cite",
+          "abstain",
+          "verify",
+          "answer"
+        ],
+        "transitionMs": 120,
+        "scale": 1.04
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "search",
+          "sources",
+          "support",
+          "eligible",
+          "checked"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 64,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

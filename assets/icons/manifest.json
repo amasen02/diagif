@@ -1,0 +1,668 @@
+{
+  "repos": {
+    "lucide": "lucide-icons/lucide",
+    "brands": "simple-icons/simple-icons"
+  },
+  "pinnedCommits": {
+    "lucide": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+    "brands": "7f18aaa676087b8240b6f4ff58a6720be282da59"
+  },
+  "files": [
+    {
+      "name": "laptop",
+      "source": "line",
+      "file": "lucide/laptop.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/laptop.svg",
+      "sha256": "b8389056d3b7125670b60a4bd03e6d4ecc440e228f4140e7b66c4e97dcb0dc70"
+    },
+    {
+      "name": "monitor",
+      "source": "line",
+      "file": "lucide/monitor.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/monitor.svg",
+      "sha256": "d1a443233345724859de8e4fb48968ba91e885e12ddbd710701548bd91b39428"
+    },
+    {
+      "name": "server",
+      "source": "line",
+      "file": "lucide/server.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/server.svg",
+      "sha256": "f7bea54b609dc488f3b848995014041846b2443fd2a880653e9e583d7a034f61"
+    },
+    {
+      "name": "database",
+      "source": "line",
+      "file": "lucide/database.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/database.svg",
+      "sha256": "471eb14bc8d144896a82dfc4aa9daf350f769f0896f4bef33e50aabdbb51130d"
+    },
+    {
+      "name": "cloud",
+      "source": "line",
+      "file": "lucide/cloud.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/cloud.svg",
+      "sha256": "28a34022ed00177eb1f218eea5d2b7af30d09b529187fe32219e4dd8ea2b9740"
+    },
+    {
+      "name": "globe",
+      "source": "line",
+      "file": "lucide/globe.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/globe.svg",
+      "sha256": "82c6b8fa0b8e8d775ec9becd86f74a4e50bff7bee4c81f7362de45348504f14d"
+    },
+    {
+      "name": "user",
+      "source": "line",
+      "file": "lucide/user.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/user.svg",
+      "sha256": "eae3b3b2400031ddd5ec869327d127a96014e5f63aa6e06658dd5d4e90661aa8"
+    },
+    {
+      "name": "users",
+      "source": "line",
+      "file": "lucide/users.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/users.svg",
+      "sha256": "eeed488a1ec95ba730dd69996536fb65061d6ea273afb2429ae47e65eebf401c"
+    },
+    {
+      "name": "bot",
+      "source": "line",
+      "file": "lucide/bot.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/bot.svg",
+      "sha256": "e46fe72fc5b33d7a17b0112df85da9ded851860312e8353f4fe23d87a4ce77f5"
+    },
+    {
+      "name": "cpu",
+      "source": "line",
+      "file": "lucide/cpu.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/cpu.svg",
+      "sha256": "ec83bb69ec029d367d749afc445b39c8e95891ebf99b0400652677c2b149b99c"
+    },
+    {
+      "name": "folder",
+      "source": "line",
+      "file": "lucide/folder.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/folder.svg",
+      "sha256": "f0d92b94b797a8ab7d4c4ae33c3236c47f64068351b4e14bdb5014ee42898a39"
+    },
+    {
+      "name": "file-text",
+      "source": "line",
+      "file": "lucide/file-text.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/file-text.svg",
+      "sha256": "52ca55846c202335fb870c8aa23e9345630ec10489303756d62e750f7109605c"
+    },
+    {
+      "name": "file-code",
+      "source": "line",
+      "file": "lucide/file-code.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/file-code.svg",
+      "sha256": "8ac619671f53653a483c2d5e2e6afe6d009c3198918cf76632e2cb4abf0d6721"
+    },
+    {
+      "name": "mail",
+      "source": "line",
+      "file": "lucide/mail.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/mail.svg",
+      "sha256": "3236a51d5b8ce9b0528cf2e6ad07e527bd636dded6f5a9d656072052b99caea8"
+    },
+    {
+      "name": "message-square",
+      "source": "line",
+      "file": "lucide/message-square.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/message-square.svg",
+      "sha256": "5812a3be783fdcd73efd2b6026e03131e4b8c6649e7d52aa2dc7bf2e2023a59d"
+    },
+    {
+      "name": "calendar",
+      "source": "line",
+      "file": "lucide/calendar.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/calendar.svg",
+      "sha256": "312ac8e715ac2b71bcc942dec2e8de9c1929085474f08885af35b563f6aa7a0b"
+    },
+    {
+      "name": "lock",
+      "source": "line",
+      "file": "lucide/lock.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/lock.svg",
+      "sha256": "d2cfe60cac8deaef36442b5c8218c1e61abe18222784b2a370ea090d13fca840"
+    },
+    {
+      "name": "key",
+      "source": "line",
+      "file": "lucide/key.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/key.svg",
+      "sha256": "1f0bdf32374dacfca8cfc7f942c59d27a438e409dccaef11a8ce57de9365ae60"
+    },
+    {
+      "name": "shield",
+      "source": "line",
+      "file": "lucide/shield.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/shield.svg",
+      "sha256": "be32f6a86df7cbe43a83c439dd8849e5bcf5145e484d23420c20d8b98a78e82b"
+    },
+    {
+      "name": "git-branch",
+      "source": "line",
+      "file": "lucide/git-branch.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/git-branch.svg",
+      "sha256": "041f04acc8f92657b849540f0440e2e85d0df0b8da2365611e81b9bebfafc4eb"
+    },
+    {
+      "name": "network",
+      "source": "line",
+      "file": "lucide/network.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/network.svg",
+      "sha256": "626be730feea1e5ea7539fbf78b4a3fcb927ce5d7dc43364f2216908672ac792"
+    },
+    {
+      "name": "route",
+      "source": "line",
+      "file": "lucide/route.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/route.svg",
+      "sha256": "fc169fd38a9963b016ad6d60fd72baa2b0ea8e0cec085bbc53287297c3d8121a"
+    },
+    {
+      "name": "zap",
+      "source": "line",
+      "file": "lucide/zap.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/zap.svg",
+      "sha256": "4c395891eab4d1e5627c5d414a16db037317cb2f12453de0f3a1130964c6d444"
+    },
+    {
+      "name": "clock",
+      "source": "line",
+      "file": "lucide/clock.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/clock.svg",
+      "sha256": "e9d3e3acf4d1c280fcf8092293439dc0a4756a908ceb859de144b12451cd1cb9"
+    },
+    {
+      "name": "layers",
+      "source": "line",
+      "file": "lucide/layers.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/layers.svg",
+      "sha256": "ce16d0a955e3581cda17f6b2fd5c5bc2034b405f9cecc31c8ebb8495b4afc1bb"
+    },
+    {
+      "name": "box",
+      "source": "line",
+      "file": "lucide/box.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/box.svg",
+      "sha256": "511862693d914d2bf1947c9ccc513595f2a256541f5dd4f6f9ac8383cd41ac4f"
+    },
+    {
+      "name": "package",
+      "source": "line",
+      "file": "lucide/package.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/package.svg",
+      "sha256": "69d6bc7650d26c4d24dd55eb22791607b982ce7637073944c256f1f61575509d"
+    },
+    {
+      "name": "table",
+      "source": "line",
+      "file": "lucide/table.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/table.svg",
+      "sha256": "806e2810a1dc693e5dcc22298c6bab50ca5ba16f090d5c61e8ca4b22fdeaa4e3"
+    },
+    {
+      "name": "list",
+      "source": "line",
+      "file": "lucide/list.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/list.svg",
+      "sha256": "ff97a7379eb962ddc3863bb59f0f45875ac8da91aac8a38a67361e7118d2d627"
+    },
+    {
+      "name": "search",
+      "source": "line",
+      "file": "lucide/search.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/search.svg",
+      "sha256": "283d371c2e433817bb9c0c8310caa6c77fa4177c0f4f1168d9c83b97af7389dc"
+    },
+    {
+      "name": "settings",
+      "source": "line",
+      "file": "lucide/settings.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/settings.svg",
+      "sha256": "0ae27fd0f81999229e3127ac96c5b32edfea448e291d509e76212b917551d66b"
+    },
+    {
+      "name": "plug",
+      "source": "line",
+      "file": "lucide/plug.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/plug.svg",
+      "sha256": "11ba780e4b6f15d37906a8a73537144b59720333d7a9fc8048a437d0389422f8"
+    },
+    {
+      "name": "cable",
+      "source": "line",
+      "file": "lucide/cable.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/cable.svg",
+      "sha256": "939a8e577c9b0eaf824fd288b3f3b760d7eca3ef30c910dbee60da2e215baa16"
+    },
+    {
+      "name": "arrow-right-left",
+      "source": "line",
+      "file": "lucide/arrow-right-left.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/arrow-right-left.svg",
+      "sha256": "c32f61f0ea5aea4f11592db61e42774977a95086a4fa40656d00289a9604b9ad"
+    },
+    {
+      "name": "timer",
+      "source": "line",
+      "file": "lucide/timer.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/timer.svg",
+      "sha256": "6771297be65225d462c930865b6f9ee1617aa453885be4c8116a7512a77ac2b6"
+    },
+    {
+      "name": "bell",
+      "source": "line",
+      "file": "lucide/bell.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/bell.svg",
+      "sha256": "394889e9631fe3a9a63be9a479a95b451b708e432d895978d21d9130b5ee5dbe"
+    },
+    {
+      "name": "gauge",
+      "source": "line",
+      "file": "lucide/gauge.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/gauge.svg",
+      "sha256": "d7710543a5085c5a61d0bbac1da8b89ef28e541b38ed739357991dff33d475b5"
+    },
+    {
+      "name": "hard-drive",
+      "source": "line",
+      "file": "lucide/hard-drive.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/hard-drive.svg",
+      "sha256": "324363c40f54e4ca843de0ad1d023b063b70a26a83bb2e0a9e9f4aad9af37378"
+    },
+    {
+      "name": "wifi",
+      "source": "line",
+      "file": "lucide/wifi.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/wifi.svg",
+      "sha256": "5c4c795d014fa95d1e1038362df44a0f0f32ded9cb08c833ae72419ebadc9a91"
+    },
+    {
+      "name": "check",
+      "source": "line",
+      "file": "lucide/check.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/check.svg",
+      "sha256": "7f33acc9a77a61659531044525fc008edebe215bf4dcf1c789c8674ad3277db0"
+    },
+    {
+      "name": "x",
+      "source": "line",
+      "file": "lucide/x.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/x.svg",
+      "sha256": "4a9cdab38fbb96162e7dace28e33f4ca0e49d8963a6162abc3d4691b7d675117"
+    },
+    {
+      "name": "bookmark-plus",
+      "source": "line",
+      "file": "lucide/bookmark-plus.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/bookmark-plus.svg",
+      "sha256": "3c6b08ce8d32ea6c16606f2ce44d9f51d292b179947350a2ae91494a7905281b"
+    },
+    {
+      "name": "refresh-cw",
+      "source": "line",
+      "file": "lucide/refresh-cw.svg",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "icons/refresh-cw.svg",
+      "sha256": "2e10dd403c85a24f163d59fc6151aa21147fe9402e1305dfc8979208caee8944"
+    },
+    {
+      "name": "mongodb",
+      "source": "brand",
+      "file": "brands/mongodb.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/mongodb.svg",
+      "sha256": "6698757ee85997e8167b2eacaff8395d6987954185488f2e90b88ef387fec6c7"
+    },
+    {
+      "name": "redis",
+      "source": "brand",
+      "file": "brands/redis.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/redis.svg",
+      "sha256": "428b86deb14c8bdacdcdf75987fe454f367bcd078a7e4ae3f84de29aa5bdf136"
+    },
+    {
+      "name": "postgresql",
+      "source": "brand",
+      "file": "brands/postgresql.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/postgresql.svg",
+      "sha256": "c8ccadbd88c9312c2ad3734c4861b31d3485ce179ee91d64793143f83cfa745c"
+    },
+    {
+      "name": "mysql",
+      "source": "brand",
+      "file": "brands/mysql.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/mysql.svg",
+      "sha256": "67c144cc3e44ad14062a3f20ebe29c5e7eeb2c2c9c0f43cf48d87fe6291a8b2d"
+    },
+    {
+      "name": "rabbitmq",
+      "source": "brand",
+      "file": "brands/rabbitmq.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/rabbitmq.svg",
+      "sha256": "f4669bdce6518e330b7430501e07df8d7d01dc60fdd9a52b2bc6dd1cbd975263"
+    },
+    {
+      "name": "slack",
+      "source": "brand",
+      "file": "brands/slack.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "058e1fee2929ca5c12c5469f0719771411b04792",
+      "path": "icons/slack.svg",
+      "sha256": "f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d"
+    },
+    {
+      "name": "gmail",
+      "source": "brand",
+      "file": "brands/gmail.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/gmail.svg",
+      "sha256": "a537f5d85d9a27efa3a5d6086e8df6072ee93f76b4d176639a5e483f74b74b9f"
+    },
+    {
+      "name": "jira",
+      "source": "brand",
+      "file": "brands/jira.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/jira.svg",
+      "sha256": "68f8703698538ee7863bf69b72bf9f0d78a72d218e7eb7e0617237ae43ae5ade"
+    },
+    {
+      "name": "confluence",
+      "source": "brand",
+      "file": "brands/confluence.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/confluence.svg",
+      "sha256": "b9f1e0ae738e22ca281af813e8cc53e808a4c71d41adfa44bdc1a8d2c8134be3"
+    },
+    {
+      "name": "asana",
+      "source": "brand",
+      "file": "brands/asana.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/asana.svg",
+      "sha256": "ecdcda759ad672b2f4c90a872ba69ed0071e019741e01308f4bbbf8d4c54be0c"
+    },
+    {
+      "name": "googledocs",
+      "source": "brand",
+      "file": "brands/googledocs.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/googledocs.svg",
+      "sha256": "880b39680b64812e5203f366c08779e86c824e3a6264a8eefca2a56afbf79fa6"
+    },
+    {
+      "name": "googlecalendar",
+      "source": "brand",
+      "file": "brands/googlecalendar.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/googlecalendar.svg",
+      "sha256": "39b434d3264d123629a12509e9f5bdf57bf9e5ed9a6eafffb714cff5f05f032f"
+    },
+    {
+      "name": "openai",
+      "source": "brand",
+      "file": "brands/openai.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "cf471df7755a247c90fc615cdeb4b14daf678e6b",
+      "path": "icons/openai.svg",
+      "sha256": "2b4a04ddc2395b20d168694d3850ce2050a702c4a0cdeb4d8b31b9a970481a8c"
+    },
+    {
+      "name": "anthropic",
+      "source": "brand",
+      "file": "brands/anthropic.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/anthropic.svg",
+      "sha256": "1cc599f6ebce2016dc388cf84e54a52c6b13487655c7e243554d654c7bce1882"
+    },
+    {
+      "name": "googlegemini",
+      "source": "brand",
+      "file": "brands/googlegemini.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/googlegemini.svg",
+      "sha256": "a6228d8846040401e941a39ed17459785e8324dbb7b870ce84233c9b3e9863a0"
+    },
+    {
+      "name": "docker",
+      "source": "brand",
+      "file": "brands/docker.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/docker.svg",
+      "sha256": "65571291c261ef869c31540a38f3ca0f0ee3bb73f179c172211c8860f19a6359"
+    },
+    {
+      "name": "kubernetes",
+      "source": "brand",
+      "file": "brands/kubernetes.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/kubernetes.svg",
+      "sha256": "ceee2f4e87fa1533600672190c156194039f744fa9b5da10e83f002178e84b47"
+    },
+    {
+      "name": "apachekafka",
+      "source": "brand",
+      "file": "brands/apachekafka.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/apachekafka.svg",
+      "sha256": "659f015de2ae3aebdf75cf8b16ecff44026fee6031a4e98bc8102a19eef34c26"
+    },
+    {
+      "name": "github",
+      "source": "brand",
+      "file": "brands/github.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/github.svg",
+      "sha256": "3bf8cceead820aec50d4ee825a3fd02c5a1cd6665cc9cf4cbf3d9c8861a204bb"
+    },
+    {
+      "name": "python",
+      "source": "brand",
+      "file": "brands/python.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/python.svg",
+      "sha256": "ad9468e1c4903f73ae7eebfbe980f0f727a10db695be3d914e7d8bd25356a862"
+    },
+    {
+      "name": "react",
+      "source": "brand",
+      "file": "brands/react.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/react.svg",
+      "sha256": "ab9136a1a4a8be72ac6743e1bdd1912d878bd68d57787ea7a6c6838e3b23c01c"
+    },
+    {
+      "name": "nodedotjs",
+      "source": "brand",
+      "file": "brands/nodedotjs.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/nodedotjs.svg",
+      "sha256": "021851b758cde7d3e04819c3ac02047d0ff281c712e8387afa0c76a6dac6db6c"
+    },
+    {
+      "name": "typescript",
+      "source": "brand",
+      "file": "brands/typescript.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/typescript.svg",
+      "sha256": "7f023e8d1e767370306ec9437d2de5d5af97491d6208dd7799a3808a7c10a36a"
+    },
+    {
+      "name": "linkedin",
+      "source": "brand",
+      "file": "brands/linkedin.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "ea278fba079c63b9cbfad555b8a2867bb7899c2a",
+      "path": "icons/linkedin.svg",
+      "sha256": "2687ac468d96bd03e748dc8646ef6465cb4cc7f34b96e1d0bc86fcb3dd79121a"
+    },
+    {
+      "name": "x",
+      "source": "brand",
+      "file": "brands/x.svg",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "icons/x.svg",
+      "sha256": "693e68863eceb8dc9f72e2acd386ab9c20a10858dab2c076212f7084cb7a32fe"
+    }
+  ],
+  "licenses": [
+    {
+      "file": "lucide/LICENSE",
+      "repo": "lucide-icons/lucide",
+      "pinnedCommit": "94e4cb9d9db5907053ebf3636a97c45529cf776b",
+      "path": "LICENSE",
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "file": "brands/LICENSE",
+      "repo": "simple-icons/simple-icons",
+      "pinnedCommit": "7f18aaa676087b8240b6f4ff58a6720be282da59",
+      "path": "LICENSE.md",
+      "sha256": "9046848b63a5c92bff14e4accca80bd987e0623b74adf9226ce5198d312b79d5"
+    }
+  ],
+  "colors": {
+    "mongodb": "#47A248",
+    "redis": "#FF4438",
+    "postgresql": "#4169E1",
+    "mysql": "#4479A1",
+    "rabbitmq": "#FF6600",
+    "slack": "#4A154B",
+    "gmail": "#EA4335",
+    "jira": "#0052CC",
+    "confluence": "#172B4D",
+    "asana": "#F06A6A",
+    "googledocs": "#4285F4",
+    "googlecalendar": "#4285F4",
+    "openai": "#412991",
+    "anthropic": "#191919",
+    "googlegemini": "#8E75B2",
+    "docker": "#2496ED",
+    "kubernetes": "#326CE5",
+    "apachekafka": "#231F20",
+    "github": "#181717",
+    "python": "#3776AB",
+    "react": "#61DAFB",
+    "nodedotjs": "#5FA04E",
+    "typescript": "#3178C6",
+    "linkedin": "#0A66C2",
+    "x": "#000000"
+  },
+  "colorsSha256": "9323dffc85ab0ee1313c0a46b792af80506801d6f4ec640b927d7249db34765c"
+}

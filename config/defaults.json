@@ -1,0 +1,137 @@
+{
+  "frame": {
+    "width": 800,
+    "defaultHeight": 1000,
+    "padX": 32,
+    "titleZone": 110,
+    "footerZone": 60,
+    "gutter": 16
+  },
+  "caps": {
+    "primaryMaxBytes": 5000000,
+    "hardMaxBytes": 8000000,
+    "maxFrames": 250
+  },
+  "theme": "dark-teal",
+  "themeDefaults": {
+    "grain": true,
+    "nodeFontSize": 16,
+    "annotationFontSize": 20
+  },
+  "ladder": [
+    {
+      "rung": 0,
+      "stepMs": 40,
+      "fps": 25,
+      "width": 800,
+      "quality": 80,
+      "motionQuality": 90,
+      "lossyQuality": 90
+    },
+    {
+      "rung": 1,
+      "stepMs": 40,
+      "fps": 25,
+      "width": 800,
+      "quality": 80,
+      "motionQuality": 80,
+      "lossyQuality": 70
+    },
+    {
+      "rung": 2,
+      "stepMs": 40,
+      "fps": 25,
+      "width": 800,
+      "quality": 75,
+      "motionQuality": 70,
+      "lossyQuality": 50
+    },
+    {
+      "rung": 3,
+      "stepMs": 50,
+      "fps": 20,
+      "width": 800,
+      "quality": 80,
+      "motionQuality": 80,
+      "lossyQuality": 70
+    },
+    {
+      "rung": 4,
+      "stepMs": 50,
+      "fps": 20,
+      "width": 720,
+      "quality": 80,
+      "motionQuality": 80,
+      "lossyQuality": 70,
+      "grain": false,
+      "safeOnly": true
+    }
+  ],
+  "pillowLadder": [
+    {
+      "rung": 0,
+      "stepMs": 40,
+      "fps": 25,
+      "width": 800,
+      "paletteColors": 256
+    },
+    {
+      "rung": 3,
+      "stepMs": 50,
+      "fps": 20,
+      "width": 800,
+      "paletteColors": 256
+    },
+    {
+      "rung": 4,
+      "stepMs": 50,
+      "fps": 20,
+      "width": 720,
+      "paletteColors": 256,
+      "grain": false,
+      "safeOnly": true
+    }
+  ],
+  "launchArgs": [
+    "--font-render-hinting=none",
+    "--force-color-profile=srgb",
+    "--disable-lcd-text",
+    "--disable-gpu",
+    "--disable-font-subpixel-positioning"
+  ],
+  "maxParallelScenes": 2,
+  "paletteColors": 256,
+  "sampleCount": 8,
+  "markerMode": "auto",
+  "candidatePolicy": {
+    "preferPassingNative": true,
+    "maxPromotedFlickerPixels": 0
+  },
+  "ladderTuning": {
+    "measuredOn": "2026-09-05",
+    "basis": "Final complete P2 smoke run, 800px / 40ms. Preserve Q80 rung 0 and 5MB/8MB caps: all primary candidates are below 0.6MB; no lower quality or 20fps rung needed.",
+    "scenes": [
+      {
+        "id": "mcp-vs-skills",
+        "rung": 0,
+        "primaryBytes": 243712,
+        "nativeBytes": 451089,
+        "nativeFlickerPixelCount": 127777
+      },
+      {
+        "id": "react-loop",
+        "rung": 0,
+        "primaryBytes": 552204,
+        "nativeBytes": 682895,
+        "nativeFlickerPixelCount": 231306
+      },
+      {
+        "id": "sql-execution-order",
+        "rung": 0,
+        "primaryBytes": 422016,
+        "nativeBytes": 721475,
+        "nativeFlickerPixelCount": 41633
+      }
+    ]
+  }
+}

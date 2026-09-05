@@ -1,0 +1,320 @@
+{
+  "id": "solid-strategy",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "soft-light",
+  "grain": false,
+  "title": {
+    "text": "Strategy beats a payment if/else ladder",
+    "lines": [
+      "Strategy beats a payment",
+      "if/else ladder"
+    ],
+    "font": "display",
+    "size": 38,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "Strategy",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "OPEN FOR A NEW PROVIDER. CLOSED TO ANOTHER CHECKOUT EDIT.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-columns",
+    "columns": [
+      {
+        "id": "before",
+        "header": "BEFORE / BRANCH ON EVERY TYPE",
+        "x": 40,
+        "y": 205,
+        "w": 340,
+        "h": 686,
+        "accentFrom": "#d84b49",
+        "accentTo": "#f68b87"
+      },
+      {
+        "id": "after",
+        "header": "AFTER / INJECT ONE STRATEGY",
+        "x": 420,
+        "y": 205,
+        "w": 340,
+        "h": 686,
+        "accentFrom": "#32966a",
+        "accentTo": "#8cd9bf"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "checkout",
+      "label": "Checkout",
+      "x": 85,
+      "y": 270,
+      "w": 250,
+      "h": 85,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Knows every payment type"
+    },
+    {
+      "id": "payment-strategy",
+      "label": "PaymentStrategy",
+      "x": 455,
+      "y": 270,
+      "w": 270,
+      "h": 85,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "pay(amount)"
+    },
+    {
+      "id": "card",
+      "label": "Card",
+      "x": 485,
+      "y": 460,
+      "w": 230,
+      "h": 65,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One implementation"
+    },
+    {
+      "id": "paypal",
+      "label": "PayPal",
+      "x": 485,
+      "y": 585,
+      "w": 230,
+      "h": 65,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One implementation"
+    },
+    {
+      "id": "bank",
+      "label": "Bank transfer",
+      "x": 485,
+      "y": 710,
+      "w": 230,
+      "h": 65,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "One implementation"
+    }
+  ],
+  "edges": [
+    {
+      "id": "checkout-strategy",
+      "from": "checkout",
+      "to": "payment-strategy",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "refactor",
+        "pill": true
+      }
+    },
+    {
+      "id": "strategy-card",
+      "from": "payment-strategy",
+      "to": "card",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "choose",
+        "pill": true
+      }
+    },
+    {
+      "id": "strategy-paypal",
+      "from": "payment-strategy",
+      "to": "paypal",
+      "pathType": "orthogonal",
+      "fromAnchor": "left",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "waypoints": [
+        {
+          "x": 444,
+          "y": 312.5
+        },
+        {
+          "x": 444,
+          "y": 617.5
+        }
+      ]
+    },
+    {
+      "id": "strategy-bank",
+      "from": "payment-strategy",
+      "to": "bank",
+      "pathType": "orthogonal",
+      "fromAnchor": "right",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "waypoints": [
+        {
+          "x": 740,
+          "y": 312.5
+        },
+        {
+          "x": 740,
+          "y": 742.5
+        }
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "id": "bad",
+      "kind": "cross",
+      "attachTo": "checkout"
+    },
+    {
+      "id": "good",
+      "kind": "check",
+      "attachTo": "payment-strategy"
+    },
+    {
+      "id": "ladder-code",
+      "kind": "code",
+      "x": 60,
+      "y": 425,
+      "w": 300,
+      "fontSize": 15,
+      "language": "ts",
+      "lines": [
+        {
+          "text": "if (type === \"card\")",
+          "band": "danger"
+        },
+        {
+          "text": "  payCard(amount);"
+        },
+        {
+          "text": "else if (type === \"paypal\")"
+        },
+        {
+          "text": "  payPal(amount);"
+        },
+        {
+          "text": "else if (type === \"bank\")"
+        },
+        {
+          "text": "  payBank(amount);"
+        }
+      ]
+    },
+    {
+      "id": "extension-note",
+      "kind": "callout",
+      "text": "New provider? Another branch. Keep selection at the boundary.",
+      "x": 70,
+      "y": 639,
+      "maxWidth": 280,
+      "fontSize": 22,
+      "colorRole": "danger",
+      "arrow": false
+    },
+    {
+      "id": "strategy-call",
+      "kind": "code",
+      "x": 440,
+      "y": 800,
+      "w": 300,
+      "fontSize": 16,
+      "language": "ts",
+      "lines": [
+        {
+          "text": "strategy.pay(amount);",
+          "band": "mint"
+        }
+      ]
+    },
+    {
+      "id": "choice-note",
+      "kind": "callout",
+      "text": "One choice per checkout.",
+      "x": 462,
+      "y": 855,
+      "maxWidth": 275,
+      "fontSize": 21,
+      "colorRole": "success",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 5000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "checkout",
+          "payment-strategy",
+          "card",
+          "paypal",
+          "bank"
+        ],
+        "dwellMs": 1000,
+        "transitionMs": 160,
+        "scale": 1.025
+      },
+      {
+        "kind": "typing",
+        "targetId": "choice-note",
+        "text": "One choice per checkout.",
+        "startMs": 300,
+        "durationMs": 800,
+        "exitMs": 400,
+        "loopBehavior": "fade"
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "checkout-strategy",
+          "strategy-card",
+          "strategy-paypal",
+          "strategy-bank"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 40,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:diagif:schema:fact-sheet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "topic",
+    "retrievedAt",
+    "sources",
+    "facts"
+  ],
+  "properties": {
+    "topic": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 180
+    },
+    "retrievedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "facts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "sourceId",
+          "quote"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^fact-[a-z0-9-]{1,80}$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 300
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^src-[a-z0-9-]{6,80}$"
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 12,
+            "maxLength": 600
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "title",
+        "provider",
+        "publishedAt",
+        "engagement"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^src-[a-z0-9-]{6,80}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 2048
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "provider": {
+          "enum": [
+            "hn",
+            "github",
+            "reddit",
+            "duckduckgo",
+            "exa",
+            "tavily",
+            "brave",
+            "page"
+          ]
+        },
+        "publishedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "engagement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "score",
+            "comments"
+          ],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0
+            },
+            "comments": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

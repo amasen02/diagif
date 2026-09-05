@@ -1,0 +1,524 @@
+{
+  "scene": {
+    "id": "rag-pipeline",
+    "canvas": {
+      "width": 800,
+      "height": 1000
+    },
+    "theme": "dark-teal",
+    "grain": false,
+    "title": {
+      "text": "RAG: Search, Then Generate",
+      "lines": [
+        "RAG: Search, Then",
+        "Generate"
+      ],
+      "font": "display",
+      "size": 44,
+      "align": "center",
+      "x": 400,
+      "y": 58,
+      "accentWords": [
+        {
+          "word": "Search",
+          "colorRole": "cyan"
+        },
+        {
+          "word": "Generate",
+          "colorRole": "orange"
+        }
+      ],
+      "shadow": {
+        "kind": "none"
+      },
+      "subtitle": {
+        "text": "A searchable reference shelf for an LLM",
+        "font": "condensed",
+        "size": 16
+      }
+    },
+    "layout": {
+      "kind": "freeform"
+    },
+    "nodes": [
+      {
+        "id": "source-docs",
+        "label": "Source docs",
+        "secondaryLabel": "PDFs · text · Notion",
+        "x": 25,
+        "y": 210,
+        "w": 140,
+        "h": 90,
+        "shape": "document",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "loader",
+        "label": "Document loader",
+        "secondaryLabel": "Loads source material",
+        "x": 190,
+        "y": 210,
+        "w": 140,
+        "h": 90,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "chunks",
+        "label": "Chunks",
+        "secondaryLabel": "Fit context size",
+        "x": 355,
+        "y": 210,
+        "w": 140,
+        "h": 90,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "embeddings",
+        "label": "Embeddings",
+        "secondaryLabel": "Text converted to vectors",
+        "x": 520,
+        "y": 210,
+        "w": 140,
+        "h": 90,
+        "shape": "rounded-rect",
+        "colorRole": "mint"
+      },
+      {
+        "id": "vector-store",
+        "label": "Vector store",
+        "secondaryLabel": "Searchable vectorized text",
+        "x": 680,
+        "y": 210,
+        "w": 110,
+        "h": 90,
+        "shape": "database",
+        "colorRole": "orange"
+      },
+      {
+        "id": "query",
+        "label": "User query",
+        "secondaryLabel": "Information need",
+        "x": 25,
+        "y": 535,
+        "w": 140,
+        "h": 90,
+        "shape": "pill",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "retriever",
+        "label": "Retriever",
+        "secondaryLabel": "Finds relevant chunks",
+        "x": 210,
+        "y": 535,
+        "w": 140,
+        "h": 90,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "augmented-prompt",
+        "label": "Augmented prompt",
+        "secondaryLabel": "Retrieved info added",
+        "x": 400,
+        "y": 535,
+        "w": 180,
+        "h": 90,
+        "shape": "panel",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "llm",
+        "label": "LLM",
+        "secondaryLabel": "Generates the answer",
+        "x": 620,
+        "y": 535,
+        "w": 155,
+        "h": 90,
+        "shape": "rounded-rect",
+        "colorRole": "mint"
+      }
+    ],
+    "edges": [
+      {
+        "id": "load",
+        "from": "source-docs",
+        "to": "loader",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "label": {
+          "text": "load",
+          "pill": true
+        }
+      },
+      {
+        "id": "split",
+        "from": "loader",
+        "to": "chunks",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "label": {
+          "text": "split",
+          "pill": true
+        }
+      },
+      {
+        "id": "embed",
+        "from": "chunks",
+        "to": "embeddings",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "mint",
+        "label": {
+          "text": "embed",
+          "pill": true
+        }
+      },
+      {
+        "id": "store",
+        "from": "embeddings",
+        "to": "vector-store",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "label": {
+          "text": "store",
+          "pill": true
+        }
+      },
+      {
+        "id": "search",
+        "from": "query",
+        "to": "retriever",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "orange",
+        "label": {
+          "text": "search",
+          "pill": true
+        }
+      },
+      {
+        "id": "retrieve",
+        "from": "vector-store",
+        "to": "retriever",
+        "pathType": "curved",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "curveOffset": -120,
+        "colorRole": "orange",
+        "label": {
+          "text": "retrieve",
+          "pill": true
+        }
+      },
+      {
+        "id": "add-context",
+        "from": "retriever",
+        "to": "augmented-prompt",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "cyan",
+        "label": {
+          "text": "add context",
+          "pill": true
+        }
+      },
+      {
+        "id": "generate",
+        "from": "augmented-prompt",
+        "to": "llm",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "colorRole": "mint",
+        "label": {
+          "text": "generate",
+          "pill": true
+        }
+      }
+    ],
+    "timeline": {
+      "durationMs": 6000,
+      "fps": 25,
+      "loop": true,
+      "animations": [
+        {
+          "kind": "marching-dash",
+          "edgeIds": [
+            "load",
+            "split",
+            "embed",
+            "store",
+            "search",
+            "retrieve",
+            "add-context",
+            "generate"
+          ],
+          "dash": 8,
+          "gap": 8,
+          "cyclesPerLoop": 3,
+          "speedPxPerSec": 180
+        },
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "load",
+            "split",
+            "embed",
+            "store"
+          ],
+          "count": 2,
+          "cyclesPerLoop": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "cyan",
+          "size": 9,
+          "fadeMs": 160
+        },
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "search",
+            "retrieve",
+            "add-context",
+            "generate"
+          ],
+          "count": 2,
+          "cyclesPerLoop": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "orange",
+          "size": 9,
+          "fadeMs": 160
+        }
+      ]
+    },
+    "annotations": []
+  },
+  "claims": [
+    {
+      "path": "/title/text",
+      "text": "RAG: Search, Then Generate",
+      "supports": [
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/title/lines/0",
+      "text": "RAG: Search, Then",
+      "supports": [
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/title/lines/1",
+      "text": "Generate",
+      "supports": [
+        "fact-rag-combines-search-generation"
+      ]
+    },
+    {
+      "path": "/title/subtitle/text",
+      "text": "A searchable reference shelf for an LLM",
+      "supports": [
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/0/label",
+      "text": "Source docs",
+      "supports": [
+        "fact-retrieves-external-data"
+      ]
+    },
+    {
+      "path": "/nodes/0/secondaryLabel",
+      "text": "PDFs · text · Notion",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/1/label",
+      "text": "Document loader",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/1/secondaryLabel",
+      "text": "Loads source material",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/2/label",
+      "text": "Chunks",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/2/secondaryLabel",
+      "text": "Fit context size",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/3/label",
+      "text": "Embeddings",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/nodes/3/secondaryLabel",
+      "text": "Text converted to vectors",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/nodes/4/label",
+      "text": "Vector store",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/4/secondaryLabel",
+      "text": "Searchable vectorized text",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/5/label",
+      "text": "User query",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/5/secondaryLabel",
+      "text": "Information need",
+      "supports": [
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/6/label",
+      "text": "Retriever",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/6/secondaryLabel",
+      "text": "Finds relevant chunks",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/7/label",
+      "text": "Augmented prompt",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/7/secondaryLabel",
+      "text": "Retrieved info added",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/8/label",
+      "text": "LLM",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/8/secondaryLabel",
+      "text": "Generates the answer",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/edges/0/label/text",
+      "text": "load",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/edges/1/label/text",
+      "text": "split",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/edges/2/label/text",
+      "text": "embed",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/edges/3/label/text",
+      "text": "store",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/edges/4/label/text",
+      "text": "search",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/edges/5/label/text",
+      "text": "retrieve",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/edges/6/label/text",
+      "text": "add context",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/edges/7/label/text",
+      "text": "generate",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    }
+  ],
+  "authoringNotes": [
+    "Pipeline separates document preparation from query-time retrieval and generation.",
+    "Labels use concise visual shorthand while claims preserve the supplied grounding.",
+    "Ambient particles and marching dashes animate both preparation and answer paths."
+  ]
+}

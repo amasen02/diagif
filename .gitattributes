@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.gif binary
+*.png binary
+*.ttf binary
+*.woff2 binary
+*.xz binary
+*.zip binary
+*.svg text
+
+# Preserve upstream licence whitespace verbatim.
+fonts/**/OFL.txt -whitespace
+fonts/**/LICENSE.txt -whitespace
+assets/icons/**/LICENSE* -whitespace

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "brain": {
+    "provider": "codex-cli",
+    "openai": {
+      "model": null,
+      "baseUrl": null,
+      "pricePer1MTokens": null,
+      "reasoningEffort": null
+    },
+    "anthropic": {
+      "model": null,
+      "baseUrl": null,
+      "legacyToolMode": false
+    },
+    "codex": {
+      "model": "gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "extraArgs": []
+    },
+    "claudeCli": {
+      "model": "claude-sonnet-5",
+      "apiKeyMode": false
+    }
+  },
+  "research": {
+    "providers": [
+      "hn",
+      "github",
+      "page"
+    ],
+    "allowHtmlSearch": false,
+    "cacheTtlDays": 7,
+    "scoutCacheTtlHours": 6
+  },
+  "limits": {
+    "maxModelCalls": 28,
+    "modelTimeoutMs": {
+      "scout": 180000,
+      "research": 180000,
+      "brief": 180000,
+      "scene": 300000,
+      "critic": 180000
+    },
+    "cliStartupGraceMs": 60000,
+    "maxOutputTokens": {
+      "scout": 4096,
+      "research": 6000,
+      "brief": 3000,
+      "scene": 16000,
+      "critic": 2000
+    },
+    "fetchTimeoutMs": 15000,
+    "researchDeadlineMs": 90000,
+    "inspectTimeoutMs": 60000,
+    "renderTimeoutMs": 900000,
+    "runTimeoutMs": 1800000
+  }
+}

@@ -1,0 +1,500 @@
+{
+  "scene": {
+    "id": "rag-searchable-reference-shelf",
+    "canvas": {
+      "width": 800,
+      "height": 1000
+    },
+    "theme": "dark-teal",
+    "grain": false,
+    "title": {
+      "text": "RAG gives an LLM a searchable reference shelf.",
+      "lines": [
+        "RAG gives an LLM a searchable",
+        "reference shelf."
+      ],
+      "font": "display",
+      "size": 40,
+      "align": "center",
+      "x": 400,
+      "y": 58,
+      "accentWords": [
+        {
+          "word": "RAG",
+          "colorRole": "cyan"
+        },
+        {
+          "word": "searchable",
+          "colorRole": "orange"
+        }
+      ],
+      "shadow": {
+        "kind": "none"
+      },
+      "subtitle": {
+        "text": "Prepare external documents, retrieve relevant chunks, then augment the prompt",
+        "font": "condensed",
+        "size": 16
+      }
+    },
+    "layout": {
+      "kind": "freeform"
+    },
+    "nodes": [
+      {
+        "id": "source-docs",
+        "label": "Source documents",
+        "secondaryLabel": "PDFs · text · Notion",
+        "icon": {
+          "name": "file-text"
+        },
+        "x": 40,
+        "y": 210,
+        "w": 155,
+        "h": 92,
+        "shape": "document",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "chunks",
+        "label": "Chunks",
+        "secondaryLabel": "Fit model context size",
+        "icon": {
+          "name": "scissors"
+        },
+        "x": 225,
+        "y": 210,
+        "w": 155,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "mint"
+      },
+      {
+        "id": "embeddings",
+        "label": "Embedding model",
+        "secondaryLabel": "Text chunks → vectors",
+        "icon": {
+          "name": "sparkles"
+        },
+        "x": 410,
+        "y": 210,
+        "w": 155,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "vector-store",
+        "label": "Vector store",
+        "secondaryLabel": "Store and search vectors",
+        "icon": {
+          "name": "database"
+        },
+        "x": 595,
+        "y": 210,
+        "w": 165,
+        "h": 92,
+        "shape": "database",
+        "colorRole": "magenta"
+      },
+      {
+        "id": "user-query",
+        "label": "User query",
+        "secondaryLabel": "Information need",
+        "icon": {
+          "name": "search"
+        },
+        "x": 40,
+        "y": 555,
+        "w": 155,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "neutral"
+      },
+      {
+        "id": "retriever",
+        "label": "Retriever",
+        "secondaryLabel": "Find relevant chunks",
+        "icon": {
+          "name": "filter"
+        },
+        "x": 225,
+        "y": 555,
+        "w": 155,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "cyan"
+      },
+      {
+        "id": "augmented-prompt",
+        "label": "Augmented prompt",
+        "secondaryLabel": "Retrieved info added",
+        "icon": {
+          "name": "file-plus"
+        },
+        "x": 410,
+        "y": 555,
+        "w": 155,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "orange"
+      },
+      {
+        "id": "llm-answer",
+        "label": "LLM answer",
+        "secondaryLabel": "Generate a relevant answer",
+        "icon": {
+          "name": "bot"
+        },
+        "x": 595,
+        "y": 555,
+        "w": 165,
+        "h": 92,
+        "shape": "rounded-rect",
+        "colorRole": "mint"
+      }
+    ],
+    "edges": [
+      {
+        "id": "load-docs",
+        "from": "source-docs",
+        "to": "chunks",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "load",
+          "pill": true
+        },
+        "colorRole": "cyan",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "split-docs",
+        "from": "chunks",
+        "to": "embeddings",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "split",
+          "pill": true
+        },
+        "colorRole": "mint",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "embed-chunks",
+        "from": "embeddings",
+        "to": "vector-store",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "vectorize",
+          "pill": true
+        },
+        "colorRole": "orange",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "query-retriever",
+        "from": "user-query",
+        "to": "retriever",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "search",
+          "pill": true
+        },
+        "colorRole": "cyan",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "store-retriever",
+        "from": "vector-store",
+        "to": "retriever",
+        "pathType": "orthogonal",
+        "fromAnchor": "bottom",
+        "toAnchor": "top",
+        "waypoints": [
+          {
+            "x": 677,
+            "y": 450
+          },
+          {
+            "x": 302,
+            "y": 450
+          }
+        ],
+        "label": {
+          "text": "relevant chunks",
+          "pill": true
+        },
+        "colorRole": "magenta",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "retrieve-prompt",
+        "from": "retriever",
+        "to": "augmented-prompt",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "add context",
+          "pill": true
+        },
+        "colorRole": "orange",
+        "strokeWidth": 2.5
+      },
+      {
+        "id": "prompt-generation",
+        "from": "augmented-prompt",
+        "to": "llm-answer",
+        "pathType": "straight",
+        "fromAnchor": "right",
+        "toAnchor": "left",
+        "label": {
+          "text": "generate",
+          "pill": true
+        },
+        "colorRole": "mint",
+        "strokeWidth": 2.5
+      }
+    ],
+    "timeline": {
+      "durationMs": 6000,
+      "fps": 25,
+      "loop": true,
+      "animations": [
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "load-docs",
+            "split-docs",
+            "embed-chunks"
+          ],
+          "count": 2,
+          "cyclesPerLoop": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "orange",
+          "size": 9,
+          "fadeMs": 160
+        },
+        {
+          "kind": "particle-flow",
+          "edgeIds": [
+            "query-retriever",
+            "store-retriever",
+            "retrieve-prompt",
+            "prompt-generation"
+          ],
+          "count": 2,
+          "cyclesPerLoop": 2,
+          "speedPxPerSec": 180,
+          "colorRole": "cyan",
+          "size": 9,
+          "fadeMs": 160
+        },
+        {
+          "kind": "pulse",
+          "nodeIds": [
+            "retriever",
+            "augmented-prompt",
+            "llm-answer"
+          ],
+          "cyclesPerLoop": 2,
+          "periodMs": 2800,
+          "scale": 1.04
+        }
+      ]
+    },
+    "annotations": []
+  },
+  "claims": [
+    {
+      "path": "/title/text",
+      "text": "RAG gives an LLM a searchable reference shelf.",
+      "supports": [
+        "authoring"
+      ]
+    },
+    {
+      "path": "/title/subtitle/text",
+      "text": "Prepare external documents, retrieve relevant chunks, then augment the prompt",
+      "supports": [
+        "fact-loader-ingests-data",
+        "fact-retriever-uses-query",
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/0/label",
+      "text": "Source documents",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/0/secondaryLabel",
+      "text": "PDFs · text · Notion",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/nodes/1/label",
+      "text": "Chunks",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/1/secondaryLabel",
+      "text": "Fit model context size",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/nodes/2/label",
+      "text": "Embedding model",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/nodes/2/secondaryLabel",
+      "text": "Text chunks → vectors",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/nodes/3/label",
+      "text": "Vector store",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/3/secondaryLabel",
+      "text": "Store and search vectors",
+      "supports": [
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/nodes/4/label",
+      "text": "User query",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/4/secondaryLabel",
+      "text": "Information need",
+      "supports": [
+        "authoring"
+      ]
+    },
+    {
+      "path": "/nodes/5/label",
+      "text": "Retriever",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/5/secondaryLabel",
+      "text": "Find relevant chunks",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/nodes/6/label",
+      "text": "Augmented prompt",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/6/secondaryLabel",
+      "text": "Retrieved info added",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/7/label",
+      "text": "LLM answer",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/nodes/7/secondaryLabel",
+      "text": "Generate a relevant answer",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/edges/0/label/text",
+      "text": "load",
+      "supports": [
+        "fact-loader-ingests-data"
+      ]
+    },
+    {
+      "path": "/edges/1/label/text",
+      "text": "split",
+      "supports": [
+        "fact-splitter-creates-chunks"
+      ]
+    },
+    {
+      "path": "/edges/2/label/text",
+      "text": "vectorize",
+      "supports": [
+        "fact-embeddings-create-vectors"
+      ]
+    },
+    {
+      "path": "/edges/3/label/text",
+      "text": "search",
+      "supports": [
+        "fact-retriever-uses-query",
+        "fact-vector-store-enables-search"
+      ]
+    },
+    {
+      "path": "/edges/4/label/text",
+      "text": "relevant chunks",
+      "supports": [
+        "fact-retriever-uses-query"
+      ]
+    },
+    {
+      "path": "/edges/5/label/text",
+      "text": "add context",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    },
+    {
+      "path": "/edges/6/label/text",
+      "text": "generate",
+      "supports": [
+        "fact-augments-prompt"
+      ]
+    }
+  ],
+  "authoringNotes": [
+    "The upper row prepares external documents for retrieval; the lower row traces a query through retrieval and generation.",
+    "Animated particles distinguish document preparation from query-time context flow."
+  ]
+}

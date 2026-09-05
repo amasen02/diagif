@@ -1,0 +1,167 @@
+{
+  "explain RAG": {
+    "topic": "explain RAG",
+    "retrievedAt": "2026-09-05T00:00:00Z",
+    "sources": [
+      {
+        "id": "src-mock-0-guide",
+        "url": "https://example.com/mock/rag",
+        "title": "explain RAG reference",
+        "provider": "page",
+        "publishedAt": null,
+        "engagement": {
+          "score": 0,
+          "comments": 0
+        }
+      }
+    ],
+    "facts": [
+      {
+        "id": "fact-1",
+        "statement": "Retrieval finds documents relevant to a question.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "Retrieval finds documents relevant to a question."
+      },
+      {
+        "id": "fact-2",
+        "statement": "Retrieved documents provide context for answer generation.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "Retrieved documents provide context for answer generation."
+      },
+      {
+        "id": "fact-3",
+        "statement": "A language model generates answers from the supplied context.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "A language model generates answers from the supplied context."
+      },
+      {
+        "id": "fact-4",
+        "statement": "Source citations help readers inspect supporting evidence.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "Source citations help readers inspect supporting evidence."
+      },
+      {
+        "id": "fact-5",
+        "statement": "Chunking divides long documents into smaller passages.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "Chunking divides long documents into smaller passages."
+      },
+      {
+        "id": "fact-6",
+        "statement": "Retrieval quality affects the relevance of generated answers.",
+        "sourceId": "src-mock-0-guide",
+        "quote": "Retrieval quality affects the relevance of generated answers."
+      }
+    ]
+  },
+  "REST API optimisation techniques": {
+    "topic": "REST API optimisation techniques",
+    "retrievedAt": "2026-09-05T00:00:00Z",
+    "sources": [
+      {
+        "id": "src-mock-1-guide",
+        "url": "https://example.com/mock/rest",
+        "title": "REST API optimisation techniques reference",
+        "provider": "page",
+        "publishedAt": null,
+        "engagement": {
+          "score": 0,
+          "comments": 0
+        }
+      }
+    ],
+    "facts": [
+      {
+        "id": "fact-1",
+        "statement": "Pagination limits the number of returned records.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Pagination limits the number of returned records."
+      },
+      {
+        "id": "fact-2",
+        "statement": "Caching reuses responses for repeated read requests.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Caching reuses responses for repeated read requests."
+      },
+      {
+        "id": "fact-3",
+        "statement": "Compression reduces the size of response payloads.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Compression reduces the size of response payloads."
+      },
+      {
+        "id": "fact-4",
+        "statement": "Indexes help databases locate matching records efficiently.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Indexes help databases locate matching records efficiently."
+      },
+      {
+        "id": "fact-5",
+        "statement": "Connection reuse avoids repeated connection setup costs.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Connection reuse avoids repeated connection setup costs."
+      },
+      {
+        "id": "fact-6",
+        "statement": "Rate limits bound the number of client requests.",
+        "sourceId": "src-mock-1-guide",
+        "quote": "Rate limits bound the number of client requests."
+      }
+    ]
+  },
+  "agentic AI": {
+    "topic": "agentic AI",
+    "retrievedAt": "2026-09-05T00:00:00Z",
+    "sources": [
+      {
+        "id": "src-mock-2-guide",
+        "url": "https://example.com/mock/agentic",
+        "title": "agentic AI reference",
+        "provider": "page",
+        "publishedAt": null,
+        "engagement": {
+          "score": 0,
+          "comments": 0
+        }
+      }
+    ],
+    "facts": [
+      {
+        "id": "fact-1",
+        "statement": "An agent starts with a defined task goal.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "An agent starts with a defined task goal."
+      },
+      {
+        "id": "fact-2",
+        "statement": "Planning divides the goal into actionable steps.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "Planning divides the goal into actionable steps."
+      },
+      {
+        "id": "fact-3",
+        "statement": "Tools allow an agent to interact with external systems.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "Tools allow an agent to interact with external systems."
+      },
+      {
+        "id": "fact-4",
+        "statement": "Observations provide feedback about tool execution results.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "Observations provide feedback about tool execution results."
+      },
+      {
+        "id": "fact-5",
+        "statement": "Evaluation checks whether the task goal was met.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "Evaluation checks whether the task goal was met."
+      },
+      {
+        "id": "fact-6",
+        "statement": "Budgets and stop rules bound the agent loop.",
+        "sourceId": "src-mock-2-guide",
+        "quote": "Budgets and stop rules bound the agent loop."
+      }
+    ]
+  }
+}

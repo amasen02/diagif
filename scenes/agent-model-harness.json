@@ -1,0 +1,285 @@
+{
+  "id": "agent-model-harness",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "The model is not the product. The harness is.",
+    "lines": [
+      "The model is not the product.",
+      "The harness is."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 60,
+    "accentWords": [
+      {
+        "word": "model",
+        "colorRole": "cyan"
+      },
+      {
+        "word": "harness",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "THE LOOP TURNS MODEL OUTPUT INTO CONTROLLED ACTION",
+      "font": "condensed",
+      "size": 19
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "llm",
+      "label": "LLM",
+      "x": 310,
+      "y": 200,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "OpenAI / Anthropic",
+      "icon": {
+        "name": "openai",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "agent-loop",
+      "label": "Agent loop",
+      "x": 310,
+      "y": 425,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Budget + stop rules",
+      "icon": {
+        "name": "bot",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "tools",
+      "label": "Tools / MCP",
+      "x": 550,
+      "y": 425,
+      "w": 190,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Read, search, execute",
+      "icon": {
+        "name": "settings",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "context",
+      "label": "Context",
+      "x": 60,
+      "y": 425,
+      "w": 190,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Task + state + results",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "sandbox",
+      "label": "Sandbox",
+      "x": 550,
+      "y": 670,
+      "w": 190,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Docker + policy",
+      "icon": {
+        "name": "docker",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "evals",
+      "label": "Evals",
+      "x": 310,
+      "y": 760,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Measure task success",
+      "icon": {
+        "name": "check",
+        "source": "line",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "propose",
+      "from": "llm",
+      "to": "agent-loop",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "next action",
+        "pill": true
+      }
+    },
+    {
+      "id": "dispatch",
+      "from": "agent-loop",
+      "to": "tools",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "call",
+        "pill": true
+      }
+    },
+    {
+      "id": "state",
+      "from": "agent-loop",
+      "to": "context",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "state",
+        "pill": true
+      }
+    },
+    {
+      "id": "isolate",
+      "from": "tools",
+      "to": "sandbox",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "bounded execution",
+        "pill": true
+      }
+    },
+    {
+      "id": "measure",
+      "from": "agent-loop",
+      "to": "evals",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "trace + outcomes",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "model-note",
+      "kind": "callout",
+      "text": "The model proposes. The loop decides what runs.",
+      "x": 60,
+      "y": 235,
+      "maxWidth": 210,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": true,
+      "target": "llm",
+      "targetAnchor": "left"
+    },
+    {
+      "id": "controls-note",
+      "kind": "callout",
+      "text": "Tools need permissions. Loops need budgets. Quality needs evidence.",
+      "x": 60,
+      "y": 650,
+      "maxWidth": 220,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "propose",
+          "dispatch",
+          "isolate"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 3,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "agent-loop"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.04
+      }
+    ]
+  }
+}

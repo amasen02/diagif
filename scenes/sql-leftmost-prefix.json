@@ -1,0 +1,272 @@
+{
+  "id": "sql-leftmost-prefix",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "soft-light",
+  "grain": false,
+  "title": {
+    "text": "Why your composite index is ignored",
+    "lines": [
+      "Why your composite index",
+      "is ignored"
+    ],
+    "font": "display",
+    "size": 42,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "index",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "A B-TREE IS SORTED BY LAST, THEN FIRST WITHIN EACH LAST.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "suffix-section",
+        "header": "MISSING THE LEADING KEY",
+        "y": 145,
+        "h": 405,
+        "colorRole": "orange"
+      },
+      {
+        "id": "prefix-section",
+        "header": "MATCHING THE PREFIX",
+        "y": 550,
+        "h": 380,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "index",
+      "label": "Index (last, first)",
+      "x": 520,
+      "y": 225,
+      "w": 220,
+      "h": 105,
+      "shape": "database",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "B-tree on people",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "where-first",
+      "label": "WHERE first",
+      "x": 60,
+      "y": 385,
+      "w": 220,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "first = 'Ada'"
+    },
+    {
+      "id": "seq-scan",
+      "label": "Seq scan",
+      "x": 520,
+      "y": 385,
+      "w": 220,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "May be cheaper"
+    },
+    {
+      "id": "where-last",
+      "label": "WHERE last",
+      "x": 60,
+      "y": 685,
+      "w": 220,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "last = 'Lovelace'"
+    },
+    {
+      "id": "index-scan",
+      "label": "Index scan",
+      "x": 520,
+      "y": 685,
+      "w": 220,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Narrow leading-key range"
+    }
+  ],
+  "edges": [
+    {
+      "id": "suffix-scan",
+      "from": "where-first",
+      "to": "seq-scan",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2,
+      "label": {
+        "text": "no leading bound",
+        "pill": true
+      }
+    },
+    {
+      "id": "prefix-scan",
+      "from": "where-last",
+      "to": "index-scan",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "bounded range",
+        "pill": true
+      }
+    },
+    {
+      "id": "index-range",
+      "from": "index",
+      "to": "index-scan",
+      "pathType": "orthogonal",
+      "fromAnchor": "right",
+      "toAnchor": "right",
+      "colorRole": "cyan",
+      "strokeWidth": 2,
+      "waypoints": [
+        {
+          "x": 754,
+          "y": 277.5
+        },
+        {
+          "x": 754,
+          "y": 730
+        }
+      ],
+      "dashed": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "index-ddl",
+      "kind": "code",
+      "x": 60,
+      "y": 225,
+      "w": 400,
+      "h": 75.0,
+      "language": "sql",
+      "fontSize": 17,
+      "lines": [
+        {
+          "text": "CREATE INDEX people_name"
+        },
+        {
+          "text": "ON people (last, first);"
+        }
+      ]
+    },
+    {
+      "id": "cost-note",
+      "kind": "callout",
+      "text": "Missing prefix often means more work.",
+      "x": 70,
+      "y": 495,
+      "maxWidth": 400,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "prefix-query",
+      "kind": "code",
+      "x": 60,
+      "y": 620,
+      "w": 660,
+      "h": 51.0,
+      "language": "sql",
+      "fontSize": 18,
+      "lines": [
+        {
+          "text": "SELECT * FROM people WHERE last = 'Lovelace';"
+        }
+      ]
+    },
+    {
+      "id": "explain-note",
+      "kind": "callout",
+      "text": "Not a ban: skip scans and costs can change the plan. Check EXPLAIN.",
+      "x": 180,
+      "y": 830,
+      "maxWidth": 400,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 7000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "suffix-scan"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 4,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "prefix-scan"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 4,
+        "colorRole": "mint",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

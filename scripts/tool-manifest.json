@@ -1,0 +1,51 @@
+{
+  "gifski": {
+    "version": "1.34.0",
+    "url": "https://github.com/ImageOptim/gifski/releases/download/1.34.0/gifski-1.34.0.tar.xz",
+    "archiveSha256": "b9b6591aa163123d737353d9c8581efdf3234d28eeaa45329b31da905cd5a996",
+    "members": {
+      "win/gifski.exe": {
+        "size": 1362432,
+        "sha256": "9da8553cbe71c0facf544634b4e377262ea30d34becdc0ca077306342e776295",
+        "magic": "4d5a9000"
+      },
+      "mac/gifski": {
+        "size": 43955680,
+        "sha256": "f5f73e09fba870a21e8c502f3191e58633e5081b1914f71e32d5ee714450e839",
+        "magic": "cafebabe",
+        "archs": [
+          "x86_64",
+          "arm64"
+        ]
+      },
+      "linux/gifski": {
+        "size": 1136808,
+        "sha256": "937ebdad4ec80c7ef647bc838083fd3948f92d6af206cf341724501eb640b8f7",
+        "magic": "7f454c46",
+        "e_machine": "0x3e"
+      }
+    },
+    "platforms": {
+      "win32-x64": "win/gifski.exe",
+      "darwin-x64": "mac/gifski",
+      "darwin-arm64": "mac/gifski",
+      "linux-x64": "linux/gifski"
+    }
+  },
+  "gifsicle": {
+    "version": "1.95",
+    "url": "https://eternallybored.org/misc/gifsicle/releases/gifsicle-1.95-win64.zip",
+    "archiveSha256": "7e47dd0bfd5ee47f911464c57faeed89a8709a7625dd1c449b16579889539ee8",
+    "members": {
+      "gifsicle.exe": {
+        "size": 294616,
+        "sha256": "6f60cc7f696ab4b861bf9e6fb5b4fd940b3cb6b9731e2ef04708334af95a7de4",
+        "magic": "4d5a9000"
+      }
+    },
+    "platforms": {
+      "win32-x64": "gifsicle.exe"
+    },
+    "note": "no official macOS/Linux binaries; use brew/apt; PATH discovery only"
+  }
+}

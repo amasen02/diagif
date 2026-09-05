@@ -1,0 +1,334 @@
+{
+  "id": "dotnet-timeout",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "paper",
+  "grain": true,
+  "title": {
+    "text": "Cancellation is not an endpoint timeout",
+    "lines": [
+      "Cancellation is not",
+      "an endpoint timeout"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 57,
+    "accentWords": [
+      {
+        "word": "timeout",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 2,
+      "dy": 2
+    },
+    "subtitle": {
+      "text": "ASP.NET CORE: SET A BUDGET. PASS THE TOKEN.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "client",
+      "label": "Client",
+      "x": 55,
+      "y": 225,
+      "w": 170,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Request /reports",
+      "icon": {
+        "name": "laptop",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 1
+    },
+    {
+      "id": "endpoint",
+      "label": "Endpoint",
+      "x": 305,
+      "y": 225,
+      "w": 180,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "ASP.NET Core",
+      "icon": {
+        "name": "server",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 2
+    },
+    {
+      "id": "deadline",
+      "label": "Deadline",
+      "x": 565,
+      "y": 225,
+      "w": 180,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Explicit 2s policy",
+      "icon": {
+        "name": "timer",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 3
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "x": 565,
+      "y": 450,
+      "w": 180,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Cancellable query",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 4
+    },
+    {
+      "id": "token",
+      "label": "CancellationToken",
+      "x": 285,
+      "y": 450,
+      "w": 220,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Cooperative stop signal",
+      "icon": {
+        "name": "bell",
+        "source": "line",
+        "size": 26
+      }
+    },
+    {
+      "id": "fallback",
+      "label": "Fallback",
+      "x": 55,
+      "y": 450,
+      "w": 175,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Defined timeout response",
+      "icon": {
+        "name": "shield",
+        "source": "line",
+        "size": 26
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "request",
+      "from": "client",
+      "to": "endpoint",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "HTTP",
+        "pill": true
+      }
+    },
+    {
+      "id": "budget",
+      "from": "endpoint",
+      "to": "deadline",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "policy",
+        "pill": true
+      }
+    },
+    {
+      "id": "query",
+      "from": "deadline",
+      "to": "database",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "work + token",
+        "pill": true,
+        "t": 0.8
+      }
+    },
+    {
+      "id": "token-pass",
+      "from": "endpoint",
+      "to": "token",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "pass through",
+        "pill": true,
+        "t": 0.25
+      }
+    },
+    {
+      "id": "expired",
+      "from": "deadline",
+      "to": "fallback",
+      "pathType": "orthogonal",
+      "fromAnchor": "left",
+      "toAnchor": "top",
+      "colorRole": "orange",
+      "label": {
+        "text": "on expiry",
+        "pill": true,
+        "t": 0.72
+      },
+      "waypoints": [
+        {
+          "x": 530,
+          "y": 275
+        },
+        {
+          "x": 530,
+          "y": 390
+        },
+        {
+          "x": 142,
+          "y": 390
+        }
+      ]
+    },
+    {
+      "id": "db-token",
+      "from": "token",
+      "to": "database",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "label": {
+        "text": "observe",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "insight",
+      "kind": "callout",
+      "text": "A token carries cancellation. It does not create a deadline.",
+      "x": 70,
+      "y": 610,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "cooperate",
+      "kind": "callout",
+      "text": "Cancelling the wait cannot force uncooperative work to stop.",
+      "x": 435,
+      "y": 610,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "neutral",
+      "arrow": false
+    },
+    {
+      "id": "timeout-code",
+      "kind": "code",
+      "x": 65,
+      "y": 730,
+      "w": 670,
+      "h": 144,
+      "language": "text",
+      "font": "code",
+      "fontSize": 16,
+      "lines": [
+        {
+          "text": "builder.Services.AddRequestTimeouts();",
+          "band": "cyan"
+        },
+        {
+          "text": "app.UseRequestTimeouts();",
+          "band": "cyan"
+        },
+        {
+          "text": "app.MapGet(\"/reports\", async (CancellationToken ct) =>"
+        },
+        {
+          "text": "    await db.Reports.ToListAsync(ct))",
+          "band": "mint"
+        },
+        {
+          "text": "  .WithRequestTimeout(TimeSpan.FromSeconds(2));",
+          "band": "orange"
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "request",
+          "budget",
+          "query"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 3,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

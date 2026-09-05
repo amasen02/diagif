@@ -1,0 +1,81 @@
+{
+  "id": "mindmap-4b-1l-none",
+  "canvas": {
+    "width": 800,
+    "height": 1100
+  },
+  "theme": "paper",
+  "grain": false,
+  "title": {
+    "text": "Agentic AI",
+    "align": "center"
+  },
+  "brand": {
+    "style": "none"
+  },
+  "layout": {
+    "kind": "mindmap",
+    "mindmap": {
+      "root": {
+        "id": "root",
+        "label": "Agentic AI",
+        "icon": {
+          "name": "bot"
+        }
+      },
+      "branches": [
+        {
+          "id": "branch-0",
+          "label": "Plan",
+          "colorRole": "cyan",
+          "leaves": [
+            {
+              "id": "leaf-0-0",
+              "label": "Inputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-1",
+          "label": "Act",
+          "colorRole": "mint",
+          "leaves": [
+            {
+              "id": "leaf-1-0",
+              "label": "Inputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-2",
+          "label": "Observe",
+          "colorRole": "orange",
+          "leaves": [
+            {
+              "id": "leaf-2-0",
+              "label": "Inputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-3",
+          "label": "Reflect",
+          "colorRole": "magenta",
+          "leaves": [
+            {
+              "id": "leaf-3-0",
+              "label": "Inputs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nodes": [],
+  "edges": [],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "animations": []
+  }
+}

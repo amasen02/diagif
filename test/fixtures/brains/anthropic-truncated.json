@@ -1,0 +1,13 @@
+{
+  "stop_reason": "max_tokens",
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"topic\":"
+    }
+  ],
+  "usage": {
+    "input_tokens": 100,
+    "output_tokens": 4
+  }
+}

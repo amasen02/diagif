@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; font-src data:; img-src data:">
+<title>Tech GIF render host</title>
+<!--INJECT:FONTS-->
+<style>
+html, body { margin: 0; padding: 0; overflow: hidden; }
+*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }
+#root { width: 800px; line-height: 0; }
+#root > svg { display: block; }
+#text-measure { position: absolute; left: -10000px; top: 0; visibility: hidden; overflow: visible; }
+</style>
+</head>
+<body><div id="root"></div><svg id="text-measure" xmlns="http://www.w3.org/2000/svg"><text></text></svg>
+<!--INJECT:RUNTIME-->
+</body>
+</html>

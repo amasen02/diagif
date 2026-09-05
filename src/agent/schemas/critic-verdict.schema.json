@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:diagif:schema:critic-verdict",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mode",
+    "verdict",
+    "checks",
+    "edits"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "vision",
+        "heuristic"
+      ]
+    },
+    "verdict": {
+      "enum": [
+        "pass",
+        "repair"
+      ]
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readability",
+        "overlap",
+        "seam",
+        "motion",
+        "hook",
+        "brand"
+      ],
+      "properties": {
+        "readability": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        },
+        "overlap": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        },
+        "seam": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        },
+        "motion": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        },
+        "hook": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        },
+        "brand": {
+          "enum": [
+            "pass",
+            "fail",
+            "unmeasured"
+          ]
+        }
+      }
+    },
+    "edits": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target",
+          "instruction",
+          "severity"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "instruction": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 280
+          },
+          "severity": {
+            "enum": [
+              "must",
+              "should"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

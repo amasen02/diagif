@@ -1,0 +1,32 @@
+<svg id="scene" data-scene-id="contract-fixture" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <metadata id="fixture-scene">{"id":"contract-fixture","canvas":{"width":800,"height":1000},"theme":"dark-teal","title":{"text":"Contract fixture"},"nodes":[{"id":"mcp-host","label":"MCP Host","x":55,"y":180,"w":130,"h":76,"shape":"rounded-rect"},{"id":"mcp-client","label":"MCP Client","x":300,"y":180,"w":140,"h":76,"shape":"rounded-rect"},{"id":"mcp-server","label":"MCP Server","x":555,"y":335,"w":150,"h":90,"shape":"rounded-rect"}],"edges":[{"id":"e-host-client","from":"mcp-host","to":"mcp-client","pathType":"straight","dashed":true},{"id":"e-client-server","from":"mcp-client","to":"mcp-server","pathType":"orthogonal"}],"timeline":{"durationMs":4000,"fps":25,"loop":true,"animations":[{"kind":"marching-dash","edgeIds":["e-host-client"],"dash":8,"gap":8,"speedPxPerSec":48},{"kind":"particle-flow","edgeIds":["e-host-client","e-client-server"],"count":2,"cyclesPerLoop":2}]}}</metadata>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+  <g id="layer-bg"><rect width="800" height="1000" fill="#042F2E"/></g>
+  <g id="layer-sections"/>
+  <g id="layer-edges">
+    <g class="edge" data-edge-id="e-host-client" data-reveal-id="e-host-client">
+      <path class="edge-path" data-edge-id="e-host-client" d="M 185,218 L 300,218" fill="none" stroke="#22D3EE" stroke-width="2" stroke-dasharray="8 8"/>
+      <path class="edge-tip" data-edge-id="e-host-client" d="M 288,218 L 300,218" fill="none" stroke="#22D3EE" stroke-width="2" marker-end="url(#arrow)"/>
+      <g class="edge-label" data-edge-id="e-host-client"/>
+    </g>
+    <g class="edge" data-edge-id="e-client-server" data-reveal-id="e-client-server">
+      <path class="edge-path" data-edge-id="e-client-server" d="M 440,218 L 498,218 L 498,380 L 555,380" fill="none" stroke="#34D399" stroke-width="2"/>
+      <path class="edge-tip" data-edge-id="e-client-server" d="M 543,380 L 555,380" fill="none" stroke="#34D399" stroke-width="2" marker-end="url(#arrow)"/>
+      <g class="edge-label" data-edge-id="e-client-server"/>
+    </g>
+  </g>
+  <g id="layer-particles"/>
+  <g id="layer-nodes">
+    <g class="node" data-node-id="mcp-host" data-reveal-id="mcp-host" data-cx="120" data-cy="218"><rect class="node-shadow" x="59" y="184" width="130" height="76" fill="#000000"/><rect class="node-shape" x="55" y="180" width="130" height="76" rx="12" fill="#155E75" stroke="#22D3EE"/><g class="node-icon"/><g class="node-badge"/></g>
+    <g class="node" data-node-id="mcp-client" data-reveal-id="mcp-client" data-cx="370" data-cy="218"><rect class="node-shadow" x="304" y="184" width="140" height="76" fill="#000000"/><rect class="node-shape" x="300" y="180" width="140" height="76" rx="12" fill="#155E75" stroke="#22D3EE"/><g class="node-icon"/><g class="node-badge"/></g>
+    <g class="node" data-node-id="mcp-server" data-reveal-id="mcp-server" data-cx="630" data-cy="380"><rect class="node-shadow" x="559" y="339" width="150" height="90" fill="#000000"/><rect class="node-shape" x="555" y="335" width="150" height="90" rx="12" fill="#065F46" stroke="#34D399"/><g class="node-icon"/><g class="node-badge"/></g>
+  </g>
+  <g id="layer-labels" font-family="Inter" font-size="16" fill="#FFFFFF" text-anchor="middle">
+    <g class="node-label" data-node-id="mcp-host"><text class="typing-target" data-text-id="mcp-host" data-full-text="MCP Host" x="120" y="224"><tspan x="120">MCP Host</tspan></text></g>
+    <g class="node-label" data-node-id="mcp-client"><text class="typing-target" data-text-id="mcp-client" data-full-text="MCP Client" x="370" y="224"><tspan x="370">MCP Client</tspan></text></g>
+    <g class="node-label" data-node-id="mcp-server"><text class="typing-target" data-text-id="mcp-server" data-full-text="MCP Server" x="630" y="386"><tspan x="630">MCP Server</tspan></text></g>
+  </g>
+  <g id="layer-annotations"/>
+  <g id="layer-title"><text x="400" y="60" text-anchor="middle" font-family="Lilita One" font-size="44" fill="#FFFFFF">Contract fixture</text></g>
+  <g id="layer-brand"/>
+</svg>

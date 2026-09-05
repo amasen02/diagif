@@ -1,0 +1,157 @@
+{
+  "id": "mindmap-8b-2l-none",
+  "canvas": {
+    "width": 800,
+    "height": 1100
+  },
+  "theme": "paper",
+  "grain": false,
+  "title": {
+    "text": "Agentic AI",
+    "align": "center"
+  },
+  "brand": {
+    "style": "none"
+  },
+  "layout": {
+    "kind": "mindmap",
+    "mindmap": {
+      "root": {
+        "id": "root",
+        "label": "Agentic AI",
+        "icon": {
+          "name": "bot"
+        }
+      },
+      "branches": [
+        {
+          "id": "branch-0",
+          "label": "Plan",
+          "colorRole": "cyan",
+          "leaves": [
+            {
+              "id": "leaf-0-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-0-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-1",
+          "label": "Act",
+          "colorRole": "mint",
+          "leaves": [
+            {
+              "id": "leaf-1-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-1-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-2",
+          "label": "Observe",
+          "colorRole": "orange",
+          "leaves": [
+            {
+              "id": "leaf-2-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-2-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-3",
+          "label": "Reflect",
+          "colorRole": "magenta",
+          "leaves": [
+            {
+              "id": "leaf-3-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-3-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-4",
+          "label": "Tools",
+          "colorRole": "cyan",
+          "leaves": [
+            {
+              "id": "leaf-4-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-4-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-5",
+          "label": "Memory",
+          "colorRole": "mint",
+          "leaves": [
+            {
+              "id": "leaf-5-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-5-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-6",
+          "label": "Goals",
+          "colorRole": "orange",
+          "leaves": [
+            {
+              "id": "leaf-6-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-6-1",
+              "label": "Outputs"
+            }
+          ]
+        },
+        {
+          "id": "branch-7",
+          "label": "Safety",
+          "colorRole": "magenta",
+          "leaves": [
+            {
+              "id": "leaf-7-0",
+              "label": "Inputs"
+            },
+            {
+              "id": "leaf-7-1",
+              "label": "Outputs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nodes": [],
+  "edges": [],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "animations": []
+  }
+}

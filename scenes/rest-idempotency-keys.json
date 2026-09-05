@@ -1,0 +1,333 @@
+{
+  "id": "rest-idempotency-keys",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "Retries are safe only when the key and body agree",
+    "lines": [
+      "Retries are safe only when",
+      "the key and body agree"
+    ],
+    "font": "display",
+    "size": 42,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "key",
+        "colorRole": "orange"
+      },
+      {
+        "word": "body",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "SAME KEY + SAME REQUEST: REPLAY THE STORED RESPONSE.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "request-section",
+        "header": "LOOK UP THE ORIGINAL REQUEST",
+        "y": 145,
+        "h": 455,
+        "colorRole": "cyan"
+      },
+      {
+        "id": "result-section",
+        "header": "OUTCOMES",
+        "y": 600,
+        "h": 330,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "client",
+      "label": "Client",
+      "x": 60,
+      "y": 245,
+      "w": 180,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Retry after timeout",
+      "icon": {
+        "name": "laptop",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "post",
+      "label": "POST /pay",
+      "x": 310,
+      "y": 245,
+      "w": 180,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Idempotency-Key: K",
+      "icon": {
+        "name": "mail",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "key-store",
+      "label": "Key store",
+      "x": 560,
+      "y": 245,
+      "w": 180,
+      "h": 100,
+      "shape": "database",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "K + hash + response",
+      "icon": {
+        "name": "postgresql",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "fingerprint",
+      "label": "Fingerprint",
+      "x": 310,
+      "y": 450,
+      "w": 180,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Compare request bodies",
+      "icon": {
+        "name": "file-code",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "ledger",
+      "label": "Ledger",
+      "x": 85,
+      "y": 710,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Replay; no second charge",
+      "icon": {
+        "name": "database",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "reject",
+      "label": "422",
+      "x": 495,
+      "y": 710,
+      "w": 230,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "danger",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Body mismatch: reject",
+      "icon": {
+        "name": "shield",
+        "source": "line",
+        "size": 28
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-post",
+      "from": "client",
+      "to": "post",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2
+    },
+    {
+      "id": "post-store",
+      "from": "post",
+      "to": "key-store",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2
+    },
+    {
+      "id": "store-fingerprint",
+      "from": "key-store",
+      "to": "fingerprint",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "strokeWidth": 2,
+      "label": {
+        "text": "existing K",
+        "pill": true
+      }
+    },
+    {
+      "id": "fingerprint-ledger",
+      "from": "fingerprint",
+      "to": "ledger",
+      "pathType": "curved",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "same body",
+        "pill": true
+      },
+      "curveOffset": 30
+    },
+    {
+      "id": "fingerprint-reject",
+      "from": "fingerprint",
+      "to": "reject",
+      "pathType": "curved",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "danger",
+      "strokeWidth": 2,
+      "label": {
+        "text": "changed body",
+        "pill": true
+      },
+      "curveOffset": -30
+    }
+  ],
+  "annotations": [
+    {
+      "id": "atomic-note",
+      "kind": "callout",
+      "text": "Claim the key and commit the effect atomically.",
+      "x": 60,
+      "y": 415,
+      "maxWidth": 205,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "scope-note",
+      "kind": "callout",
+      "text": "Scope keys to the caller + operation. Define expiry.",
+      "x": 545,
+      "y": 455,
+      "maxWidth": 195,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    },
+    {
+      "id": "same-body",
+      "kind": "code",
+      "x": 60,
+      "y": 845,
+      "w": 310,
+      "h": 72.0,
+      "language": "text",
+      "fontSize": 16,
+      "lines": [
+        {
+          "text": "K + {amount: 100}"
+        },
+        {
+          "text": "Replay stored result"
+        }
+      ]
+    },
+    {
+      "id": "changed-body",
+      "kind": "code",
+      "x": 430,
+      "y": 845,
+      "w": 310,
+      "h": 72.0,
+      "language": "text",
+      "fontSize": 16,
+      "lines": [
+        {
+          "text": "K + {amount: 200}"
+        },
+        {
+          "text": "Contract: 422 on mismatch"
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "durationMs": 8000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "client-post",
+          "post-store",
+          "store-fingerprint",
+          "fingerprint-ledger"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "fingerprint"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.04
+      }
+    ]
+  }
+}

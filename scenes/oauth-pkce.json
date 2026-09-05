@@ -1,0 +1,332 @@
+{
+  "id": "oauth-pkce",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "PKCE: a stolen code is not a login",
+    "lines": [
+      "PKCE: a stolen code",
+      "is not a login"
+    ],
+    "font": "display",
+    "size": 42,
+    "align": "center",
+    "x": 400,
+    "y": 58,
+    "accentWords": [
+      {
+        "word": "PKCE",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "BIND THE AUTHORIZATION CODE TO THE CLIENT THAT STARTED THE FLOW.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "freeform"
+  },
+  "nodes": [
+    {
+      "id": "browser",
+      "label": "Browser client",
+      "x": 60,
+      "y": 220,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Starts authorization",
+      "icon": {
+        "name": "globe",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 1
+    },
+    {
+      "id": "verifier",
+      "label": "Verifier",
+      "x": 310,
+      "y": 220,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Random; kept by client",
+      "icon": {
+        "name": "key",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 2
+    },
+    {
+      "id": "challenge",
+      "label": "Challenge",
+      "x": 560,
+      "y": 220,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "S256(verifier)",
+      "icon": {
+        "name": "file-code",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 3
+    },
+    {
+      "id": "auth",
+      "label": "Auth server",
+      "x": 560,
+      "y": 445,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Binds code to challenge",
+      "icon": {
+        "name": "lock",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 4
+    },
+    {
+      "id": "code",
+      "label": "Code",
+      "x": 310,
+      "y": 445,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Redirected to client",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 5
+    },
+    {
+      "id": "check",
+      "label": "Verify proof",
+      "x": 310,
+      "y": 670,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Hash matches challenge?",
+      "icon": {
+        "name": "shield",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 6
+    },
+    {
+      "id": "token",
+      "label": "Token",
+      "x": 60,
+      "y": 670,
+      "w": 180,
+      "h": 110,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "soft"
+      },
+      "secondaryLabel": "Issued only on match",
+      "icon": {
+        "name": "key",
+        "source": "line",
+        "size": 28
+      },
+      "badge": 7
+    }
+  ],
+  "edges": [
+    {
+      "id": "browser-verifier",
+      "from": "browser",
+      "to": "verifier",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2
+    },
+    {
+      "id": "verifier-challenge",
+      "from": "verifier",
+      "to": "challenge",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2
+    },
+    {
+      "id": "challenge-auth",
+      "from": "challenge",
+      "to": "auth",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "strokeWidth": 2,
+      "label": {
+        "text": "authorize + S256",
+        "pill": true
+      }
+    },
+    {
+      "id": "auth-code",
+      "from": "auth",
+      "to": "code",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "orange",
+      "strokeWidth": 2,
+      "label": {
+        "text": "redirect",
+        "pill": true
+      }
+    },
+    {
+      "id": "code-check",
+      "from": "code",
+      "to": "check",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "code + verifier",
+        "pill": true
+      }
+    },
+    {
+      "id": "check-token",
+      "from": "check",
+      "to": "token",
+      "pathType": "straight",
+      "fromAnchor": "left",
+      "toAnchor": "right",
+      "colorRole": "mint",
+      "strokeWidth": 2,
+      "label": {
+        "text": "match",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "stolen-note",
+      "kind": "callout",
+      "text": "Stolen code alone? No verifier, no token.",
+      "x": 60,
+      "y": 435,
+      "maxWidth": 210,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    },
+    {
+      "id": "server-note",
+      "kind": "callout",
+      "text": "The server checks the proof at the token endpoint.",
+      "x": 545,
+      "y": 675,
+      "maxWidth": 205,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "s256-formula",
+      "kind": "code",
+      "x": 60,
+      "y": 845,
+      "w": 680,
+      "h": 75.0,
+      "language": "text",
+      "fontSize": 17,
+      "lines": [
+        {
+          "text": "challenge = BASE64URL(SHA256(verifier))"
+        },
+        {
+          "text": "Use S256; keep the verifier secret until exchange."
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "browser-verifier",
+          "verifier-challenge",
+          "challenge-auth",
+          "auth-code",
+          "code-check",
+          "check-token"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 2,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      },
+      {
+        "kind": "pulse",
+        "nodeIds": [
+          "check"
+        ],
+        "cyclesPerLoop": 2,
+        "scale": 1.04
+      }
+    ]
+  }
+}

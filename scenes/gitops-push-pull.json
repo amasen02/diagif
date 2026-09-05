@@ -1,0 +1,371 @@
+{
+  "id": "gitops-push-pull",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "CI deploys. GitOps owns desired state.",
+    "lines": [
+      "CI deploys.",
+      "GitOps owns desired state."
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 57,
+    "accentWords": [
+      {
+        "word": "GitOps",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 2,
+      "dy": 2
+    },
+    "subtitle": {
+      "text": "PUSH CHANGES ONCE. RECONCILE STATE CONTINUOUSLY.",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-comparison",
+    "divider": {
+      "style": "dotted"
+    },
+    "sections": [
+      {
+        "id": "upper-section",
+        "header": "Push: the pipeline acts",
+        "headerStyle": "chip",
+        "y": 155,
+        "h": 345,
+        "colorRole": "cyan"
+      },
+      {
+        "id": "lower-section",
+        "header": "Pull: reconcile state",
+        "headerStyle": "chip",
+        "y": 500,
+        "h": 430,
+        "colorRole": "mint"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "commit",
+      "label": "Commit",
+      "x": 50,
+      "y": 245,
+      "w": 150,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Source change",
+      "icon": {
+        "name": "github",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 1
+    },
+    {
+      "id": "ci",
+      "label": "CI",
+      "x": 310,
+      "y": 245,
+      "w": 165,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Build + test",
+      "icon": {
+        "name": "github",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 2
+    },
+    {
+      "id": "registry",
+      "label": "Registry",
+      "x": 580,
+      "y": 245,
+      "w": 165,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Versioned image",
+      "icon": {
+        "name": "docker",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 3
+    },
+    {
+      "id": "push-cluster",
+      "label": "Cluster",
+      "x": 535,
+      "y": 390,
+      "w": 210,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Pipeline credentials",
+      "icon": {
+        "name": "kubernetes",
+        "source": "brand",
+        "size": 26
+      }
+    },
+    {
+      "id": "git-repo",
+      "label": "Git repo",
+      "x": 50,
+      "y": 620,
+      "w": 195,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Versioned desired state",
+      "icon": {
+        "name": "github",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 4
+    },
+    {
+      "id": "controller",
+      "label": "Controller",
+      "x": 315,
+      "y": 620,
+      "w": 180,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Observe + reconcile",
+      "icon": {
+        "name": "refresh-cw",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 5
+    },
+    {
+      "id": "cluster",
+      "label": "Cluster",
+      "x": 565,
+      "y": 620,
+      "w": 180,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Observed live state",
+      "icon": {
+        "name": "kubernetes",
+        "source": "brand",
+        "size": 26
+      },
+      "badge": 6
+    }
+  ],
+  "edges": [
+    {
+      "id": "commit-ci",
+      "from": "commit",
+      "to": "ci",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "trigger",
+        "pill": true
+      }
+    },
+    {
+      "id": "ci-registry",
+      "from": "ci",
+      "to": "registry",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "publish",
+        "pill": true
+      }
+    },
+    {
+      "id": "ci-push",
+      "from": "ci",
+      "to": "push-cluster",
+      "pathType": "orthogonal",
+      "fromAnchor": "bottom",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "deploy",
+        "pill": true
+      },
+      "waypoints": [
+        {
+          "x": 392,
+          "y": 435
+        }
+      ]
+    },
+    {
+      "id": "ci-git",
+      "from": "ci",
+      "to": "git-repo",
+      "pathType": "orthogonal",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "update image ref",
+        "pill": true,
+        "t": 0.76
+      },
+      "waypoints": [
+        {
+          "x": 392,
+          "y": 575
+        },
+        {
+          "x": 147,
+          "y": 575
+        }
+      ]
+    },
+    {
+      "id": "pull",
+      "from": "git-repo",
+      "to": "controller",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "pull",
+        "pill": true
+      }
+    },
+    {
+      "id": "apply",
+      "from": "controller",
+      "to": "cluster",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "label": {
+        "text": "apply",
+        "pill": true
+      }
+    },
+    {
+      "id": "observe",
+      "from": "cluster",
+      "to": "controller",
+      "pathType": "curved",
+      "fromAnchor": "bottom",
+      "toAnchor": "bottom",
+      "colorRole": "mint",
+      "label": {
+        "text": "observe drift",
+        "pill": true
+      },
+      "curveOffset": -90
+    }
+  ],
+  "annotations": [
+    {
+      "id": "push-note",
+      "kind": "callout",
+      "text": "CI needs deployment access for the push path.",
+      "x": 55,
+      "y": 390,
+      "maxWidth": 255,
+      "fontSize": 21,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "reconcile-note",
+      "kind": "callout",
+      "text": "Git records intent. The controller keeps bringing live state back.",
+      "x": 75,
+      "y": 805,
+      "maxWidth": 335,
+      "fontSize": 23,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "drift-note",
+      "kind": "callout",
+      "text": "A green pipeline is a moment. Reconciliation is a loop.",
+      "x": 445,
+      "y": 825,
+      "maxWidth": 290,
+      "fontSize": 22,
+      "colorRole": "orange",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "commit-ci",
+          "ci-git",
+          "pull",
+          "apply",
+          "observe"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 1,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

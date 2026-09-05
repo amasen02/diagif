@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      TECH_GIFS_GIFSKI: /nonexistent
+      TECH_GIFS_GIFSICLE: /nonexistent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        id: py
+        with:
+          python-version: '3.12'
+      - name: Select Python
+        shell: bash
+        env:
+          PYTHON_PATH: ${{ steps.py.outputs.python-path }}
+        run: echo "TECH_GIFS_PYTHON=$PYTHON_PATH" >> "$GITHUB_ENV"
+      - run: npm ci
+      - name: Cache Chromium on Linux
+        if: runner.os == 'Linux'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-1.62.0
+      - name: Cache Chromium on Windows
+        if: runner.os == 'Windows'
+        uses: actions/cache@v4
+        with:
+          path: ~/AppData/Local/ms-playwright
+          key: ${{ runner.os }}-playwright-1.62.0
+      - run: npx playwright install chromium
+      - name: Install Linux browser libraries
+        if: runner.os == 'Linux'
+        run: |
+          npx playwright install-deps chromium
+      - run: python -m pip install -r requirements.txt
+      - run: npm test
+      - name: Render baseline scene with Pillow
+        shell: bash
+        run: node src/cli.js render scenes/mcp-vs-skills.json --manifest "$RUNNER_TEMP/m.json"
+      - name: Render mock scene with Pillow
+        shell: bash
+        run: node src/cli.js render test/fixtures/agent-mock-scene.json --manifest "$RUNNER_TEMP/mock-m.json"
+      - name: Offline agent dry run
+        shell: bash
+        env:
+          DIAGIF_OFFLINE: '1'
+        run: node bin/diagif.js make "explain RAG" --brain mock --dry-run --out "$RUNNER_TEMP/out"
+      - run: node scripts/sanitize-public-docs.js --check
+      - name: Retain failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-${{ matrix.os }}
+          path: |
+            out/
+            work/
+            output/
+            ${{ runner.temp }}/out/
+            ${{ runner.temp }}/m.json
+            ${{ runner.temp }}/mock-m.json
+          if-no-files-found: ignore
+          retention-days: 7

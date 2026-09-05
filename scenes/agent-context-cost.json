@@ -1,0 +1,306 @@
+{
+  "id": "agent-context-cost",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "black-card",
+  "grain": false,
+  "title": {
+    "text": "Your agent’s context window is an invoice",
+    "lines": [
+      "Your agent’s context window",
+      "is an invoice"
+    ],
+    "font": "display",
+    "size": 40,
+    "align": "center",
+    "x": 400,
+    "y": 60,
+    "accentWords": [
+      {
+        "word": "context",
+        "colorRole": "cyan"
+      },
+      {
+        "word": "invoice",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "none"
+    },
+    "subtitle": {
+      "text": "EVERY TURN REUSES SOME TOKENS AND ADDS NEW ONES",
+      "font": "condensed",
+      "size": 19
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-columns",
+    "columns": [
+      {
+        "id": "left-frame",
+        "header": "WHAT YOU SEND",
+        "x": 40,
+        "y": 210,
+        "w": 300,
+        "h": 570,
+        "accentFrom": "#42CBEA",
+        "accentTo": "#75D6B4"
+      },
+      {
+        "id": "right-frame",
+        "header": "WHAT YOU PAY FOR",
+        "x": 460,
+        "y": 210,
+        "w": 300,
+        "h": 570,
+        "accentFrom": "#F6AC65",
+        "accentTo": "#DC80B1"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "system",
+      "label": "System prompt",
+      "x": 75,
+      "y": 240,
+      "w": 230,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Stable instructions",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "schemas",
+      "label": "Tool schemas",
+      "x": 75,
+      "y": 415,
+      "w": 230,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Load only needed tools",
+      "icon": {
+        "name": "settings",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "history",
+      "label": "History",
+      "x": 75,
+      "y": 590,
+      "w": 230,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Compact old results",
+      "icon": {
+        "name": "folder",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "cache",
+      "label": "Cache",
+      "x": 495,
+      "y": 240,
+      "w": 230,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Reuse a stable prefix",
+      "icon": {
+        "name": "database",
+        "source": "line",
+        "size": 28
+      }
+    },
+    {
+      "id": "model",
+      "label": "Model",
+      "x": 495,
+      "y": 450,
+      "w": 230,
+      "h": 105,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Input + generated output",
+      "icon": {
+        "name": "openai",
+        "source": "brand",
+        "size": 28
+      }
+    },
+    {
+      "id": "bill",
+      "label": "Bill",
+      "x": 495,
+      "y": 650,
+      "w": 230,
+      "h": 95,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Tokens, cache, tool charges"
+    }
+  ],
+  "edges": [
+    {
+      "id": "prefix",
+      "from": "system",
+      "to": "cache",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "stable prefix",
+        "pill": true
+      }
+    },
+    {
+      "id": "tools-input",
+      "from": "schemas",
+      "to": "model",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "cyan",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "schemas",
+        "pill": true
+      }
+    },
+    {
+      "id": "history-input",
+      "from": "history",
+      "to": "model",
+      "pathType": "straight",
+      "fromAnchor": "right",
+      "toAnchor": "left",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "recent state",
+        "pill": true
+      }
+    },
+    {
+      "id": "cache-input",
+      "from": "cache",
+      "to": "model",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "cached input",
+        "pill": true
+      }
+    },
+    {
+      "id": "usage",
+      "from": "model",
+      "to": "bill",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "orange",
+      "strokeWidth": 2.5,
+      "label": {
+        "text": "meter usage",
+        "pill": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "id": "cache-note",
+      "kind": "callout",
+      "text": "Cache hits can cost less. They still occupy context.",
+      "x": 60,
+      "y": 825,
+      "maxWidth": 315,
+      "fontSize": 22,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "trim-note",
+      "kind": "callout",
+      "text": "Keep prefixes stable. Trim tools and history before each call.",
+      "x": 435,
+      "y": 825,
+      "maxWidth": 300,
+      "fontSize": 22,
+      "colorRole": "cyan",
+      "arrow": false
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "sequential-highlight",
+        "order": [
+          "system",
+          "schemas",
+          "history",
+          "cache",
+          "model",
+          "bill"
+        ],
+        "transitionMs": 120,
+        "scale": 1.04
+      },
+      {
+        "kind": "marching-dash",
+        "edgeIds": [
+          "prefix",
+          "tools-input",
+          "history-input",
+          "cache-input",
+          "usage"
+        ],
+        "dash": 8,
+        "gap": 8,
+        "cyclesPerLoop": 48,
+        "speedPxPerSec": 128
+      }
+    ]
+  }
+}

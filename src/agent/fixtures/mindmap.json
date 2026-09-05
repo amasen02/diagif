@@ -1,0 +1,82 @@
+{
+  "id": "agent-mock-mindmap",
+  "canvas": {
+    "width": 800,
+    "height": 1100
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "Agentic AI: a controlled loop",
+    "size": 36,
+    "align": "center",
+    "x": 400,
+    "y": 60
+  },
+  "layout": {
+    "kind": "mindmap",
+    "mindmap": {
+      "root": {
+        "id": "agentic-ai",
+        "label": "Agentic AI",
+        "icon": {
+          "name": "bot"
+        }
+      },
+      "branches": [
+        {
+          "id": "plan",
+          "label": "Plan",
+          "colorRole": "cyan",
+          "leaves": [
+            {
+              "id": "plan-leaf",
+              "label": "Set the goal"
+            }
+          ]
+        },
+        {
+          "id": "act",
+          "label": "Act",
+          "colorRole": "mint",
+          "leaves": [
+            {
+              "id": "act-leaf",
+              "label": "Use tools"
+            }
+          ]
+        },
+        {
+          "id": "observe",
+          "label": "Observe",
+          "colorRole": "orange",
+          "leaves": [
+            {
+              "id": "observe-leaf",
+              "label": "Read results"
+            }
+          ]
+        },
+        {
+          "id": "evaluate",
+          "label": "Evaluate",
+          "colorRole": "magenta",
+          "leaves": [
+            {
+              "id": "evaluate-leaf",
+              "label": "Check progress"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nodes": [],
+  "edges": [],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": []
+  }
+}

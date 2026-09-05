@@ -1,0 +1,364 @@
+{
+  "id": "angular-defer-hydration",
+  "canvas": {
+    "width": 800,
+    "height": 1000
+  },
+  "theme": "dark-teal",
+  "grain": false,
+  "title": {
+    "text": "@defer and hydrate: same syntax, opposite timing",
+    "lines": [
+      "@defer and hydrate:",
+      "same syntax, opposite timing"
+    ],
+    "font": "display",
+    "size": 36,
+    "align": "center",
+    "x": 400,
+    "y": 57,
+    "accentWords": [
+      {
+        "word": "hydrate",
+        "colorRole": "orange"
+      }
+    ],
+    "shadow": {
+      "kind": "offset",
+      "dx": 2,
+      "dy": 2
+    },
+    "subtitle": {
+      "text": "ANGULAR: DELAY THE CONTENT OR DELAY ITS INTERACTIVITY",
+      "font": "condensed",
+      "size": 18
+    }
+  },
+  "brand": {"style":"none"},
+  "layout": {
+    "kind": "split-columns",
+    "columns": [
+      {
+        "id": "defer-column",
+        "header": "DEFER: CONTENT LATER",
+        "x": 40,
+        "y": 200,
+        "w": 340,
+        "h": 515,
+        "accentFrom": "#22d3ee",
+        "accentTo": "#22d3ee"
+      },
+      {
+        "id": "hydrate-column",
+        "header": "HYDRATE: HTML FIRST",
+        "x": 420,
+        "y": 200,
+        "w": 340,
+        "h": 515,
+        "accentFrom": "#a6e3ce",
+        "accentTo": "#a6e3ce"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "placeholder",
+      "label": "Placeholder",
+      "x": 80,
+      "y": 240,
+      "w": 260,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "SSR sends a placeholder",
+      "icon": {
+        "name": "file-text",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 1
+    },
+    {
+      "id": "server-html",
+      "label": "Server HTML",
+      "x": 460,
+      "y": 240,
+      "w": 260,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Real content, not interactive",
+      "icon": {
+        "name": "file-code",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 1
+    },
+    {
+      "id": "viewport-defer",
+      "label": "Viewport",
+      "x": 80,
+      "y": 400,
+      "w": 260,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Placeholder enters view",
+      "icon": {
+        "name": "monitor",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 2
+    },
+    {
+      "id": "viewport",
+      "label": "Viewport",
+      "x": 460,
+      "y": 400,
+      "w": 260,
+      "h": 90,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "SSR content enters view",
+      "icon": {
+        "name": "monitor",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 2
+    },
+    {
+      "id": "defer",
+      "label": "@defer",
+      "x": 80,
+      "y": 555,
+      "w": 260,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "orange",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Fetch JS + render content",
+      "icon": {
+        "name": "zap",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 3
+    },
+    {
+      "id": "hydrate",
+      "label": "Hydrate",
+      "x": 460,
+      "y": 555,
+      "w": 260,
+      "h": 100,
+      "shape": "rounded-rect",
+      "colorRole": "mint",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Fetch JS + attach behavior",
+      "icon": {
+        "name": "plug",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 3
+    },
+    {
+      "id": "click-replay",
+      "label": "Click replay",
+      "x": 465,
+      "y": 735,
+      "w": 250,
+      "h": 80,
+      "shape": "rounded-rect",
+      "colorRole": "cyan",
+      "style": {
+        "elevation": "hard"
+      },
+      "secondaryLabel": "Replay queued interactions",
+      "icon": {
+        "name": "refresh-cw",
+        "source": "line",
+        "size": 26
+      },
+      "badge": 4
+    }
+  ],
+  "edges": [
+    {
+      "id": "placeholder-view",
+      "from": "placeholder",
+      "to": "viewport-defer",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "wait",
+        "pill": true
+      }
+    },
+    {
+      "id": "defer-load",
+      "from": "viewport-defer",
+      "to": "defer",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "cyan",
+      "label": {
+        "text": "on viewport",
+        "pill": true
+      }
+    },
+    {
+      "id": "html-view",
+      "from": "server-html",
+      "to": "viewport",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "wait",
+        "pill": true
+      }
+    },
+    {
+      "id": "hydrate-load",
+      "from": "viewport",
+      "to": "hydrate",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint",
+      "label": {
+        "text": "hydrate on viewport",
+        "pill": true
+      }
+    },
+    {
+      "id": "replay",
+      "from": "hydrate",
+      "to": "click-replay",
+      "pathType": "straight",
+      "fromAnchor": "bottom",
+      "toAnchor": "top",
+      "colorRole": "mint"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "defer-code",
+      "kind": "code",
+      "x": 60,
+      "y": 740,
+      "w": 325,
+      "h": 150,
+      "language": "ts",
+      "font": "code",
+      "fontSize": 14,
+      "lines": [
+        {
+          "text": "@defer (on viewport) {"
+        },
+        {
+          "text": "  <heavy-panel />",
+          "band": "cyan"
+        },
+        {
+          "text": "} @placeholder {"
+        },
+        {
+          "text": "  <p>Panel loads here</p>"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "id": "timing-note",
+      "kind": "callout",
+      "text": "Content later vs. behavior later.",
+      "x": 75,
+      "y": 675,
+      "maxWidth": 270,
+      "fontSize": 19,
+      "colorRole": "mint",
+      "arrow": false
+    },
+    {
+      "id": "defer-note",
+      "kind": "callout",
+      "text": "Right: enable incremental hydration.",
+      "x": 65,
+      "y": 900,
+      "maxWidth": 310,
+      "fontSize": 16,
+      "colorRole": "cyan",
+      "arrow": false
+    },
+    {
+      "id": "hydrate-code",
+      "kind": "code",
+      "x": 440,
+      "y": 835,
+      "w": 300,
+      "h": 82,
+      "language": "ts",
+      "font": "code",
+      "fontSize": 13,
+      "lines": [
+        {
+          "text": "@defer (hydrate on viewport) {",
+          "band": "mint"
+        },
+        {
+          "text": "  <heavy-panel />"
+        },
+        {
+          "text": "}"
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "durationMs": 6000,
+    "fps": 25,
+    "loop": true,
+    "animations": [
+      {
+        "kind": "particle-flow",
+        "edgeIds": [
+          "html-view",
+          "hydrate-load",
+          "replay"
+        ],
+        "count": 2,
+        "cyclesPerLoop": 4,
+        "colorRole": "orange",
+        "size": 9,
+        "fadeMs": 160
+      }
+    ]
+  }
+}

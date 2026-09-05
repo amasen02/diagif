@@ -1,0 +1,38 @@
+{
+  "id": "solid-before-after",
+  "canvas": { "width": 800, "height": 1000 },
+  "theme": "paper",
+  "title": { "text": "One Reason to Change", "subtitle": { "text": "Single responsibility: separate policy, storage and delivery" } },
+  "brand": {"style":"none"},
+  "layout": { "kind": "split-comparison", "sections": [
+    { "id": "before", "header": "Before", "y": 110, "h": 390, "colorRole": "danger" },
+    { "id": "after", "header": "After", "y": 500, "h": 440, "colorRole": "success" }
+  ] },
+  "nodes": [
+    { "id": "monolith", "label": "Report Service", "x": 70, "y": 210, "w": 200, "h": 96, "shape": "card", "colorRole": "danger" },
+    { "id": "report", "label": "Report Policy", "x": 70, "y": 600, "w": 180, "h": 76, "shape": "card", "colorRole": "success" },
+    { "id": "store", "label": "Report Store", "x": 310, "y": 600, "w": 180, "h": 76, "shape": "database", "colorRole": "success" },
+    { "id": "delivery", "label": "Delivery", "x": 550, "y": 600, "w": 180, "h": 76, "shape": "card", "colorRole": "success" }
+  ],
+  "edges": [
+    { "id": "save", "from": "report", "to": "store", "pathType": "straight" },
+    { "id": "send", "from": "store", "to": "delivery", "pathType": "straight" }
+  ],
+  "annotations": [
+    { "id": "bad", "kind": "cross", "attachTo": "monolith" },
+    { "id": "good", "kind": "check", "attachTo": "report" },
+    { "id": "before-code", "kind": "code", "x": 340, "y": 190, "w": 360, "language": "ts", "lines": [
+      { "text": "function report() {", "band": "danger" },
+      { "text": "  calculate(); save(); email();" },
+      { "text": "}" }
+    ] },
+    { "id": "after-code", "kind": "code", "x": 180, "y": 750, "w": 430, "language": "ts", "lines": [
+      { "text": "const report = policy.calculate();", "band": "success", "badge": { "n": 1 } },
+      { "text": "store.save(report);", "badge": { "n": 2 } },
+      { "text": "delivery.send(report);", "badge": { "n": 3 } }
+    ] }
+  ],
+  "timeline": { "durationMs": 6000, "fps": 25, "loop": true, "animations": [
+    { "kind": "sequential-highlight", "order": ["report", "store", "delivery"], "dwellMs": 2000 }
+  ] }
+}

@@ -1,0 +1,8 @@
+{
+  "provenance": "Synthetic protocol fixtures; no live credentials or provider requests were used.",
+  "redditToken": { "access_token": "fixture-oauth-token", "token_type": "bearer", "expires_in": 3600 },
+  "reddit": { "data": { "children": [{ "data": { "title": "How retrieval works", "url": "https://example.com/retrieval", "ups": 42, "num_comments": 7, "created_utc": 1788566400, "selftext": "Retrieval selects relevant documents." } }] } },
+  "exa": { "results": [{ "title": "Retrieval guide", "url": "https://example.com/retrieval", "publishedDate": "2026-09-05T00:00:00.000Z", "text": "Retrieve the relevant documents first.", "score": 0.98 }] },
+  "tavily": { "results": [{ "title": "Retrieval guide", "url": "https://example.com/retrieval", "content": "Retrieve the relevant documents first.", "score": 0.98 }] },
+  "brave": { "web": { "results": [{ "title": "Retrieval guide", "url": "https://example.com/retrieval", "description": "Retrieve the relevant documents first." }] } }
+}
