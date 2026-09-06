@@ -20,9 +20,13 @@ async function createClaudeBrain(config = {}, options = {}) {
   const executable = options.executable || await (options.resolveExecutable || resolveExecutable)('claude', options);
   if (!supportedVersion(executable.version, options.platform || process.platform)) throw new AgentProviderUnavailable('Claude CLI requires >=2.1.205 (>=2.1.211 on Windows)');
   const model = options.model || settings.model || 'claude-sonnet-5';
+  // --json-schema returns the object through a tool call, so a run needs the tool-use
+  // turn plus a wrap-up turn. Under --max-turns 1 the CLI reports error_max_turns with
+  // stop_reason "tool_use" after the content was already produced, which surfaces as an
+  // intermittent provider failure that looks like a quota problem.
   return { name: 'claude-cli', provider: 'claude-cli', model, capability: { vision: false }, async complete(request) {
     const wire = wireFor(request, 'anthropic');
-    const args = [...executable.prefixArgs, '-p', '--output-format', 'json', '--json-schema', JSON.stringify(wire.schema), '--tools', '', '--max-turns', '1', '--no-session-persistence', '--strict-mcp-config', '--model', model];
+    const args = [...executable.prefixArgs, '-p', '--output-format', 'json', '--json-schema', JSON.stringify(wire.schema), '--tools', '', '--max-turns', '4', '--no-session-persistence', '--strict-mcp-config', '--model', model];
     if (settings.apiKeyMode) args.push('--bare');
     const root = request.runDir || options.runDir || options.store?.root;
     const result = await (options.runProcess || runProcess)(executable.command, args, { ...options, env, input: promptText(request), timeoutMs: request.timeoutMs || 240000,

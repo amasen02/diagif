@@ -76,7 +76,7 @@ function configProjection(config, brain = {}, options = {}) {
   const key = { 'codex-cli': 'codex', 'claude-cli': 'claudeCli' }[provider] || provider;
   const settings = config.brain?.[key] || {};
   const result = { provider, model: brain.model || settings.model || 'mock', researchProviders: config.research?.providers || ['hn', 'github', 'page'],
-    researchMode: options.researchMode || options.research || (provider.startsWith('mock') ? 'mock' : 'live'), brandStyle: config.brand?.style || 'none', limits: config.limits };
+    researchMode: options.researchMode || options.research || (provider.startsWith('mock') ? 'mock' : 'live'), brandStyle: config.brand?.style || 'none', brandTheme: config.brand?.theme || null, limits: config.limits };
   if (settings.baseUrl || ['openai', 'anthropic'].includes(provider)) result.baseUrl = settings.baseUrl || (provider === 'openai' ? 'https://api.openai.com' : 'https://api.anthropic.com');
   return result;
 }

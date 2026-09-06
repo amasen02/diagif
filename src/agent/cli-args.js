@@ -9,6 +9,7 @@ const HELP = `Usage: diagif <command> [options]
   brand --url URL    Configure a LinkedIn URL footer
   brand --clear     Remove the configured brand
   doctor            Inspect providers and research configuration
+  auth              Show provider authentication without model calls
 
 Make / mindmap:
   --brain NAME --model NAME --config FILE --out DIR --dry-run
@@ -19,6 +20,8 @@ Scout:
   --brain NAME --config FILE --out DIR --fresh --max-model-calls N
   --research live|mock --allow-html-search
 Brand / doctor: --config FILE
+Auth: --json | --login codex|claude [--dry-run]
+  --dry-run prints the login spawn command without opening a browser
   --help, -h       Show help
   --version, -v    Show version
   --              End options; remaining arguments are the topic
@@ -28,9 +31,9 @@ const allowed = {
   make: [...common, 'model', 'dry-run', 'resume', 'resume-slug'],
   mindmap: [...common, 'model', 'dry-run', 'resume', 'resume-slug'],
   scout: [...common, 'domain', 'count', 'make', 'max-total-model-calls'],
-  brand: ['url', 'clear', 'config'], doctor: ['config']
+  brand: ['url', 'clear', 'config'], doctor: ['config'], auth: ['login', 'json', 'dry-run']
 };
-const booleans = new Set(['fresh', 'allow-html-search', 'dry-run', 'resume', 'make', 'clear']);
+const booleans = new Set(['fresh', 'allow-html-search', 'dry-run', 'resume', 'make', 'clear', 'json']);
 const ranges = { count: [1, 10], 'max-model-calls': [1, 200], 'max-total-model-calls': [1, 2000] };
 const camel = name => name.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
@@ -69,6 +72,11 @@ function parseArgs(argv) {
     options[camel(name)] = value;
   }
   if (help) return { command: 'help', options: {}, forCommand: command };
+  if (command === 'auth') {
+    if (options.login && !['codex', 'claude'].includes(options.login)) throw new AgentUsageError('--login must be codex or claude');
+    if (options.json && options.login) throw new AgentUsageError('--json cannot be combined with --login');
+    if (options.dryRun && !options.login) throw new AgentUsageError('--dry-run requires --login');
+  }
   if (options.research && !['live', 'mock'].includes(options.research)) throw new AgentUsageError('--research must be live or mock');
   if (options.resume && options.resumeSlug) throw new AgentUsageError('Use only one of --resume and --resume-slug');
   if (options.resumeSlug && !/^[a-z0-9][a-z0-9-]{0,119}$/.test(options.resumeSlug)) throw new AgentUsageError('Invalid resume slug');

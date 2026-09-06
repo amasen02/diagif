@@ -10,6 +10,7 @@ async function main(argv = process.argv.slice(2), dependencies = {}) {
     const { command, topic, options } = parseArgs(argv);
     if (command === 'help') { log(HELP); return 0; }
     if (command === 'version') { log(require('../package.json').version); return 0; }
+    if (command === 'auth') return await require('../src/commands/auth.js').run(options, { ...dependencies, log });
     if (command === 'brand') {
       const config = dependencies.config || require('../src/agent/config.js');
       const loaded = await config.loadConfig(options.config);
@@ -20,15 +21,16 @@ async function main(argv = process.argv.slice(2), dependencies = {}) {
     }
     if (command === 'doctor') {
       if (dependencies.doctor) { await dependencies.doctor(options); return 0; }
-      const { loadConfig } = require('../src/agent/config.js'), { resolveExecutable } = require('../src/agent/exec-resolve.js');
+      const { loadConfig } = require('../src/agent/config.js');
+      const { getAuthStatuses, formatStatus } = require('../src/agent/auth.js');
       const cfg = loadConfig(options.config);
       log('Research providers: ' + cfg.research.providers.join(', '));
-      for (const [provider, env] of [['openai', 'OPENAI_API_KEY'], ['anthropic', 'ANTHROPIC_API_KEY']]) log(provider + ': ' + (process.env[env] ? 'credential configured' : 'not configured'));
-      for (const name of ['codex', 'claude']) {
-        try { const executable = await resolveExecutable(name); log(name + ': ' + executable.version); }
-        catch (error) { log(name + ': ' + toSafeJson(error).message); }
+      const statuses = await (dependencies.getAuthStatuses || getAuthStatuses)(dependencies);
+      statuses.forEach(row => log(formatStatus(row)));
+      if (!statuses.some(row => row.provider !== 'mock' && ['authenticated', 'configured'].includes(row.status))) {
+        log('no authenticated brain: run "diagif auth --login codex" (ChatGPT subscription) or "diagif auth --login claude" (Claude subscription), or set OPENAI_API_KEY');
       }
-      log('mock: available'); return 0;
+      return 0;
     }
     const harness = dependencies.harness || require('../src/agent/harness.js');
     const result = command === 'scout' ? await harness.runScout({ ...options, log }) : command === 'mindmap'

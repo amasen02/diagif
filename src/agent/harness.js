@@ -218,6 +218,10 @@ function createHarness(dependencies) {
           const beforeRepair = structuredClone(authored);
           const originalClaims = claimsCover(authored, proposal.claims, facts.value);
           authored.brand = structuredClone(cfg.brand || { style: 'none' }); authored.id = c.slug;
+          // Pin the palette when the operator has chosen one. Letting the model pick a theme
+          // per scene produces a gallery in four different palettes, which reads as a grab bag
+          // rather than a body of work. The model still chooses everything else.
+          if (cfg.brand?.theme) authored.theme = cfg.brand.theme;
           const repairTrace = d.repair(authored);
           const claims = carryClaims(authored, originalClaims.claims, repairTrace, beforeRepair);
           const coverage = claimsCover(authored, claims, facts.value);

@@ -50,10 +50,17 @@ async function selectBrain(name, config = {}, options = {}) {
   async function create(provider) {
     if (provider === 'mock' || provider.startsWith('mock:')) return require('./mock').createMockBrain(provider.split(':')[1] || 'happy');
     if (env.DIAGIF_OFFLINE === '1') throw new errors.AgentOfflineError('Offline mode requires a mock brain');
+    if (['codex-cli', 'claude-cli'].includes(provider)) {
+      const name = provider.replace('-cli', '');
+      const executable = options.executable || await (options.resolveExecutable || require('../exec-resolve').resolveExecutable)(name, options);
+      const auth = await require('../auth').probeCliAuth(name, { ...options, executable });
+      if (auth.status !== 'authenticated') throw new errors.AgentProviderUnavailable(
+        provider + ': ' + auth.status + '; run diagif auth --login ' + name + (auth.status === 'unknown' ? ' (authentication status could not be verified; update the official CLI if needed)' : ''));
+      const factory = name === 'codex' ? require('./codex-cli').createCodexBrain : require('./claude-cli').createClaudeBrain;
+      return factory(config, { ...options, executable });
+    }
     if (provider === 'openai') return require('./openai').createOpenAIBrain(config, options);
     if (provider === 'anthropic') return require('./anthropic').createAnthropicBrain(config, options);
-    if (provider === 'codex-cli') return require('./codex-cli').createCodexBrain(config, options);
-    if (provider === 'claude-cli') return require('./claude-cli').createClaudeBrain(config, options);
     throw new errors.AgentUsageError('Unknown brain: ' + provider);
   }
   if (selected) return create(selected);
@@ -63,7 +70,7 @@ async function selectBrain(name, config = {}, options = {}) {
   for (const provider of ['codex-cli', 'claude-cli']) {
     try { return await create(provider); } catch (error) { if (!(error instanceof errors.AgentProviderUnavailable)) throw error; }
   }
-  throw new errors.AgentProviderUnavailable('Configure OPENAI_API_KEY or ANTHROPIC_API_KEY with an explicit model; install codex/claude, set DIAGIF_CODEX/DIAGIF_CLAUDE, or select --brain mock');
+  throw new errors.AgentProviderUnavailable('Run diagif auth --login codex (ChatGPT subscription) or diagif auth --login claude (Claude subscription); or configure OPENAI_API_KEY or ANTHROPIC_API_KEY with an explicit model; or select --brain mock');
 }
 
 function createBrainRunner(brain, { run, store, config = {}, persist, aggregateBudget, env = process.env } = {}) {

@@ -198,6 +198,17 @@
           "properties": {
             "style": {
               "const": "none"
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "paper",
+                "dark-teal",
+                "soft-light",
+                "black-card",
+                "ink"
+              ],
+              "description": "Pin every scene to one palette so a set of GIFs reads as one body of work."
             }
           }
         },
@@ -216,6 +227,17 @@
               "type": "string",
               "maxLength": 72,
               "format": "uri"
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "paper",
+                "dark-teal",
+                "soft-light",
+                "black-card",
+                "ink"
+              ],
+              "description": "Pin every scene to one palette so a set of GIFs reads as one body of work."
             }
           }
         }

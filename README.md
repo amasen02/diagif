@@ -5,6 +5,53 @@ The agent retains sources and intermediate artifacts, validates model proposals,
 inspects the scene in Chromium and gates the encoded result before delivery.
 All outputs stay on your machine. No command publishes a post.
 
+## Use your Claude or ChatGPT subscription (browser login, no API key)
+
+With diagif installed (or after the source setup below), install an official CLI
+and sign in through its browser OAuth flow. For a ChatGPT subscription:
+
+```sh
+npm i -g @openai/codex
+codex login
+diagif auth
+diagif make "explain RAG" --brain codex-cli
+```
+
+`codex login` opens the browser; sign in with your ChatGPT account. For a Claude
+subscription, sign in with your Claude account in the browser opened by:
+
+```sh
+npm i -g @anthropic-ai/claude-code
+claude auth login --claudeai
+diagif auth
+diagif make "explain RAG" --brain claude-cli
+```
+
+You can also start those official login flows with `diagif auth --login codex`
+or `diagif auth --login claude`. `diagif auth` and `diagif doctor` check credentials
+without making model calls; `diagif auth --json` provides machine-readable status.
+`diagif auth --login codex --dry-run` prints the executable and arguments without
+starting login. Subscription usage limits still apply. Status confirms the CLI's
+reported login, not remaining quota or permission to use a particular model.
+
+| Brain (`--brain`) | How to authenticate | Billing | Vision for the visual critic |
+| --- | --- | --- | --- |
+| `codex-cli` | `codex login` (browser OAuth) | ChatGPT subscription; official CLI API-key mode also supported | Yes when the installed CLI supports `--image` and the selected model supports images |
+| `claude-cli` | `claude auth login --claudeai` (browser OAuth) | Claude subscription; official CLI API-key mode also supported | No in the current diagif adapter |
+| `openai` | Set `OPENAI_API_KEY` in your environment | OpenAI API key, separately billed | Yes with an image-capable model |
+| `anthropic` | Set `ANTHROPIC_API_KEY` in your environment | Anthropic API key, separately billed | Yes with an image-capable model |
+
+The API brains also require an explicit `--model` or configured model. API key
+values are never shown by auth checks. `mock` is always available offline with
+no credentials. An unverifiable CLI auth status is reported as `unknown` and
+blocks model dispatch; update the official CLI and rerun `diagif auth`.
+
+diagif never drives, scrapes, or automates the claude.ai or chatgpt.com web UI to
+obtain completions; it authenticates only through official CLI OAuth flows or
+official API keys and uses only the official CLIs or official APIs for completions.
+
+To assemble the local website demo assets reproducibly, install the WOFF2 converter once with `python -m pip install fonttools brotli`, then run `node scripts/build-demo-site.js --out ../amasen02.github.io --source-private ../tech-gifs-private --strict`; the builder validates and sanitizes 12 normalized scenes, bundles the browser renderer and required licensed fonts, and copies 12 quality-gated GIFs without publishing anything.
+
 ## Get started from source
 
 Use Node 24 or later and Python 3.12. Git selects tracked files for the public-file
