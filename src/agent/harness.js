@@ -222,6 +222,20 @@ function createHarness(dependencies) {
           // per scene produces a gallery in four different palettes, which reads as a grab bag
           // rather than a body of work. The model still chooses everything else.
           if (cfg.brand?.theme) authored.theme = cfg.brand.theme;
+          // Size a mind map's canvas to its tree. Otherwise the layout centres a small
+          // cluster inside a fixed-height frame and the GIF ships with half of it empty.
+          if (mindmap && authored.layout?.mindmap && authored.canvas) {
+            const { mindmapClusterHeight } = require('../renderer/layout.js');
+            const frame = require('../../config/defaults.json').frame;
+            const cluster = mindmapClusterHeight(authored.layout.mindmap);
+            if (cluster > 0) {
+              const footer = ['none', 'creator', 'corner'].includes(authored.brand?.style) ? 0 : frame.footerZone;
+              // Keep a little breathing room, snap to an even number for the encoder, and
+              // clamp so a very large tree cannot produce an unshareable aspect ratio.
+              const natural = frame.titleZone + cluster + footer + 48;
+              authored.canvas.height = Math.max(760, Math.min(1200, Math.round(natural / 2) * 2));
+            }
+          }
           const repairTrace = d.repair(authored);
           const claims = carryClaims(authored, originalClaims.claims, repairTrace, beforeRepair);
           const coverage = claimsCover(authored, claims, facts.value);

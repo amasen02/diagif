@@ -65,7 +65,10 @@ test('raw mind-map schema accepts empty generated arrays and rejects authored ge
   const raw = new Ajv({ strict: true, discriminator: true }).compile(schema);
   assert.equal(raw(authored()), true, JSON.stringify(raw.errors));
   const invalid = [
-    s => { s.canvas.height = 1000; }, s => { s.timeline.durationMs = 3800; },
+    // Mind-map height is a range now, not a fixed 1100: the canvas is sized to the tree so a
+    // small cluster is not centred in a tall, mostly empty frame. Still bounded at both ends.
+    s => { s.canvas.height = 700; }, s => { s.canvas.height = 1300; },
+    s => { s.timeline.durationMs = 3800; },
     s => { s.nodes.push({}); }, s => { s.edges.push({}); }, s => { s.timeline.animations.push({}); },
     s => { delete s.layout.mindmap; }, s => { s.layout.mindmap.branches.pop(); },
     s => { s.layout.mindmap.branches.push(...structuredClone(s.layout.mindmap.branches), structuredClone(s.layout.mindmap.branches[0])); },

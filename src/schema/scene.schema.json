@@ -1484,7 +1484,10 @@
         "type": "object",
         "properties": {
           "height": {
-            "const": 1100
+            "type": "integer",
+            "minimum": 760,
+            "maximum": 1200,
+            "description": "Sized to the tree. A fixed height centres a small cluster in a tall frame and ships a GIF that is mostly empty background."
           }
         }
       },

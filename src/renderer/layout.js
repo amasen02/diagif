@@ -40,6 +40,33 @@
     }
     return low < high;
   }
+
+  /**
+   * The height a mind map actually needs for its tree.
+   *
+   * materializeMindmap caps the row pitch and then centres the cluster inside whatever
+   * canvas it was given, so a small tree in a tall canvas leaves half the frame empty.
+   * Sizing the canvas from the tree first removes the slack instead of centring it.
+   *
+   * Shares the band maths with materializeMindmap below rather than restating the
+   * constants, so the two cannot drift apart.
+   */
+  function mindmapClusterHeight(tree) {
+    const branches = (tree && tree.branches) || [];
+    const n = branches.length;
+    if (n < 1) return 0;
+    const rootH = 96, branchH = 84, leafW = 200, gap = 12;
+    const bandHeights = branches.map(branch => {
+      const leaves = branch.leaves || [];
+      const heights = leaves.map(leaf => wrapLines(leaf.label, leafW - 24, 15) > 1 ? 76 : 64);
+      return heights.reduce((a, b) => a + b, 0) + Math.max(0, heights.length - 1) * gap;
+    });
+    const rowH = Math.max(branchH, rootH, ...bandHeights);
+    // The uncapped pitch materializeMindmap would choose if the canvas were unbounded.
+    const pitch = Math.floor((rowH + 40) / 16) * 16;
+    return rowH + (n - 1) * pitch;
+  }
+
   function materializeMindmap(scene, zone) {
     const tree = scene.layout.mindmap, branches = tree.branches, n = branches.length;
     const fail = message => { throw new MindmapLayoutError(message); };
@@ -201,5 +228,5 @@
     if (b.showSaveIcon) children.push(icons.render({ name: 'bookmark-plus', size: 28 }, 744, 20, theme.titleText, ctx));
     return children;
   }
-  return { header, sections, title, brand, materializeMindmap, MindmapLayoutError, crossesBox, wrapLines };
+  return { header, sections, title, brand, materializeMindmap, mindmapClusterHeight, MindmapLayoutError, crossesBox, wrapLines };
 });
